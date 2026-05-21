@@ -1,31 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="170" height="170" viewBox="0 0 170 170">
-  <g fill="#e8b73e">
-    <g transform="rotate(24 32 38)" opacity="0.55">
-      <ellipse cx="32" cy="38" rx="6.5" ry="10.5"/>
-      <path d="M32 28 Q34 38 32 48" stroke="#7a5e12" stroke-width="1.1" fill="none" opacity="0.5"/>
+  <defs>
+    <radialGradient id="sg" cx="0.37" cy="0.30" r="0.92">
+      <stop offset="0" stop-color="#f6dd92"/>
+      <stop offset="0.40" stop-color="#dba945"/>
+      <stop offset="0.73" stop-color="#a3741f"/>
+      <stop offset="1" stop-color="#6e4a12"/>
+    </radialGradient>
+    <g id="cseed">
+      <path d="M0,-7.2 C2.9,-7.2 4.8,-3.6 4.8,0.8 C4.8,5.2 2.6,7.4 0,7.4 C-2.6,7.4 -4.8,5.2 -4.8,0.8 C-4.8,-3.6 -2.9,-7.2 0,-7.2 Z" fill="url(#sg)"/>
+      <ellipse cx="0" cy="6.7" rx="1.9" ry="1.2" fill="#f7e7b0" opacity="0.72"/>
+      <path d="M0,-6.4 C1.5,-2.2 1.5,3.2 0,6.6" stroke="#533a0d" stroke-width="0.7" fill="none" opacity="0.55"/>
+      <path d="M-3.6,-2.8 C-1.6,-3.9 1.7,-3.7 3.7,-1.9" stroke="#45300a" stroke-width="0.85" fill="none" opacity="0.5" stroke-linecap="round"/>
+      <path d="M-4,1 C-1.9,-0.1 2,0.4 3.9,2.3" stroke="#45300a" stroke-width="0.8" fill="none" opacity="0.46" stroke-linecap="round"/>
+      <path d="M-2.9,4.3 C-1,3.4 1.7,3.8 3,5.1" stroke="#45300a" stroke-width="0.68" fill="none" opacity="0.4" stroke-linecap="round"/>
+      <ellipse cx="-1.6" cy="-3.1" rx="1.5" ry="2.3" fill="#fff4d2" opacity="0.55"/>
     </g>
-    <g transform="rotate(-32 122 30)" opacity="0.42">
-      <ellipse cx="122" cy="30" rx="5.6" ry="9"/>
-      <path d="M122 22 Q124 30 122 38" stroke="#7a5e12" stroke-width="1" fill="none" opacity="0.5"/>
-    </g>
-    <g transform="rotate(12 94 84)" opacity="0.6">
-      <ellipse cx="94" cy="84" rx="7" ry="11"/>
-      <path d="M94 73 Q96 84 94 95" stroke="#7a5e12" stroke-width="1.2" fill="none" opacity="0.5"/>
-    </g>
-    <g transform="rotate(44 150 108)" opacity="0.4">
-      <ellipse cx="150" cy="108" rx="5.4" ry="8.8"/>
-      <path d="M150 100 Q152 108 150 116" stroke="#7a5e12" stroke-width="1" fill="none" opacity="0.5"/>
-    </g>
-    <g transform="rotate(-18 46 122)" opacity="0.52">
-      <ellipse cx="46" cy="122" rx="6.5" ry="10.5"/>
-      <path d="M46 112 Q48 122 46 132" stroke="#7a5e12" stroke-width="1.1" fill="none" opacity="0.5"/>
-    </g>
-    <g transform="rotate(8 18 152)" opacity="0.4">
-      <ellipse cx="18" cy="152" rx="5.2" ry="8.4"/>
-    </g>
-    <g transform="rotate(-10 112 150)" opacity="0.44">
-      <ellipse cx="112" cy="150" rx="5.8" ry="9.4"/>
-      <path d="M112 141 Q114 150 112 159" stroke="#7a5e12" stroke-width="1" fill="none" opacity="0.5"/>
-    </g>
-  </g>
+  </defs>
+  <use href="#cseed" transform="translate(36,42) rotate(22) scale(1.2)" opacity="0.70"/>
+  <use href="#cseed" transform="translate(122,32) rotate(-33) scale(1)" opacity="0.56"/>
+  <use href="#cseed" transform="translate(92,86) rotate(14) scale(1.32)" opacity="0.74"/>
+  <use href="#cseed" transform="translate(146,110) rotate(46) scale(0.98)" opacity="0.54"/>
+  <use href="#cseed" transform="translate(46,124) rotate(-20) scale(1.18)" opacity="0.66"/>
+  <use href="#cseed" transform="translate(24,150) rotate(10) scale(0.95)" opacity="0.50"/>
+  <use href="#cseed" transform="translate(112,148) rotate(-12) scale(1.05)" opacity="0.58"/>
+  <use href="#cseed" transform="translate(74,16) rotate(50) scale(0.9)" opacity="0.50"/>
 </svg>
