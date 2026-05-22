@@ -4,216 +4,569 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script>try{var _gt=localStorage.getItem('gsc-theme');if(_gt)document.documentElement.setAttribute('data-theme',_gt);}catch(e){}</script>
+<script>try{if(localStorage.getItem('gsc-age-21plus')==='yes')document.documentElement.setAttribute('data-age','ok');}catch(e){}</script>
 <title>Strain — Goddess Seed Co.</title>
-<meta name="description" content="Elite cannabis genetics — strain specs, genetic lineage and grow notes. Sold as souvenirs and collectibles. 21+ only." />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.11.0/dist/tabler-icons.min.css" />
+<meta name="description" content="Organic cannabis genetics — strain specs, genetic lineage and grow notes. Sold as souvenirs and collectibles. 21+ only." />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css" />
 <style>
 @font-face{font-family:'Coinbase Sans';src:url('fonts/CoinbaseSans-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Coinbase Sans';src:url('fonts/CoinbaseSans-Medium.woff2') format('woff2');font-weight:500 600;font-style:normal;font-display:swap}
 @font-face{font-family:'Coinbase Sans';src:url('fonts/CoinbaseSans-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:'Coinbase Display';src:url('fonts/CoinbaseDisplay-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 :root{
-  --gold:#e8b73e;--gold-soft:#f3cf73;
-  --d-bg:#0a0b0d;--d-bg2:#121316;--d-bg3:#17191e;--d-bg4:#202329;
-  --d-ink:#f4f5f7;--d-dim:#a7abb4;--d-faint:#6d717b;
-  --d-hair:#212329;--d-hair2:#2c2f37;
-  --sans:'Coinbase Sans',-apple-system,Segoe UI,Roboto,sans-serif;
-  --disp:'Coinbase Display','Coinbase Sans',sans-serif;
-  --container:1240px;
+  /* dark — Coinbase-style deep neutral blacks */
+  --d-bg:#0a0b0d; --d-bg2:#121316; --d-bg3:#17191e; --d-bg4:#202329;
+  --d-ink:#ffffff; --d-dim:#c6cad2; --d-faint:#8b909c;
+  --d-hair:rgba(255,255,255,.09); --d-hair2:rgba(255,255,255,.17);
+  --gold:#e8b73e; --gold-soft:#f2cc63; --gold-deep:#a8801e;
+  /* themable (dark defaults) */
+  --bg:#0a0b0d; --bg2:#121316; --bg3:#17191e; --bg4:#202329;
+  --ink:#ffffff; --dim:#c6cad2; --faint:#8b909c;
+  --hair:rgba(255,255,255,.09); --hair2:rgba(255,255,255,.17);
+  --accent:#8266f4; --accent-ink:#ffffff; --accent-hover:#9582f6;
+  --blue:#5b8def; --price:#e8b73e;
+  --focus:rgba(130,102,244,.62); --tint:rgba(130,102,244,.1);
+  --radius:14px; --container:1640px;
+  --sans:'Coinbase Sans',system-ui,-apple-system,sans-serif;
+  --disp:'Coinbase Display','Coinbase Sans',system-ui,sans-serif;
 }
 html[data-theme="light"]{
-  --d-bg:#f4f5f7;--d-bg2:#ffffff;--d-bg3:#f4f5f7;--d-bg4:#e7e8ec;
-  --d-ink:#0f1115;--d-dim:#565b66;--d-faint:#8b909b;
-  --d-hair:#e5e7eb;--d-hair2:#d4d7dd;
+  --bg:#f4f5f7; --bg2:#ffffff; --bg3:#ffffff; --bg4:#f0f1f4;
+  --ink:#0a0b0d; --dim:#5b616e; --faint:#8e94a0;
+  --hair:#e4e6ea; --hair2:#d2d5da;
+  --accent:#6c47e6; --accent-ink:#ffffff; --accent-hover:#5d39d6;
+  --blue:#3f5bb8; --price:#8a6310;
+  --focus:rgba(108,71,230,.42); --tint:rgba(108,71,230,.05);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--d-bg);color:var(--d-ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:var(--container);margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 clamp(20px,5vw,68px)}
 .disp{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;line-height:1.08}
 
-/* header */
-.hdr{position:sticky;top:0;z-index:90;background:var(--d-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--d-hair)}
-.hdr-r{display:flex;align-items:center;gap:16px}
-.thmbtn{background:none;border:0;color:var(--d-dim);cursor:pointer;font-size:18px;line-height:0;padding:4px}
-.thmbtn:hover{color:var(--gold)}
-.hdr-in{display:flex;align-items:center;justify-content:space-between;height:88px;gap:24px}
-.brand img{height:64px;width:auto}
-.hdr-nav{display:flex;gap:30px;font-size:14px;font-weight:500}
-.hdr-nav a{color:var(--d-dim);transition:color .2s}
-.hdr-nav a:hover{color:var(--gold)}
-.hdr-back{font-size:13px;color:var(--d-dim);display:flex;align-items:center;gap:7px}
-.hdr-back:hover{color:var(--gold)}
 
 /* breadcrumb */
-.crumb{font-size:12.5px;color:var(--d-faint);padding:22px 0 6px;display:flex;gap:8px;flex-wrap:wrap}
+.crumb{font-size:12.5px;color:var(--faint);padding:22px 0 6px;display:flex;gap:8px;flex-wrap:wrap}
 .crumb a:hover{color:var(--gold)}
 .crumb .sep{opacity:.5}
 
 /* hero */
 .phero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,64px);padding:18px 0 8px;align-items:start}
 .gallery{position:sticky;top:112px}
-.gal-main{background:var(--d-bg2);border:1px solid var(--d-hair);border-radius:20px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.gal-main{background:var(--bg2);border:1px solid var(--hair);border-radius:20px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
 .gal-main img{width:100%;height:100%;object-fit:cover}
 .gal-thumbs{display:flex;gap:10px;margin-top:12px}
-.gal-thumbs button{width:74px;height:74px;border-radius:12px;overflow:hidden;border:1px solid var(--d-hair2);background:var(--d-bg2);cursor:pointer;padding:0}
+.gal-thumbs button{width:74px;height:74px;border-radius:12px;overflow:hidden;border:1px solid var(--hair2);background:var(--bg2);cursor:pointer;padding:0}
 .gal-thumbs button.on{border-color:var(--gold)}
 .gal-thumbs img{width:100%;height:100%;object-fit:cover}
 
 .pinfo .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px}
 .pinfo .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
 .pinfo h1{font-size:clamp(2.1rem,4vw,3rem);margin:12px 0 6px}
-.pinfo .ptag{color:var(--d-dim);font-size:1.02rem}
-.prate{display:flex;align-items:center;gap:10px;margin:14px 0 0;font-size:13px;color:var(--d-dim)}
+.pinfo .ptag{color:var(--dim);font-size:1.02rem}
+.prate{display:flex;align-items:center;gap:10px;margin:14px 0 0;font-size:13px;color:var(--dim)}
 .stars{color:var(--gold);letter-spacing:2px}
-.pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--d-bg3);border:1px solid var(--d-hair2);color:var(--d-dim)}
+.pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--bg3);border:1px solid var(--hair2);color:var(--dim)}
 .hilites{list-style:none;margin:20px 0 0;display:flex;flex-direction:column;gap:9px}
-.hilites li{display:flex;gap:10px;font-size:14px;color:var(--d-dim)}
+.hilites li{display:flex;gap:10px;font-size:14px;color:var(--dim)}
 .hilites i{color:var(--gold);font-size:16px;flex:none}
-.hilites b{color:var(--d-ink);font-weight:600}
+.hilites b{color:var(--ink);font-weight:600}
 
-.buybox{margin-top:22px;background:var(--d-bg2);border:1px solid var(--d-hair);border-radius:18px;padding:20px}
+.buybox{margin-top:22px;background:var(--bg2);border:1px solid var(--hair);border-radius:18px;padding:20px}
 .buybox .price{font-family:var(--disp);font-size:2rem}
-.buybox .price small{font-size:.9rem;color:var(--d-faint);font-family:var(--sans);font-weight:400}
+.buybox .price small{font-size:.9rem;color:var(--faint);font-family:var(--sans);font-weight:400}
 .packsel{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
-.packsel button{font:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:10px;background:var(--d-bg3);border:1px solid var(--d-hair2);color:var(--d-dim);cursor:pointer}
+.packsel button{font:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:10px;background:var(--bg3);border:1px solid var(--hair2);color:var(--dim);cursor:pointer}
 .packsel button.on{border-color:var(--gold);color:var(--gold);background:rgba(232,183,62,.08)}
 .qtyrow{display:flex;align-items:center;gap:12px;margin:14px 0}
-.stepper{display:flex;align-items:center;border:1px solid var(--d-hair2);border-radius:10px;overflow:hidden}
-.stepper button{width:40px;height:42px;background:var(--d-bg3);border:0;color:var(--d-ink);font-size:18px;cursor:pointer}
+.stepper{display:flex;align-items:center;border:1px solid var(--hair2);border-radius:10px;overflow:hidden}
+.stepper button{width:40px;height:42px;background:var(--bg3);border:0;color:var(--ink);font-size:18px;cursor:pointer}
 .stepper span{width:46px;text-align:center;font-weight:600}
 .btn-buy{flex:1;border:0;background:var(--gold);color:#1a1406;font:inherit;font-weight:700;font-size:15px;padding:13px;border-radius:11px;cursor:pointer;transition:background .18s}
 .btn-buy:hover{background:var(--gold-soft)}
-.buynote{font-size:12px;color:var(--d-faint);margin-top:12px;display:flex;gap:8px;align-items:flex-start}
+.buynote{font-size:12px;color:var(--faint);margin-top:12px;display:flex;gap:8px;align-items:flex-start}
 .buynote i{color:var(--gold)}
 
 /* section shell */
-.psec{padding:clamp(34px,4vw,56px) 0;border-top:1px solid var(--d-hair)}
+.psec{padding:clamp(34px,4vw,56px) 0;border-top:1px solid var(--hair)}
 .psec h2{font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:6px}
-.psec .lead{color:var(--d-dim);font-size:14px;margin-bottom:24px}
+.psec .lead{color:var(--dim);font-size:14px;margin-bottom:24px}
 
 /* tech radar */
 .radar{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
-.dial{background:var(--d-bg2);border:1px solid var(--d-hair);border-radius:14px;padding:16px 18px}
-.dial .dl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--d-faint)}
+.dial{background:var(--bg2);border:1px solid var(--hair);border-radius:14px;padding:16px 18px}
+.dial .dl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .dial .dv{font-size:14px;font-weight:600;margin:5px 0 9px}
-.track{height:7px;border-radius:4px;background:var(--d-bg4);overflow:hidden}
+.track{height:7px;border-radius:4px;background:var(--bg4);overflow:hidden}
 .track i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#7b4ec8,var(--gold))}
 
 /* specs table */
 .specs{width:100%;border-collapse:collapse;font-size:14px}
-.specs tr{border-bottom:1px solid var(--d-hair)}
+.specs tr{border-bottom:1px solid var(--hair)}
 .specs td{padding:12px 4px}
-.specs td:first-child{color:var(--d-faint);width:42%}
-.specs td:last-child{color:var(--d-ink);font-weight:500}
+.specs td:first-child{color:var(--faint);width:42%}
+.specs td:last-child{color:var(--ink);font-weight:500}
 
 /* genetic tree */
 .tree{font-size:13px;overflow-x:auto;padding:6px 2px}
 .tree ul{list-style:none;padding-left:26px;position:relative}
 .tree>ul{padding-left:0}
 .tree li{position:relative;padding:5px 0}
-.tree ul ul li::before{content:"";position:absolute;left:-15px;top:0;bottom:50%;width:1px;background:var(--d-hair2)}
-.tree ul ul li::after{content:"";position:absolute;left:-15px;top:50%;width:12px;height:1px;background:var(--d-hair2)}
+.tree ul ul li::before{content:"";position:absolute;left:-15px;top:0;bottom:50%;width:1px;background:var(--hair2)}
+.tree ul ul li::after{content:"";position:absolute;left:-15px;top:50%;width:12px;height:1px;background:var(--hair2)}
 .tree ul ul li:last-child::before{bottom:50%}
-.tree .node{display:inline-flex;align-items:center;gap:8px;background:var(--d-bg2);border:1px solid var(--d-hair2);border-radius:8px;padding:6px 11px}
+.tree .node{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--hair2);border-radius:8px;padding:6px 11px}
 .tree .node.root{background:rgba(232,183,62,.1);border-color:var(--gold);color:var(--gold);font-weight:700}
 .tree .node .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none;opacity:.7}
-.tree-src{font-size:11.5px;color:var(--d-faint);margin-top:14px}
+.tree-src{font-size:11.5px;color:var(--faint);margin-top:14px}
 
 /* description */
 .pdesc h3{font-family:var(--disp);font-size:1.1rem;margin:22px 0 6px}
-.pdesc p{color:var(--d-dim);font-size:14.5px;margin-bottom:10px}
+.pdesc p{color:var(--dim);font-size:14.5px;margin-bottom:10px}
 .taglist{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px}
-.taglist span{font-size:12.5px;background:var(--d-bg3);border:1px solid var(--d-hair2);border-radius:999px;padding:6px 12px;color:var(--d-dim)}
+.taglist span{font-size:12.5px;background:var(--bg3);border:1px solid var(--hair2);border-radius:999px;padding:6px 12px;color:var(--dim)}
 
 /* guarantee */
-.guar{display:flex;gap:18px;align-items:flex-start;background:linear-gradient(120deg,rgba(123,78,200,.14),rgba(232,183,62,.08));border:1px solid var(--d-hair2);border-radius:16px;padding:24px}
+.guar{display:flex;gap:18px;align-items:flex-start;background:linear-gradient(120deg,rgba(123,78,200,.14),rgba(232,183,62,.08));border:1px solid var(--hair2);border-radius:16px;padding:24px}
 .guar i{font-size:32px;color:var(--gold);flex:none}
 .guar h3{font-family:var(--disp);font-size:1.15rem;margin-bottom:6px}
-.guar p{color:var(--d-dim);font-size:14px}
+.guar p{color:var(--dim);font-size:14px}
 
 /* compare + cross-sell cards */
 .crow{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
-.pcard{background:var(--d-bg2);border:1px solid var(--d-hair);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s}
+.pcard{background:var(--bg2);border:1px solid var(--hair);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s}
 .pcard:hover{border-color:var(--gold);transform:translateY(-3px)}
-.pcard .pc-img{aspect-ratio:1/1;background:var(--d-bg3);overflow:hidden}
+.pcard .pc-img{aspect-ratio:1/1;background:var(--bg3);overflow:hidden}
 .pcard .pc-img img{width:100%;height:100%;object-fit:cover}
 .pcard .pc-b{padding:12px 13px 14px}
 .pcard .pc-k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
 .pcard .pc-n{font-weight:600;font-size:14px;margin:3px 0 7px}
 .pcard .pc-p{font-family:var(--disp);font-size:1rem}
 .cmptbl{width:100%;border-collapse:collapse;font-size:13px;min-width:540px}
-.cmptbl th,.cmptbl td{padding:11px 10px;text-align:left;border-bottom:1px solid var(--d-hair)}
-.cmptbl th{color:var(--d-faint);font-weight:600;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+.cmptbl th,.cmptbl td{padding:11px 10px;text-align:left;border-bottom:1px solid var(--hair)}
+.cmptbl th{color:var(--faint);font-weight:600;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
 .cmptbl .cw{overflow-x:auto}
 
 /* reviews */
 .revsum{display:flex;gap:34px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
 .revbig{font-family:var(--disp);font-size:3rem;line-height:1}
 .revbars{flex:1;min-width:240px;display:flex;flex-direction:column;gap:5px}
-.revbar{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--d-faint)}
-.revbar .bt{flex:1;height:7px;background:var(--d-bg4);border-radius:4px;overflow:hidden}
+.revbar{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--faint)}
+.revbar .bt{flex:1;height:7px;background:var(--bg4);border-radius:4px;overflow:hidden}
 .revbar .bt i{display:block;height:100%;background:var(--gold)}
-.review{border-top:1px solid var(--d-hair);padding:18px 0}
+.review{border-top:1px solid var(--hair);padding:18px 0}
 .review .rh{display:flex;align-items:center;gap:10px;margin-bottom:5px}
-.review .av{width:34px;height:34px;border-radius:50%;background:var(--d-bg4);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gold);font-size:14px}
+.review .av{width:34px;height:34px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gold);font-size:14px}
 .review .rn{font-weight:600;font-size:14px}
-.review .rd{font-size:11.5px;color:var(--d-faint)}
+.review .rd{font-size:11.5px;color:var(--faint)}
 .review .rt{font-weight:600;font-size:14px;margin:2px 0}
-.review p{color:var(--d-dim);font-size:14px}
+.review p{color:var(--dim);font-size:14px}
 
 /* footer */
-.pfoot{border-top:1px solid var(--d-hair);padding:34px 0;margin-top:30px;text-align:center;color:var(--d-faint);font-size:12.5px}
+.pfoot{border-top:1px solid var(--hair);padding:34px 0;margin-top:30px;text-align:center;color:var(--faint);font-size:12.5px}
 .pfoot .dis{max-width:680px;margin:0 auto 10px;line-height:1.7}
 
-.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--d-bg4);border:1px solid var(--d-hair2);color:var(--d-ink);padding:13px 22px;border-radius:12px;display:flex;gap:9px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:120}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--bg4);border:1px solid var(--hair2);color:var(--ink);padding:13px 22px;border-radius:12px;display:flex;gap:9px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:120}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast i{color:var(--gold)}
+.sk{position:relative;overflow:hidden;background:#202329;display:block}
+.sk::after{content:"";position:absolute;inset:0;transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),transparent);
+  animation:sksweep 1.25s infinite}
+html[data-theme="light"] .sk{background:#d2d5da}
+html[data-theme="light"] .sk::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent)}
+@keyframes sksweep{to{transform:translateX(100%)}}
 
 @media(max-width:880px){
   .phero{grid-template-columns:1fr}
   .gallery{position:static}
   .hdr-nav{display:none}
 }
+
+/* ===== shared site chrome ===== */
+.btn:active,.btn-line:active,.card-add:active,.picker-btn:active,.news-form button:active,.iconbtn:active{transform:scale(.96)}
+/* ===== ANNOUNCE ===== */
+.announce{
+  background:#000;color:var(--d-dim);font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;text-align:center;padding:9px 16px;
+  border-bottom:1px solid var(--d-hair);
+}
+.announce b{color:var(--gold);font-weight:500}
+/* ===== HEADER ===== */
+.hdr{
+  position:sticky;top:0;z-index:90;background:#0a0b0d;
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  transition:box-shadow .3s ease,background .3s ease,backdrop-filter .3s ease;
+}
+.hdr.scrolled{
+  box-shadow:0 1px 0 var(--d-hair);background:rgba(10,11,13,.96);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:108px;gap:24px}
+.brand img{height:102px;width:auto}
+.nav{display:flex;gap:34px}
+.nav a{
+  font-size:13.5px;font-weight:500;color:var(--d-ink);letter-spacing:.01em;
+  position:relative;padding:6px 0;opacity:.82;transition:opacity .2s;
+}
+.nav a:hover{opacity:1}
+.nav a::after{
+  content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;
+  background:var(--gold);transition:width .26s ease;
+}
+.nav a:hover::after{width:100%}
+.hdr-act{display:flex;align-items:center;gap:6px}
+.iconbtn{
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;color:var(--d-ink);font-size:19px;transition:background .2s;
+}
+.iconbtn:hover{background:var(--d-bg4)}
+.cart-wrap{position:relative}
+.cart-count{
+  position:absolute;top:3px;right:2px;background:var(--gold);color:#1a1406;
+  font-size:10px;font-weight:600;min-width:17px;height:17px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;padding:0 4px;
+}
+.burger{display:none}
+@media(prefers-reduced-motion:reduce){
+  .hero-art img,.cplant img{animation:none}
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes psway{
+  0%,100%{transform:rotate(calc(var(--tilt,0deg) - 1.5deg))}
+  50%{transform:rotate(calc(var(--tilt,0deg) + 1.5deg))}
+}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+@keyframes shimmer{to{background-position:-220% 0}}
+@keyframes sksweep{to{transform:translateX(100%)}}
+/* ===== FOOTER ===== */
+.foot{background:#0a0b0d;color:var(--d-dim);padding-top:72px}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:54px;border-bottom:1px solid var(--d-hair)}
+.foot-brand img{height:74px;margin-bottom:22px}
+.foot-brand p{font-size:13.5px;line-height:1.75;max-width:300px;color:var(--d-dim)}
+.foot-soc{display:flex;gap:8px;margin-top:22px}
+.foot-soc a{
+  width:38px;height:38px;border:1px solid var(--d-hair2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--d-ink);font-size:17px;
+  transition:border-color .2s,color .2s;
+}
+.foot-soc a:hover{border-color:var(--gold);color:var(--gold)}
+.foot-col h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--d-ink);margin-bottom:18px;font-weight:600}
+.foot-col a{display:block;font-size:13.5px;padding:6px 0;color:var(--d-dim);transition:color .2s}
+.foot-col a:hover{color:var(--gold)}
+.disclaimer{
+  padding:32px 0;border-bottom:1px solid var(--d-hair);
+  font-size:11.5px;line-height:1.85;color:var(--d-faint);
+}
+.disclaimer b{color:var(--d-dim);font-weight:600}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0 40px;flex-wrap:wrap}
+.foot-bot .cp{font-size:12px;color:var(--d-faint)}
+.pay{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.pay svg{height:29px;width:auto;display:block;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+/* ===== MOBILE MENU ===== */
+.mobnav{
+  position:fixed;inset:0;background:#0b0c11;z-index:120;
+  display:flex;flex-direction:column;padding:18px clamp(20px,5vw,40px) 26px;
+  overflow-y:auto;
+  transform:translateY(-100%);transition:transform .35s cubic-bezier(.5,0,.2,1);
+}
+.mobnav.open{transform:translateY(0)}
+.mobnav-top{display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:16px;border-bottom:1px solid var(--d-hair)}
+.mobnav-top img{height:46px;width:auto}
+.mobnav-links{display:flex;flex-direction:column}
+.mobnav-row{
+  display:flex;align-items:center;justify-content:space-between;width:100%;
+  font:inherit;font-size:14.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--d-ink);padding:16px 2px;border:0;border-bottom:1px solid var(--d-hair);
+  background:none;cursor:pointer;text-align:left;transition:color .15s;
+}
+.mobnav-row i{color:var(--d-faint);font-size:15px;transition:transform .2s,color .15s}
+.mobnav-row:hover,.mobnav-row:active{color:var(--gold)}
+.mobnav-row:hover i{color:var(--gold)}
+a.mobnav-row:hover i{transform:translateX(3px)}
+.mob-group.open>.mob-grp-btn{color:var(--gold)}
+.mob-group.open>.mob-grp-btn i{transform:rotate(180deg);color:var(--gold)}
+.mob-grp-panel{overflow:hidden;max-height:0;transition:max-height .32s ease}
+.mob-group.open .mob-grp-panel{max-height:360px}
+.mob-grp-panel a{
+  display:block;font-size:13px;font-weight:500;letter-spacing:.01em;text-transform:none;
+  color:var(--d-dim);padding:11px 2px 11px 14px;border-bottom:1px solid var(--d-hair);
+  transition:color .15s;
+}
+.mob-grp-panel a:hover{color:var(--gold)}
+.mobnav-foot{margin-top:auto;padding-top:22px;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--d-faint)}
+.mobnav-foot b{color:var(--gold);font-weight:600}
+@media(max-width:1080px){
+  .foot-top{grid-template-columns:1fr 1fr}
+  .foot-brand{grid-column:1/-1}
+}
+@media(max-width:860px){
+  .nav,.hdr-act .iconbtn.desk{display:none}
+  .burger{display:flex}
+  .hdr-in{height:96px}
+  .brand img{height:66px}
+  .hero{margin-top:-96px}
+  .hero-in{flex-direction:column;text-align:center;gap:18px;padding:128px clamp(20px,5vw,68px) 70px}
+  .hero h1{white-space:normal}
+  .hero-copy{max-width:none}
+  .hero-copy{max-width:none;margin:0 auto}
+  .hero-sub{max-width:440px;margin-left:auto;margin-right:auto}
+  .eyebrow,.hero-cta,.hero-trust{justify-content:center}
+  .hero-actions{margin-left:auto;margin-right:auto;justify-content:center}
+  .hero-art{order:-1;justify-content:center;transform:none}
+  .hero-art img{max-height:300px}
+  .scrollcue{display:none}
+  .story-in{grid-template-columns:1fr;gap:40px}
+  .news-in{align-items:center}
+  .sec-head{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:540px){
+  .grid{grid-template-columns:1fr 1fr;gap:18px 14px}
+  .card-body{padding:13px 13px 15px}
+  .card-body h3{font-size:.95rem}
+  .feat{flex:0 0 78vw}
+  .foot-top{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .canopy{height:96px}
+}
+
+/* ===== 21+ AGE GATE ===== */
+#agegate{
+  position:fixed;inset:0;z-index:9000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:40px 24px 30vh;overflow:hidden;background:#0a0b0d;
+  background-image:
+    radial-gradient(ellipse 80% 92% at 50% 46%,rgba(123,78,200,.42),transparent 80%),
+    radial-gradient(ellipse 54% 60% at 50% 58%,rgba(232,183,62,.14),transparent 78%);
+  opacity:1;transition:opacity .9s ease;
+}
+html[data-age="ok"] #agegate{display:none}
+#agegate.gone{opacity:0;pointer-events:none}
+body.gate-lock{overflow:hidden}
+.gate-emblem{
+  width:min(42vw,272px);height:auto;position:relative;z-index:3;
+  filter:drop-shadow(0 26px 60px rgba(123,78,200,.55));
+  animation:gateFloat 7s ease-in-out infinite;
+  transition:opacity .8s ease,filter .8s ease,transform .9s ease;
+}
+@keyframes gateFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.gate-card{position:relative;z-index:3;max-width:560px;margin-top:24px}
+.gate-eyebrow{
+  font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  color:var(--gold);display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.gate-eyebrow::before,.gate-eyebrow::after{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+.gate-card h2{
+  font-family:var(--disp);font-weight:700;line-height:1.12;letter-spacing:-.022em;
+  font-size:clamp(1.9rem,3.8vw,3rem);color:#fff;margin:16px 0 0;
+}
+.gate-card h2 em{font-style:normal;color:var(--gold)}
+.gate-card p{color:var(--d-dim);font-size:1rem;margin:14px auto 0;line-height:1.62;max-width:460px}
+.gate-cta{display:flex;gap:13px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.gate-btn{
+  display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;
+  font-family:inherit;padding:15px 28px;border-radius:11px;cursor:pointer;
+  transition:transform .14s ease,background .18s ease,border-color .18s,color .18s;
+}
+.gate-btn:hover{transform:translateY(-2px)}
+.gate-yes{background:var(--gold);color:#1a1406}
+.gate-yes:hover{background:var(--gold-soft)}
+.gate-no{background:none;border:1px solid var(--d-hair2);color:var(--d-dim)}
+.gate-no:hover{border-color:var(--gold);color:var(--gold)}
+.gate-fine{margin-top:22px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--d-faint)}
+.gate-fine b{color:var(--gold);font-weight:600}
+.gate-canopy{position:absolute;left:0;right:0;bottom:0;height:40vh;pointer-events:none;overflow:visible;z-index:1}
+.gate-canopy .cplant{
+  position:absolute;bottom:0;line-height:0;
+  transform:translateX(-50%) scaleX(var(--flip,1)) scaleY(0);
+  transform-origin:50% 100%;
+  transition:transform 1.1s cubic-bezier(.33,1.22,.5,1);will-change:transform;
+}
+.gate-canopy .cplant.grown{transform:translateX(-50%) scaleX(var(--flip,1)) scaleY(1)}
+.gate-canopy .cplant img{
+  display:block;width:100%;height:auto;transform-origin:50% 100%;
+  animation:gateSway 7s ease-in-out infinite;
+}
+@keyframes gateSway{
+  0%,100%{transform:rotate(calc(var(--tilt,0deg) - 1.6deg))}
+  50%{transform:rotate(calc(var(--tilt,0deg) + 1.6deg))}
+}
+#agegate.gone .cplant{transform:translateX(-50%) scaleX(var(--flip,1)) scaleY(1.12);transition:transform .9s ease}
+#agegate.gone .gate-emblem{transform:scale(1.07)}
+#agegate.wilt .cplant{transform:translateX(-50%) scaleX(var(--flip,1)) scaleY(0);transition:transform 1.1s ease}
+#agegate.wilt .gate-emblem{opacity:.22;filter:grayscale(.65) brightness(.55);transform:scale(.95)}
+@media(max-width:600px){.gate-canopy{height:30vh}.gate-emblem{width:56vw}#agegate{padding-bottom:24vh}}
+@media(prefers-reduced-motion:reduce){
+  .gate-emblem,.gate-canopy .cplant img{animation:none}
+  .gate-canopy .cplant,#agegate.gone .cplant,#agegate.wilt .cplant{transition:none}
+}
 </style>
 </head>
 <body>
 
-<header class="hdr">
+<div id="agegate" role="dialog" aria-modal="true" aria-label="Age verification">
+  <div class="gate-canopy" id="gateCanopy" aria-hidden="true"></div>
+  <img class="gate-emblem" src="graphic-transparent.png" alt="Goddess Seed Co." />
+  <div class="gate-card">
+    <div class="gate-eyebrow">Goddess Seed Co.</div>
+    <h2 id="gateTitle">Step into the <em>garden</em></h2>
+    <p id="gateMsg">You must be 21 or older to enter. By entering, you confirm you are of legal age in your jurisdiction.</p>
+    <div class="gate-cta" id="gateCta">
+      <button class="gate-btn gate-yes" id="gateYes" type="button">I'm 21 or older &mdash; Enter <i class="ti ti-arrow-right"></i></button>
+      <button class="gate-btn gate-no" id="gateNo" type="button">I'm under 21</button>
+    </div>
+    <div class="gate-fine">Sold as souvenirs &amp; collectibles &middot; <b>21+</b> only</div>
+  </div>
+</div>
+
+<div class="announce">Free discreet U.S. shipping over <b>$150</b> &nbsp;·&nbsp; Germination <b>guaranteed</b> &nbsp;·&nbsp; You must be <b>21+</b> to enter</div>
+
+<header class="hdr" id="hdr">
   <div class="wrap hdr-in">
-    <a class="brand" href="index.html"><img src="logo-purple-transparent.png" alt="Goddess Seed Co." /></a>
-    <nav class="hdr-nav">
+    <a href="index.html" class="brand" aria-label="Goddess Seed Co. home">
+      <img src="logo-purple-transparent.png" alt="Goddess Seed Co." />
+    </a>
+    <nav class="nav">
       <a href="index.html#vault">Shop</a>
       <a href="index.html#drops">New drops</a>
       <a href="index.html#breeders">Breeders</a>
       <a href="index.html#story">Our story</a>
+      <a href="index.html#foot">FAQ</a>
     </nav>
-    <div class="hdr-r">
-      <button class="thmbtn" id="themeBtn" aria-label="Toggle light and dark theme"><i class="ti ti-moon"></i></button>
-      <a class="hdr-back" href="index.html#vault"><i class="ti ti-arrow-left"></i> Back to the vault</a>
+    <div class="hdr-act">
+      <button class="iconbtn desk" id="themeBtn" aria-label="Toggle light and dark theme"><i class="ti ti-moon"></i></button>
+      <button class="iconbtn desk" aria-label="Search"><i class="ti ti-search"></i></button>
+      <button class="iconbtn desk" aria-label="Account"><i class="ti ti-user"></i></button>
+      <button class="iconbtn cart-wrap" aria-label="Cart">
+        <i class="ti ti-shopping-bag"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="iconbtn burger" id="burger" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
     </div>
   </div>
 </header>
 
+<div class="mobnav" id="mobnav">
+  <div class="mobnav-top">
+    <img src="logo-purple-transparent.png" alt="Goddess Seed Co." />
+    <button class="iconbtn" id="mobclose" aria-label="Close menu"><i class="ti ti-x"></i></button>
+  </div>
+  <nav class="mobnav-links">
+    <a class="mobnav-row" href="index.html#vault">Shop the vault <i class="ti ti-chevron-right"></i></a>
+    <a class="mobnav-row" href="index.html#drops">New drops <i class="ti ti-chevron-right"></i></a>
+    <a class="mobnav-row" href="index.html#breeders">Breeders <i class="ti ti-chevron-right"></i></a>
+    <a class="mobnav-row" href="index.html#story">Our story <i class="ti ti-chevron-right"></i></a>
+    <div class="mob-group">
+      <button class="mobnav-row mob-grp-btn" type="button">Customer Service <i class="ti ti-chevron-down"></i></button>
+      <div class="mob-grp-panel">
+        <a href="#">Track my order</a>
+        <a href="#">Shipping &amp; delivery</a>
+        <a href="#">Germination guarantee</a>
+        <a href="#">Check authenticity</a>
+        <a href="index.html#foot">FAQ</a>
+        <a href="#">Contact us</a>
+      </div>
+    </div>
+    <div class="mob-group">
+      <button class="mobnav-row mob-grp-btn" type="button">Community &amp; Info <i class="ti ti-chevron-down"></i></button>
+      <div class="mob-grp-panel">
+        <a href="index.html#story">About Goddess</a>
+        <a href="index.html#breeders">Breeder partners</a>
+        <a href="#">The Journal</a>
+        <a href="#">Events &amp; drops</a>
+        <a href="#">Affiliate program</a>
+      </div>
+    </div>
+    <div class="mob-group">
+      <button class="mobnav-row mob-grp-btn" type="button">Other Products <i class="ti ti-chevron-down"></i></button>
+      <div class="mob-grp-panel">
+        <a href="#">Apparel &amp; merch</a>
+        <a href="#">Gift cards</a>
+      </div>
+    </div>
+    <div class="mob-group">
+      <button class="mobnav-row mob-grp-btn" type="button">My Goddess <i class="ti ti-chevron-down"></i></button>
+      <div class="mob-grp-panel">
+        <a href="#">Sign in</a>
+        <a href="#">Create account</a>
+        <a href="#">Shopping bag</a>
+        <a href="#">Wishlist</a>
+      </div>
+    </div>
+    <a class="mobnav-row" href="#">Wholesale <i class="ti ti-chevron-right"></i></a>
+    <button class="mobnav-row" id="mobTheme" type="button">Light mode <i class="ti ti-sun"></i></button>
+  </nav>
+  <div class="mobnav-foot">Finding a keeper is <b>guaranteed</b> &nbsp;·&nbsp; 21+ only</div>
+</div>
+
 <main class="wrap" id="main"><!-- rendered by JS --></main>
 
-<footer class="pfoot">
+<footer class="foot" id="foot">
   <div class="wrap">
-    <p class="dis">All seeds are sold strictly as souvenirs and collectibles for genetic preservation. They are not sold for germination. 21+ only. Strain data and genetic lineage are compiled from breeder sources and SeedFinder.eu.</p>
-    <span>© 2026 Goddess Seed Co. All rights reserved.</span>
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="logo-purple-transparent.png" alt="Goddess Seed Co." />
+        <p>Organic cannabis genetics for the keeper hunt. Curated house crosses and guest breeder drops, sold as souvenirs and collectibles.</p>
+        <div class="foot-soc">
+          <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+          <a href="#" aria-label="X"><i class="ti ti-brand-x"></i></a>
+          <a href="#" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <a href="index.html#vault">All genetics</a>
+        <a href="index.html#vault">Regular seeds</a>
+        <a href="index.html#vault">Feminized seeds</a>
+        <a href="index.html#vault">Autoflower seeds</a>
+        <a href="index.html#drops">New drops</a>
+      </div>
+      <div class="foot-col">
+        <h4>Breeders</h4>
+        <a href="index.html#breeders">Goddess Seed Co.</a>
+        <a href="index.html#breeders">Sin City Seeds</a>
+        <a href="index.html#breeders">Exotic Genetix</a>
+        <a href="index.html#breeders">Night Owl Seeds</a>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <a href="#">Contact</a>
+        <a href="#">Shipping policy</a>
+        <a href="#">Refund policy</a>
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <b>Disclaimer.</b> All items sold on this website are intended for novelty, souvenir, artistic and collectible purposes only. They may not have functional use unless explicitly stated. Cannabis seeds may not be legal to germinate in your country or state — it is the buyer's sole responsibility to know and comply with all applicable local, state and federal laws before purchasing. You must be 21 years of age or older to purchase. &nbsp;<b>These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease.</b> Goddess Seed Co. does not encourage or condone any activity that is illegal in the buyer's jurisdiction.
+    </div>
+    <div class="foot-bot">
+      <span class="cp">© 2026 Goddess Seed Co. All rights reserved.</span>
+      <div class="pay">
+        <svg viewBox="0 0 48 30" role="img" aria-label="Visa"><rect width="48" height="30" rx="4" fill="#fff"/><text x="24" y="20.5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-style="italic" font-size="13" fill="#1434CB">VISA</text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Mastercard"><rect width="48" height="30" rx="4" fill="#fff"/><circle cx="20.5" cy="15" r="8" fill="#EB001B"/><circle cx="27.5" cy="15" r="8" fill="#F79E1B"/><path d="M24 9a8 8 0 0 0 0 12 8 8 0 0 0 0-12z" fill="#FF5F00"/></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="American Express"><rect width="48" height="30" rx="4" fill="#1F72CD"/><text x="24" y="19.6" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="9.4" fill="#fff" letter-spacing="0.4">AMEX</text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Discover"><rect width="48" height="30" rx="4" fill="#fff"/><circle cx="37.5" cy="13.5" r="6.4" fill="#F47216"/><text x="21" y="18.5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="6.3" fill="#1a1a1a" letter-spacing="0.2">DISCOVER</text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="PayPal"><rect width="48" height="30" rx="4" fill="#fff"/><text x="24" y="20" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-style="italic" font-size="11"><tspan fill="#003087">Pay</tspan><tspan fill="#009CDE">Pal</tspan></text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Apple Pay"><rect width="48" height="30" rx="4" fill="#fff"/><path transform="translate(9,8) scale(0.52)" fill="#000" d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.59 9.05 5.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 5.25C11.88 3.02 13.69 1.18 15.77 1c.29 2.58-2.34 4.5-3.74 4.25z"/><text x="22" y="20" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="11" fill="#000">Pay</text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Google Pay"><rect width="48" height="30" rx="4" fill="#fff"/><text x="24" y="20" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11"><tspan fill="#4285F4">G</tspan><tspan fill="#5F6368">&#160;Pay</tspan></text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Shop Pay"><rect width="48" height="30" rx="4" fill="#5A31F4"/><text x="24" y="19.8" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="9.6" fill="#fff">shop<tspan font-weight="400">&#160;Pay</tspan></text></svg>
+      </div>
+    </div>
   </div>
 </footer>
 
 <div class="toast" id="toast"><i class="ti ti-check"></i><span>Added to bag</span></div>
 
 <script>
-(function(){var r=document.documentElement,tb=document.getElementById("themeBtn");
-  function ico(){if(tb)tb.innerHTML=r.getAttribute("data-theme")==="light"?'<i class="ti ti-sun"></i>':'<i class="ti ti-moon"></i>';}
-  ico();
-  if(tb)tb.addEventListener("click",function(){var n=r.getAttribute("data-theme")==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("gsc-theme",n);}catch(e){}ico();});
-})();
 var CDN="https://cdn.shopify.com/s/files/1/0697/2417/6536/files/";
 function img(f){return f?CDN+f+"&width=900":"";}
 
@@ -225,13 +578,13 @@ var STRAINS={
  tag:"Dessert-and-gas cookie genetics, hunted for keepers.",cross:"The Woah × Biscotti",
  isa:"Indica-dominant",isaPct:65,thc:"—",cbd:"<1%",flower:"~8–9 weeks",yield:"—",height:"—",aroma:65,
  effects:["Relaxed","Euphoric","Calming","Happy"],flavor:["Sweet cookie","Gas","Creamy","Fruity"],
- hi:["<b>Elite cookie cross.</b> Exotic Genetix's The Woah paired with the legendary Biscotti.","<b>Deep GSC roots.</b> Girl Scout Cookies and OG Kush run through every branch.","<b>Hunter's pack.</b> A small regular-seed drop bred to find keepers.","<b>Dessert-and-gas terps.</b> Sweet cookie dough wrapped in fuel."],
- desc:"Woah-Cotti is a Goddess Seed Co. house cross pairing Exotic Genetix's The Woah with the elite Biscotti. It stacks dessert-and-gas cookie genetics from both sides, with deep Girl Scout Cookies and OG Kush roots running through its family tree. Released as a small regular-seed drop for growers hunting a keeper phenotype.",
+ hi:["<b>Organic cookie cross.</b> Exotic Genetix's The Woah paired with the legendary Biscotti.","<b>Deep GSC roots.</b> Girl Scout Cookies and OG Kush run through every branch.","<b>Hunter's pack.</b> A small regular-seed drop bred to find keepers.","<b>Dessert-and-gas terps.</b> Sweet cookie dough wrapped in fuel."],
+ desc:"Woah-Cotti is a Goddess Seed Co. house cross pairing Exotic Genetix's The Woah with the organic Biscotti. It stacks dessert-and-gas cookie genetics from both sides, with deep Girl Scout Cookies and OG Kush roots running through its family tree. Released as a small regular-seed drop for growers hunting a keeper phenotype.",
  tree:["Woah-Cotti",[["The Woah",[["Cream D' Mint",[["Cookies and Cream",[]],["Mint Chocolate Chip",[]]]],["Rainbow Chip",[["Sunset Sherbet",[]],["Mint Chocolate Chip",[]]]]]],["Biscotti",[["South Florida OG",[["OG Kush",[]]]],["Gelato #25",[["Sunset Sherbet",[]],["Thin Mint Cookies",[]]]]]]]]},
 
 "lip-smacker-x-biscotti":{n:"Lip Smacker x Biscotti",b:"Goddess Seed Co.",t:"reg",price:30,pack:"10 regular seeds",
  img:"10for40WEBART.jpg?v=1774709666",img2:"10for40.jpg?v=1774709666",
- tag:"Berry-and-cookie dessert genetics from two elite parents.",cross:"Lip Smacker × Biscotti",
+ tag:"Berry-and-cookie dessert genetics from two organic parents.",cross:"Lip Smacker × Biscotti",
  isa:"Indica-leaning hybrid",isaPct:62,thc:"—",cbd:"<1%",flower:"~8–9 weeks",yield:"—",height:"—",aroma:60,
  effects:["Relaxed","Euphoric","Happy","Mellow"],flavor:["Sweet","Creamy vanilla","Strawberry","Cookie dough"],
  hi:["<b>Two dessert parents.</b> Exotic Genetix's Lip Smacker crossed onto Biscotti.","<b>Sherbert + Cookies.</b> Heavy Girl Scout Cookies and Sherbert genetics throughout.","<b>Creamy berry terps.</b> Sweet vanilla and strawberry over cookie dough.","<b>Keeper hunt.</b> Regular seeds bred to pop and select."],
@@ -434,7 +787,51 @@ var STRAINS={
  effects:["Relaxed","Euphoric","Calming","Happy"],flavor:["Sweet tangy fruit","Earthy","Spiced coffee","Creamy"],
  hi:["<b>RS-11 mother.</b> The sought-after Rainbow Sherbet #11 clone.","<b>Gary Poppins father.</b> Spiced, earthy depth.","<b>Flavor-chaser release.</b> Sweet-tangy fruit meets spiced coffee.","<b>Feminized seeds.</b> Part of the Gary Poppins line."],
  desc:"Event Horizon crosses the highly sought-after clone-only RS-11 (Rainbow Sherbet #11) with Gary Poppins. It is a flavor-chaser release combining RS-11's sweet-tangy fruitiness with a spiced-coffee earthiness from the Gary Poppins side.",
- tree:["Event Horizon",[["RS-11",[["Pink Guava",[["OG Eddy Lepp",[]],["The Original Z",[]]]],["OZ Kush",[]]]],["Gary Poppins",[["Gary Payton",[]],["Red Runtz",[]]]]]]}
+ tree:["Event Horizon",[["RS-11",[["Pink Guava",[["OG Eddy Lepp",[]],["The Original Z",[]]]],["OZ Kush",[]]]],["Gary Poppins",[["Gary Payton",[]],["Red Runtz",[]]]]]]},
+"petrol-cookies":{n:"Petrol Cookies",b:"Goddess Seed Co.",t:"reg",price:100,pack:"15 regular seeds",img:"Screenshot_20211101-183738_Instagram.jpg?v=1766464023",img2:"15236-4360-petrol-cookies.jpg?v=1766464023",tag:"Petrol Cookies - 15 regular seeds per pack (Platinum GSC x Blue Petrol)",cross:"Platinum GSC \u00d7 Blue Petrol",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Petrol Cookies \u2014 regular seed."],desc:"Petrol Cookies - 15 regular seeds per pack (Platinum GSC x Blue Petrol)",tree:["Petrol Cookies",[["Platinum GSC",[]],["Blue Petrol",[]]]]},
+"forum-cut-bx":{n:"Forum Cut BX",b:"Goddess Seed Co.",t:"reg",price:100,pack:"15 regular seeds",img:"Forum_Cut_GSC_BX_5d15f07781413.jpg?v=1766464504",img2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",tag:"15 regular seeds per pack (Forum Cut GCS x SinMint Cookies}",cross:"Forum Cut GCS \u00d7 SinMint Cookies",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Forum Cut BX \u2014 regular seed."],desc:"15 regular seeds per pack (Forum Cut GCS x SinMint Cookies}",tree:["Forum Cut BX",[["Forum Cut GCS",[]],["SinMint Cookies",[]]]]},
+"sin-mintz":{n:"Sin MintZ",b:"Goddess Seed Co.",t:"fem",price:100,pack:"7 feminized seeds",img:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",img2:"",tag:"Sin MintZ - 7 feminized seeds per pack",cross:"Zkittles \u00d7 SinMint Cookies Satisfaction Guaranteed",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Sin MintZ \u2014 feminized seed."],desc:"Sin MintZ - 7 feminized seeds per pack. Zkittles x SinMint Cookies Satisfaction Guaranteed.",tree:["Sin MintZ",[["Zkittles",[]],["SinMint Cookies Satisfaction Guaranteed",[]]]]},
+"sinister-berries":{n:"Sinister Berries",b:"Goddess Seed Co.",t:"reg",price:100,pack:"12 regular seeds",img:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",img2:"",tag:"Sinister Berries 12 regular seeds per pack",cross:"Forbidden Fruit \u00d7 Raskal Berries",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Sinister Berries \u2014 regular seed."],desc:"Sinister Berries 12 regular seeds per pack. (Forbidden Fruit x Raskal Berries) Satisfaction Guaranteed!",tree:["Sinister Berries",[["Forbidden Fruit",[]],["Raskal Berries",[]]]]},
+"red-mango":{n:"Red Mango",b:"Goddess Seed Co.",t:"reg",price:100,pack:"12 regular seeds",img:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",img2:"",tag:"Red Mango 12 regular seeds per pack",cross:"Mangorita \u00d7 Raskal Berries",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Red Mango \u2014 regular seed."],desc:"Red Mango 12 regular seeds per pack. (Mangorita x Raskal Berries) Satisfaction Guaranteed!",tree:["Red Mango",[["Mangorita",[]],["Raskal Berries",[]]]]},
+"hardcore-berries":{n:"Hardcore Berries",b:"Goddess Seed Co.",t:"reg",price:100,pack:"12 regular seeds",img:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",img2:"",tag:"Hardcore Berries 12 regular seeds per pack",cross:"Hardcore OG \u00d7 Raskal Berries",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Hardcore Berries \u2014 regular seed."],desc:"Hardcore Berries 12 regular seeds per pack. (Hardcore OG x Raskal Berries)",tree:["Hardcore Berries",[["Hardcore OG",[]],["Raskal Berries",[]]]]},
+"papaya-colada":{n:"Papaya Colada",b:"Goddess Seed Co.",t:"reg",price:100,pack:"12 regular seeds",img:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",img2:"",tag:"Papaya Colada 12 regular seeds per pack",cross:"Papaya \u00d7 Raskal Berries",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Papaya Colada \u2014 regular seed."],desc:"Papaya Colada 12 regular seeds per pack. (Papaya x Raskal Berries) Satisfaction Guaranteed!",tree:["Papaya Colada",[["Papaya",[]],["Raskal Berries",[]]]]},
+"truffle-monkey":{n:"Truffle Monkey",b:"Goddess Seed Co.",t:"reg",price:100,pack:"10 Regular Seeds",img:"ExoticLogoTransparencyTile-1024x1024_31b85a6f-4758-4a75-92ea-3001e6c45811.png?v=1740499795",img2:"",tag:"Mother: Tropic Truffles Reversal: Grease Monkey Family: 70/30 Sativa Sex: Regular Growin",cross:"Tropic Truffles \u00d7 Grease Monkey",isa:"70/30 Sativa",isaPct:30,thc:"\u2014",cbd:"—",flower:"56-63 Days",yield:"Heavy 10 Regular Seeds per Pack",height:"Medium/Tall Flowering",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Truffle Monkey \u2014 regular seed."],desc:"Mother: Tropic Truffles Reversal: Grease Monkey Family: 70/30 Sativa Sex: Regular Growing Conditions: Multi-Topped Bush Height: Medium/Tall Flowering Time: 56-63 Days Yield: Heavy 10 Regular Seeds per Pack",tree:["Truffle Monkey",[["Tropic Truffles",[]],["Grease Monkey",[]]]]},
+"juicy-runtz":{n:"Juicy Runtz",b:"Goddess Seed Co.",t:"reg",price:100,pack:"12 regular photoperiod seeds",img:"SinMint-Cookies-2-1-400x600.jpg?v=1766465837",img2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",tag:"12 regular photoperiod seeds per pack",cross:"Runtz \u00d7 Raskal Berries",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Juicy Runtz \u2014 regular seed."],desc:"12 regular photoperiod seeds per pack. (Runtz x Raskal Berries) Satisfaction Guaranteed from Sin City!",tree:["Juicy Runtz",[["Runtz",[]],["Raskal Berries",[]]]]},
+"cookies-and-creamix":{n:"Cookies and Creamix",b:"Goddess Seed Co.",t:"auto",price:50,pack:"3 feminized autoflower seeds",img:"Cookies_N_Creami_64075cdcb7470.jpg?v=1766462127",img2:"cookies-n-creamix-02.jpg?v=1766462127",tag:"3 feminized autoflower seeds per pack If you\u2019ve grown any of my Stomper work then you al",cross:"\u2014",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Cookies and Creamix \u2014 autoflower seed."],desc:"3 feminized autoflower seeds per pack If you\u2019ve grown any of my Stomper work then you already know the blizzards that she produces, and the Royal Stomper Remix used for this cross were no exception! Whiter than white flowers that put out incredible creamy grape and blue fruit flavors. The Crinkled Cookies reversal was extremely dense and reeked of doughy grape cookie goodness! 50/50 Sativa/Indica 70-80 Days from Sprout 2-4 ounce average Expect medium plants with sturdy branch"},
+"roswell-cookies":{n:"Roswell Cookies",b:"Goddess Seed Co.",t:"auto",price:50,pack:"3 feminized autoflower seeds",img:"Night-Owl-Logo-2023_ef81620b-c8f1-448f-86e5-43c2ec3f12b2.png?v=1740497137",img2:"",tag:"3 feminized autoflower seeds per pack This one is destined to be a legend",cross:"\u2014",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Roswell Cookies \u2014 autoflower seed."],desc:"3 feminized autoflower seeds per pack This one is destined to be a legend. A menage of out of this world heavy hitters. 60/40 Sativa/Indica 75-85 Days from Sprout 2-4 ounce average Welcome back to the Secret Owl Society! The now extinct Alien Tech expressions of Ripley\u2019s OG have been captured in the mother of this cross, and passed on to the offspring, making for an out of this world experience! Tall, stretchy Structure, heavy yields of dense nugs, and a siren song of a perfu"},
+"cookie-smasher":{n:"Cookie Smasher",b:"Goddess Seed Co.",t:"auto",price:50,pack:"3 feminized autoflower seeds",img:"smash.jpg?v=1764175126",img2:"Night-Owl-Logo-2023_2c0423ad-ee3d-4816-b09e-ed0e46b42720.png?v=1764175126",tag:"3 feminized autoflower seeds per pack Sex: Feminized Type: Autoflower Lineage: Crinkled",cross:"Crinkled Cookies F2 \u00d7 Bruce",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"70-80 Days from Sprout",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Cookie Smasher \u2014 autoflower seed."],desc:"3 feminized autoflower seeds per pack Sex: Feminized Type: Autoflower Lineage: Crinkled Cookies F2 x Bruce Banner #3 F3 Auto Dominance: Hybrid (60% Sativa, 40% Indica) Flowering Time: 70-80 Days from Sprout Yield: 2-4 ounce average Expect medium structured, fast finishing plants with heavy fades and frost for days! These produce gorgeous silvery-white golfball sized nugs that are very dense and potent! This is another heavy hitter thanks to the added oomph of the Bruce Banner",tree:["Cookie Smasher",[["Crinkled Cookies F2",[]],["Bruce",[]]]]},
+"chipped-toof":{n:"Chipped Toof",b:"Goddess Seed Co.",t:"auto",price:50,pack:"3 feminized autoflower seeds",img:"chip_922bde41-d4fa-4977-ad34-c2ded35fac5d.jpg?v=1766464677",img2:"Night-Owl-Logo-2023_479b54ce-cd9d-4674-aa08-be8b4c912482.png?v=1766464677",tag:"3 feminized autoflower seeds per pack",cross:"\u2014",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Chipped Toof \u2014 autoflower seed."],desc:"3 feminized autoflower seeds per pack"},
+"chem-candy":{n:"Chem Candy",b:"Goddess Seed Co.",t:"auto",price:50,pack:"3 feminized autoflower seeds",img:"chemc.jpg?v=1764174589",img2:"Night-Owl-Logo-2023_38fa699b-296b-4c61-9b4a-73f39c23ccd6.png?v=1764174589",tag:"3 feminized autoflower seeds per pack \u201cThis line of regs was developed from my line of C",cross:"Chem 91 \u00d7 Chemdogging autos that I",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Chem Candy \u2014 autoflower seed."],desc:"3 feminized autoflower seeds per pack \u201cThis line of regs was developed from my line of Chem 91 x Chemdogging autos that I have been working on for a few years. The F2 generation provided a whole range of flavors that was just too good to ignore! To prevent genetic bottlenecks and to better the available autoflower gene pool I\u2019ve decided to put out a regular auto seeds from a few of my favorite expressions so that they can be worked further or used to create new auto x auto an",tree:["Chem Candy",[["Chem 91",[]],["Chemdogging autos that I",[]]]]},
+"zamunda-cookies":{n:"Zamunda Cookies",b:"Goddess Seed Co.",t:"reg",price:50,pack:"Regular seeds",img:"Night-Owl-Logo-2023_5b0ac656-1943-4417-8047-7b33938dc005.png?v=1740497210",img2:"",tag:"Zamaldelica Express F4 x Crinkled Cookies F2 65/35 Sativa/Indica 70-80 Days from Sprout",cross:"Zamaldelica Express F4 \u00d7 Crinkled Cookies F2 65",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Zamunda Cookies \u2014 regular seed."],desc:"Zamaldelica Express F4 x Crinkled Cookies F2 65/35 Sativa/Indica 70-80 Days from Sprout 2-4 ounce average Welcome back to the Secret Owl Society! I\u2019ve wanted to cross a personal all time favorite, Zamaldelica Express, with something cookies dominant for a long time in hopes of incorporating the intense sativa effects onto a more modern bud structure. Zamunda Cookies has accomplished just that. While I was a little hesitant to release these at first with the landrace genetics ",tree:["Zamunda Cookies",[["Zamaldelica Express F4",[]],["Crinkled Cookies F2 65",[]]]]},
+"pre-98-episode-1-f4":{n:"Pre-98 Episode 1 F4",b:"Goddess Seed Co.",t:"auto",price:50,pack:"3 feminized autoflower seeds",img:"Night-Owl-Logo-2023_03a64343-bcb5-4ba5-8488-326bde078650.png?v=1740497222",img2:"",tag:"3 feminized autoflower seeds per pack NIGHT OWL SEEDS &gt; PRE 98 EPISODE 1 F4 (PRE 98 B",cross:"AUTO SKYWALKER \u00d7 AUTO TRIANGLE KUSH",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Pre-98 Episode 1 F4 \u2014 autoflower seed."],desc:"3 feminized autoflower seeds per pack NIGHT OWL SEEDS &gt; PRE 98 EPISODE 1 F4 (PRE 98 BUBBA KUSH CLONE ONLY X (AUTO SKYWALKER X AUTO TRIANGLE KUSH)) ORIGINALS LINE Welcome to the first iteration of my Bubba Kush auto work, Pre 98 Episode 1! This project started back in 2016 while I was living with Ronin Gardens. I had acquired quite a few stellar clone only varieties while in Colorado and the Bubba Kush was no exception! She was short and thick with super dense nugs, swollen",tree:["Pre-98 Episode 1 F4",[["AUTO SKYWALKER",[]],["AUTO TRIANGLE KUSH",[]]]]},
+"owl-pellets":{n:"Owl Pellets",b:"Goddess Seed Co.",t:"auto",price:50,pack:"3 feminized autoflower seed",img:"Night-Owl-Logo-2023_180057e5-9b5a-464b-9a0a-43f208d91707.png?v=1740497234",img2:"",tag:"3 feminized autoflower seed per pack",cross:"\u2014",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Owl Pellets \u2014 autoflower seed."],desc:"3 feminized autoflower seed per pack"},
+"vacation-bubba":{n:"Vacation Bubba",b:"Goddess Seed Co.",t:"auto",price:50,pack:"3 Auto flower seeds",img:"Night-Owl-Logo-2023_2da2527d-4a5b-4c2b-978e-799fde4bf2d0.png?v=1740497247",img2:"",tag:"3 Auto flower seeds per pack Indica/Sativa Hybrid Indoor Flowering 8-9 weeks Yield Mediu",cross:"\u2014",isa:"\u2014",isaPct:50,thc:"High 16-21% Outdoor Harvest October Special Features Beginner Strain",cbd:"—",flower:"\u2014",yield:"Medium \u2013 High Height Medium THC High 16-21% Outdoor Harvest October Special Features Beginner Strain",height:"Medium THC High 16-21% Outdoor Harvest October Special Features Beginner Strain",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Vacation Bubba \u2014 autoflower seed."],desc:"3 Auto flower seeds per pack Indica/Sativa Hybrid Indoor Flowering 8-9 weeks Yield Medium \u2013 High Height Medium THC High 16-21% Outdoor Harvest October Special Features Beginner Strain"},
+"invader-zam":{n:"Invader Zam",b:"Goddess Seed Co.",t:"auto",price:50,pack:"3 Feminized Seeds",img:"Night-Owl-Logo-2023_ed711a8e-74f3-4e29-9a5f-72522c5b832d.png?v=1740497257",img2:"",tag:"3 pack of Night Owl \u2013 Invader Zim (Ripley\u2019s OG 2015 Alien Tech Pheno x Tyrone Stomper) X",cross:"Alien Tech Pheno \u00d7 Tyrone Stomper",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Invader Zam \u2014 autoflower seed."],desc:"3 pack of Night Owl \u2013 Invader Zim (Ripley\u2019s OG 2015 Alien Tech Pheno x Tyrone Stomper) X Mango Isle 70/30 Sativa/Indica 75-85 Days from Sprout 2-4 ounce average 3 Feminized Seeds",tree:["Invader Zam",[["Alien Tech Pheno",[]],["Tyrone Stomper",[]]]]},
+"mahadevi":{n:"Mahadevi",b:"Goddess Seed Co.",t:"fem",price:100,pack:"10 Feminized photoperiod seeds",img:"IMG_8715.jpg?v=1764114230",img2:"Mahadevi-01.jpg?v=1764114230",tag:"10 Feminized photoperiod seeds per pack",cross:"\u2014",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Mahadevi \u2014 feminized seed."],desc:"10 Feminized photoperiod seeds per pack. Mahadevi is a potent Indica dominant. Reversal: Dumb Gas Mother: CapSize Multi Topped Large Bush Pain relief, nausea, relaxation\u2026"},
+"grapechata":{n:"Grapechata",b:"Goddess Seed Co.",t:"fem",price:100,pack:"Feminized seeds",img:"gra.jpg?v=1766463461",img2:"ExoticLogoTransparencyTile-1024x1024.png?v=1766463461",tag:"6 Seeds per pack",cross:"Horchata \u00d7 Grape Jubilee",isa:"80/20 Indica",isaPct:80,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"Very Heavy Next day shipping tracking provided",height:"Medium/Tall Flower",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Grapechata \u2014 feminized seed."],desc:"6 Seeds per pack. Mother: Horchata Reversal: Grape Jubilee Family: 80/20 Indica Sex: Feminized Growing Conditions: Multi topped/Sea of Green Height: Medium/Tall Flower Time: 56-63days Yield: Very Heavy Next day shipping tracking provided.",tree:["Grapechata",[["Horchata",[]],["Grape Jubilee",[]]]]},
+"twisted-terpz":{n:"Twisted Terpz",b:"Goddess Seed Co.",t:"fem",price:100,pack:"Feminized seeds",img:"ExoticLogoTransparencyTile-1024x1024_5b85f792-ac6c-4146-8da2-ad33d0f9d3e5.png?v=1740497591",img2:"tw.jpg?v=1766463513",tag:"6 Seeds per pack",cross:"Tropical Runtz \u00d7 Grape Jubilee",isa:"50/50 Indica",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"Heavy Next day shipping tracking provided",height:"Medium/Tall Flower",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Twisted Terpz \u2014 feminized seed."],desc:"6 Seeds per pack. Mother: Tropical Runtz Reversal: Grape Jubilee Family: 50/50 Indica Sex: Feminized Growing Conditions: Multi topped/Sea of Green Height: Medium/Tall Flower Time: 56-63days Yield: Heavy Next day shipping tracking provided.",tree:["Twisted Terpz",[["Tropical Runtz",[]],["Grape Jubilee",[]]]]},
+"kacklesnatch":{n:"Kacklesnatch",b:"Goddess Seed Co.",t:"fem",price:100,pack:"Feminized seeds",img:"kack.jpg?v=1766463637",img2:"ExoticLogoTransparencyTile-1024x1024_a78d0dbb-3454-4be4-8e93-83683a43e230.png?v=1766463637",tag:"6 Seeds per pack",cross:"Chimera \u00d7 Grape Jubilee",isa:"60/40 Indica",isaPct:60,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"Monstrous Next day shipping tracking provided",height:"Medium/Tall Flower",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Kacklesnatch \u2014 feminized seed."],desc:"6 Seeds per pack. Mother: Chimera Reversal: Grape Jubilee Family: 60/40 Indica Sex: Feminized Growing Conditions: Multi topped/Sea of Green Height: Medium/Tall Flower Time: 56-63days Yield: Monstrous Next day shipping tracking provided.",tree:["Kacklesnatch",[["Chimera",[]],["Grape Jubilee",[]]]]},
+"dumb-gas":{n:"Dumb Gas",b:"Goddess Seed Co.",t:"fem",price:100,pack:"Feminized seeds",img:"DUMB-GAS.jpg?v=1766463126",img2:"ExoticLogoTransparencyTile-1024x1024_202451a9-368f-420b-8fbd-a1e6b6d4caa6.png?v=1766463126",tag:"6 Seeds per pack",cross:"Next level \u00d7 Grape Jubilee",isa:"80/20 Indica",isaPct:80,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"Very Heavy Next day shipping tracking provided",height:"Medium/Tall Flower",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Dumb Gas \u2014 feminized seed."],desc:"6 Seeds per pack. Mother: Next level Reversal: Grape Jubilee Family: 80/20 Indica Sex: Feminized Growing Conditions: Multi topped/Sea of Green Height: Medium/Tall Flower Time: 56-63days Yield: Very Heavy Next day shipping tracking provided.",tree:["Dumb Gas",[["Next level",[]],["Grape Jubilee",[]]]]},
+"capsize":{n:"CAPSIZE",b:"Goddess Seed Co.",t:"fem",price:100,pack:"Feminized seeds",img:"IMG_8659.jpg?v=1764114116",img2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",tag:"10 seeds in each pack",cross:"Vice Gripp \u00d7 Dirty",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> CAPSIZE \u2014 feminized seed."],desc:"10 seeds in each pack. Lineage: Vice Gripp x Dirty Bird Reversal: Vice Gripp Mother: Dirty Bird Sex: Photo Fems Large multi topped bush Yield and terpenes profiles have been amazing, not to mention the super smooth flavors after cure! Don\u2019t sleep on this drop.",tree:["CAPSIZE",[["Vice Gripp",[]],["Dirty",[]]]]},
+"vice-gripp":{n:"Vice Gripp",b:"Goddess Seed Co.",t:"fem",price:100,pack:"10 Feminized photoperiod seeds",img:"ViceGrippART2-01.jpg?v=1764114302",img2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",tag:"10 Feminized photoperiod seeds per pack",cross:"OG Kush \u00d7 Drippin",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Vice Gripp \u2014 feminized seed."],desc:"10 Feminized photoperiod seeds per pack. OG Kush x Drippin\u2019 Aint Easy Multi topped large bush Sex: Feminized Photoperiod",tree:["Vice Gripp",[["OG Kush",[]],["Drippin",[]]]]},
+"chem-fruit":{n:"Chem Fruit",b:"Goddess Seed Co.",t:"reg",price:80,pack:"Regular seeds",img:"chemf.jpg?v=1764175374",img2:"chem.jpg?v=1764175374",tag:"Chem Fruit (Chemdawg x Juicy Fruit) Regular M/F Photoperiod 12 Seeds per pack Chem Fruit",cross:"Chemdawg \u00d7 Juicy Fruit",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Chem Fruit \u2014 regular seed."],desc:"Chem Fruit (Chemdawg x Juicy Fruit) Regular M/F Photoperiod 12 Seeds per pack Chem Fruit is a rare evenly balanced hybrid (50% indica/50% sativa) strain created through crossing the classic Chemdawg with the delicious Juicy Fruit strain. The result is a tasty bud with a relaxing and thoughtful high that is perfect for days when you want to kick back with some deep philosophical discussion. Chem Fruit has a sweet fruity berry flavor with a potent chemical kick on each cough-in",tree:["Chem Fruit",[["Chemdawg",[]],["Juicy Fruit",[]]]]},
+"g-candy":{n:"G Candy",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 regular autoflower seeds",img:"KingsKushAuto-458x600.jpg?v=1766463364",img2:"IMG-2003_8bf8df29-dd84-4467-a3c2-b9428ee334bb.jpg?v=1766463364",tag:"3 regular autoflower seeds per pack",cross:"G-Chem-O \u00d7 Chem",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> G Candy \u2014 autoflower seed."],desc:"3 regular autoflower seeds per pack. Lineage/Genealogy: G-Chem-O x Chem Candy I grew both packs from Daz and was blessed with multiple females &amp; males from both packs! Most of the males were coming from the Chem Candy so I decided to use that for the next chucking. The results were stunning! Medium to large yields covered in thick trichomes. \"This line of regs was developed from my line of Chem 91 x Chemdogging autos that I have been working on for a few years. The F2 gen",tree:["G Candy",[["G-Chem-O",[]],["Chem",[]]]]},
+"sugar-smax":{n:"Sugar Smax",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 Feminized Autoflower seeds",img:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",img2:"Sugar_Smax-01.jpg?v=1741049394",tag:"Lineage: GummiBears x Do-Si-Dos Flowering Time: 60-65 days Yield: Large 3 Feminized Auto",cross:"GummiBears \u00d7 Do-Si-Dos",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"60-65 days",yield:"Large 3 Feminized Autoflower seeds per pack",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Sugar Smax \u2014 autoflower seed."],desc:"Lineage: GummiBears x Do-Si-Dos Flowering Time: 60-65 days Yield: Large 3 Feminized Autoflower seeds per pack. Super sticky buds, beautiful structure on this plant as well. Definitely a good smoker!",tree:["Sugar Smax",[["GummiBears",[]],["Do-Si-Dos",[]]]]},
+"g-chem-o-f2":{n:"G-Chem-O F2",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 Regular M/F Autoflower Seeds",img:"g.jpg?v=1766463282",img2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",tag:"3 Regular M/F Autoflower Seeds per pack",cross:"Chem 91 \u00d7 Chemdogging autos that I",isa:"\u2014",isaPct:50,thc:"dominant variety and is/was never available as feminized seeds",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> G-Chem-O F2 \u2014 autoflower seed."],desc:"3 Regular M/F Autoflower Seeds per pack. We were blessed to be able to run the G-Chem-O regular autoflower male, back into another selected mother, giving us a plentiful platter of beans to work with in future runs. Please follow Daz at Night Owl Seeds. These are from his drop, and we are humbled to run them ourselves. G-Chemo-O is a ruderalis/indica/sativa variety from Night Owl Seeds and can be cultivated indoors (where the plants will need a flowering time of \u00b170 days ), o",tree:["G-Chem-O F2",[["Chem 91",[]],["Chemdogging autos that I",[]]]]},
+"chemcandy-f2":{n:"ChemCandy F2",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 Regular autoflower seeds",img:"Chemical-Candy-Auto.jpg?v=1764174459",img2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",tag:"3 Regular autoflower seeds per pack",cross:"Chem 91 \u00d7 Chemdogging",isa:"\u2014",isaPct:50,thc:"dominant variety and is/was never available as feminized seeds",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> ChemCandy F2 \u2014 autoflower seed."],desc:"3 Regular autoflower seeds per pack. Lineage: Chem 91 x Chemdogging I again used the ChemCandy male and pollinated a selected female. Chem Candy is an automatic flowering ruderalis/indica/sativa variety from Night Owl Seeds and can be cultivated indoors , outdoors and in the greenhouse where the female, autoflowering plants need \u00b170 days from the seedling to the harvest. Night Owl Seeds' Chem Candy is a THC dominant variety and is/was never available as feminized seeds. Chem ",tree:["ChemCandy F2",[["Chem 91",[]],["Chemdogging",[]]]]},
+"durban-cookies":{n:"Durban Cookies",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 feminized autoflower seeds",img:"durb.jpg?v=1764115170",img2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",tag:"3 feminized autoflower seeds per pack",cross:"Durban Bubble Auto fem \u00d7 Do-Si-Dos Auto fem",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"Heavy",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Durban Cookies \u2014 autoflower seed."],desc:"3 feminized autoflower seeds per pack. Mother: Durban Bubble Auto fem Reversal: Do-Si-Dos Auto fem Flowering time: 60-65 days Yield: Heavy",tree:["Durban Cookies",[["Durban Bubble Auto fem",[]],["Do-Si-Dos Auto fem",[]]]]},
+"strawberry-stomper":{n:"Strawberry Stomper",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 feminized auto flowering seeds",img:"IMG_1487.jpg?v=1766463830",img2:"Strawberry_Stomper.jpg?v=1766463830",tag:"3 feminized auto flowering seeds per pack",cross:"Strawberry Gushers \u00d7 Sour",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Strawberry Stomper \u2014 autoflower seed."],desc:"3 feminized auto flowering seeds per pack. Genetics Heritage - (Strawberry Gushers x Sour Stomper) Seed Type - F1 feminized automictic Indica/Sativa - 60/40 Flowering time - 60-65 days",tree:["Strawberry Stomper",[["Strawberry Gushers",[]],["Sour",[]]]]},
+"modified-mints":{n:"Modified Mints",b:"Goddess Seed Co.",t:"reg",price:100,pack:"12 Regular seeds",img:"Sin_City_Logo.jpg?v=1741049478",img2:"",tag:"GMO x SinMint Cookies 12 Regular seeds per pack",cross:"GMO \u00d7 SinMint Cookies 12 Regular",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Modified Mints \u2014 regular seed."],desc:"GMO x SinMint Cookies 12 Regular seeds per pack",tree:["Modified Mints",[["GMO",[]],["SinMint Cookies 12 Regular",[]]]]},
+"durban-bubble":{n:"Durban Bubble",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 feminized autoflower seeds",img:"durb_d950eb3c-4cb3-4d9a-99f6-31a5d30e54bb.jpg?v=1766462415",img2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",tag:"Mother: Durban Poison (Feminized Autoflower) Reversed Feminized Auto: Bubble Gum (Femini",cross:"\u2014",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Durban Bubble \u2014 autoflower seed."],desc:"Mother: Durban Poison (Feminized Autoflower) Reversed Feminized Auto: Bubble Gum (Feminized Auto) 3 feminized autoflower seeds per pack."},
+"big-ripper":{n:"Big Ripper",b:"Goddess Seed Co.",t:"fem",price:100,pack:"10 Feminized seeds",img:"ripper.jpg?v=1764114779",img2:"bigrip.jpg?v=1764114779",tag:"Mother: Grease Minkey Reversal: Scotty 2 Hotty Family: 60/40 Indica Sex: Feminized Growi",cross:"Grease Minkey \u00d7 Scotty 2 Hotty",isa:"60/40 Indica",isaPct:60,thc:"\u2014",cbd:"—",flower:"56-63 Days",yield:"Medium/Heavy 10 Feminized seeds per pack Big Ripper is a cross of the strains Grease Monkey x Scotty 2 Hotty",height:"Medium Flowering",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Big Ripper \u2014 feminized seed."],desc:"Mother: Grease Minkey Reversal: Scotty 2 Hotty Family: 60/40 Indica Sex: Feminized Growing Conditions: Sea of Green/Multi-Topped Bush Height: Medium Flowering Time: 56-63 Days Yield: Medium/Heavy 10 Feminized seeds per pack Big Ripper is a cross of the strains Grease Monkey x Scotty 2 Hotty . Big Ripper is a modern strain from the 2020s with extremely high THC &amp; Flavor!",tree:["Big Ripper",[["Grease Minkey",[]],["Scotty 2 Hotty",[]]]]},
+"lemon-drip":{n:"Lemon Drip",b:"Goddess Seed Co.",t:"fem",price:100,pack:"10 Feminized Seeds",img:"ExoticLogoTransparencyTile-1024x1024_15da2f12-e7c4-4914-844b-63aa892767ed.png?v=1740499766",img2:"",tag:"Mother: Lemon Tree Reversal: Grease Monkey Family: 60/40 Sativa Sex: Regular &amp; Femin",cross:"Lemon Tree \u00d7 Grease Monkey",isa:"60/40 Sativa",isaPct:40,thc:"\u2014",cbd:"—",flower:"56-63 Days",yield:"Heavy 10 Feminized Seeds per pack",height:"Medium/Tall Flowering",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Lemon Drip \u2014 feminized seed."],desc:"Mother: Lemon Tree Reversal: Grease Monkey Family: 60/40 Sativa Sex: Regular &amp; Feminized Growing Conditions: Multi-Topped Bush Height: Medium/Tall Flowering Time: 56-63 Days Yield: Heavy 10 Feminized Seeds per pack",tree:["Lemon Drip",[["Lemon Tree",[]],["Grease Monkey",[]]]]},
+"truffle-monkey-x":{n:"Truffle Monkey",b:"Goddess Seed Co.",t:"fem",price:100,pack:"10 Regular Seeds",img:"ExoticLogoTransparencyTile-1024x1024_31b85a6f-4758-4a75-92ea-3001e6c45811.png?v=1740499795",img2:"",tag:"Mother: Tropic Truffles Reversal: Grease Monkey Family: 70/30 Sativa Sex: Feminized Grow",cross:"Tropic Truffles \u00d7 Grease Monkey",isa:"70/30 Sativa",isaPct:30,thc:"\u2014",cbd:"—",flower:"56-63 Days",yield:"Heavy 10 Regular Seeds per Pack",height:"Medium/Tall Flowering",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Truffle Monkey \u2014 feminized seed."],desc:"Mother: Tropic Truffles Reversal: Grease Monkey Family: 70/30 Sativa Sex: Feminized Growing Conditions: Multi-Topped Bush Height: Medium/Tall Flowering Time: 56-63 Days Yield: Heavy 10 Regular Seeds per Pack",tree:["Truffle Monkey",[["Tropic Truffles",[]],["Grease Monkey",[]]]]},
+"monkey-berries":{n:"Monkey Berries",b:"Goddess Seed Co.",t:"reg",price:100,pack:"10 Regular Seeds",img:"ExoticLogoTransparencyTile-1024x1024_5aca5529-73fd-4987-be82-6d3b62c950c8.png?v=1740499806",img2:"",tag:"Mother: Strawberries &amp; Cream Father: Grease Monkey Family: 40/60 Indica Sex: Regular",cross:"Cream \u00d7 Grease Monkey strains",isa:"40/60 Indica",isaPct:40,thc:"\u2014",cbd:"—",flower:"56-63 Days",yield:"\u2014",height:"Medium/Tall Flowering",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Monkey Berries \u2014 regular seed."],desc:"Mother: Strawberries &amp; Cream Father: Grease Monkey Family: 40/60 Indica Sex: Regular Growing Conditions: Multi-Topped Bush Height: Medium/Tall Flowering Time: 56-63 Days Yield: Heavy 10 Regular Seeds per Pack Monkey Berries, also known as \u201cMonkey Berry,\u201d is a slightly indica dominant hybrid strain (60% indica/40% sativa) created through crossing the delicious Strawberries &amp; Cream X Grease Monkey strains. When it comes to the flavor of this bud, the name says it all. M",tree:["Monkey Berries",[["Cream",[]],["Grease Monkey strains",[]]]]},
+"mango-isle-f2":{n:"Mango Isle F2",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 Autoflower Seeds",img:"My-project-3-300x300.webp?v=1740499866",img2:"",tag:"Gold Pack! 3 Autoflower Seeds Genetics - Mango Isle x Mango Isle Variety - Hybrid Flower",cross:"Mango Isle \u00d7 Mango",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Mango Isle F2 \u2014 autoflower seed."],desc:"Gold Pack! 3 Autoflower Seeds Genetics - Mango Isle x Mango Isle Variety - Hybrid Flowering Type - Autoflower Sex - Feminized Autoflower",tree:["Mango Isle F2",[["Mango Isle",[]],["Mango",[]]]]},
+"wizards-apprentice-f5":{n:"Wizards Apprentice F5",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 Autoflower Seeds",img:"Night-Owl-Logo-2023_231ca122-837c-4ca6-be71-6f4699ea3fc8.png?v=1740499882",img2:"",tag:"3 Autoflower Seeds Genetics - Cheech Wizard x Auto Skywalker Variety - Hybrid Flowering",cross:"Cheech Wizard \u00d7 Auto",isa:"\u2014",isaPct:50,thc:"dominant variety and is/was only available as feminized seeds",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Wizards Apprentice F5 \u2014 autoflower seed."],desc:"3 Autoflower Seeds Genetics - Cheech Wizard x Auto Skywalker Variety - Hybrid Flowering Type - Autoflower Sex - Feminized Autoflower Wizard's Apprentice is an automatic flowering ruderalis/indica/sativa variety from Night Owl Seeds and can be cultivated indoors, outdoors and in the greenhouse where the female, autoflowering plants need \u00b175 days from the seedling to the harvest. Night Owl Seeds' Wizard's Apprentice is a THC dominant variety and is/was only available as feminiz",tree:["Wizards Apprentice F5",[["Cheech Wizard",[]],["Auto",[]]]]},
+"strawberry-gushers":{n:"Strawberry Gushers",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 feminized autoflower seeds",img:"stra.jpg?v=1766465034",img2:"blue-dream-cannabis-4.jpg?v=1766465034",tag:"3 feminized autoflower seeds per pack",cross:"Strawberry Fusion \u00d7 Iced",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Strawberry Gushers \u2014 autoflower seed."],desc:"3 feminized autoflower seeds per pack. Lineage: (Strawberry Fusion x Iced Gushers) Each order comes with rolling papers and a Goddess Seed Co. Sticker. *Seeds are priced by rarity and are small batch/limited in quantities.",tree:["Strawberry Gushers",[["Strawberry Fusion",[]],["Iced",[]]]]},
+"glazed-gelato":{n:"Glazed Gelato",b:"Goddess Seed Co.",t:"auto",price:60,pack:"3 feminized autoflower seeds",img:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",img2:"IMG-2003_7809446e-d51c-41fb-b64e-3b29bc77fb47.jpg?v=1741049553",tag:"3 feminized autoflower seeds per pack",cross:"Gelato Auto \u00d7 Iced",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Glazed Gelato \u2014 autoflower seed."],desc:"3 feminized autoflower seeds per pack. Lineage: (Gelato Auto x Iced Gushers) Each order comes with rolling papers and a Goddess Seed Co. Sticker. *Seeds are priced by rarity and are small batch/limited in quantities.",tree:["Glazed Gelato",[["Gelato Auto",[]],["Iced",[]]]]},
+"glazed-do-si-dos":{n:"Glazed Do-Si-Dos",b:"Goddess Seed Co.",t:"auto",price:60,pack:"Autoflower seeds",img:"dos_382978e4-5ab0-446c-aff7-923a93a05a53.jpg?v=1766464929",img2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",tag:"Regular autoflower seeds, 3 seeds per pack",cross:"Do-Si-Dos \u00d7 Iced",isa:"\u2014",isaPct:50,thc:"\u2014",cbd:"—",flower:"\u2014",yield:"\u2014",height:"\u2014",aroma:58,effects:[],flavor:[],hi:["<b>Goddess Seed Co.</b> Glazed Do-Si-Dos \u2014 autoflower seed."],desc:"Regular autoflower seeds, 3 seeds per pack. Lineage: (Do-Si-Dos x Iced Gushers) Regular Auto Flower Each order comes with rolling papers and a Goddess Seed Co. Sticker. *Seeds are priced by rarity and are small batch/limited in quantities.",tree:["Glazed Do-Si-Dos",[["Do-Si-Dos",[]],["Iced",[]]]]}
 };
 
 var TYPELABEL={reg:"Regular",fem:"Feminized",auto:"Autoflower"};
@@ -540,17 +937,17 @@ function render(){
      '</table></section>';
 
   /* genetic tree */
-  h+='<section class="psec"><h2 class="disp">Genetic tree</h2><p class="lead">The documented lineage of '+esc(s.n)+'.</p>'+
+  if(s.tree)h+='<section class="psec"><h2 class="disp">Genetic tree</h2><p class="lead">The documented lineage of '+esc(s.n)+'.</p>'+
      '<div class="tree"><ul>'+treeHTML(s.tree,true)+'</ul></div>'+
      '<p class="tree-src">Genetic tree — '+esc(s.n)+'. Lineage sourced from SeedFinder.eu and breeder records.</p></section>';
 
   /* description */
-  h+='<section class="psec pdesc"><h2 class="disp">Description</h2><p>'+esc(s.desc)+'</p>'+
-     '<h3>Effect</h3><div class="taglist">';
-  for(var e=0;e<s.effects.length;e++)h+='<span>'+esc(s.effects[e])+'</span>';
-  h+='</div><h3>Aroma &amp; flavor</h3><div class="taglist">';
-  for(var fl=0;fl<s.flavor.length;fl++)h+='<span>'+esc(s.flavor[fl])+'</span>';
-  h+='</div></section>';
+  h+='<section class="psec pdesc"><h2 class="disp">Description</h2><p>'+esc(s.desc)+'</p>';
+  if(s.effects&&s.effects.length){h+='<h3>Effect</h3><div class="taglist">';
+    for(var e=0;e<s.effects.length;e++)h+='<span>'+esc(s.effects[e])+'</span>';h+='</div>';}
+  if(s.flavor&&s.flavor.length){h+='<h3>Aroma &amp; flavor</h3><div class="taglist">';
+    for(var fl=0;fl<s.flavor.length;fl++)h+='<span>'+esc(s.flavor[fl])+'</span>';h+='</div>';}
+  h+='</section>';
 
   /* germination guarantee (replaces FastBuds Certificate of Analysis) */
   h+='<section class="psec"><div class="guar"><i class="ti ti-rosette-discount-check"></i>'+
@@ -568,7 +965,7 @@ function render(){
 
   /* reviews */
   h+='<section class="psec"><h2 class="disp">Customer reviews</h2>'+
-     '<div class="revsum"><div><div class="revbig">'+rating+'</div><div class="stars">★★★★★</div><div class="rd" style="font-size:12px;color:var(--d-faint)">'+revCount+' ratings</div></div>'+
+     '<div class="revsum"><div><div class="revbig">'+rating+'</div><div class="stars">★★★★★</div><div class="rd" style="font-size:12px;color:var(--faint)">'+revCount+' ratings</div></div>'+
      '<div class="revbars">'+
        revBar(5,82)+revBar(4,12)+revBar(3,4)+revBar(2,1)+revBar(1,1)+
      '</div></div>';
@@ -592,7 +989,7 @@ function render(){
 function row(k,v){return '<tr><td>'+k+'</td><td>'+esc(v||"—")+'</td></tr>';}
 function revBar(star,pct){return '<div class="revbar"><span>'+star+'★</span><div class="bt"><i style="width:'+pct+'%"></i></div><span>'+pct+'%</span></div>';}
 function cmpRow(slug,s,self){
-  return '<tr>'+(self?'<td style="color:var(--gold);font-weight:700">'+esc(s.n)+'</td>':'<td><a href="product.html?strain='+slug+'" style="color:var(--d-ink)">'+esc(s.n)+'</a></td>')+
+  return '<tr>'+(self?'<td style="color:var(--gold);font-weight:700">'+esc(s.n)+'</td>':'<td><a href="product.html?strain='+slug+'" style="color:var(--ink)">'+esc(s.n)+'</a></td>')+
     '<td>'+TYPELABEL[s.t]+'</td><td>'+esc(s.cross)+'</td><td>'+esc(s.isa)+'</td><td>'+esc(s.flower)+'</td><td>$'+s.price+'</td></tr>';
 }
 function wire(){
@@ -606,7 +1003,124 @@ function wire(){
     document.getElementById("galMain").src=b.dataset.src;
     document.querySelectorAll(".gal-thumbs .thumb").forEach(function(x){x.classList.remove("on");});b.classList.add("on");};});
 }
-render();
+var PDPSKEL='<div style="padding:24px 0 8px"><div class="sk" style="height:11px;width:240px;border-radius:5px"></div></div>'+
+'<section class="phero"><div><div class="sk" style="aspect-ratio:1/1;border-radius:20px"></div></div>'+
+'<div><div class="sk" style="height:11px;width:130px;border-radius:5px"></div>'+
+'<div class="sk" style="height:34px;width:78%;border-radius:8px;margin-top:14px"></div>'+
+'<div class="sk" style="height:14px;width:94%;border-radius:5px;margin-top:18px"></div>'+
+'<div class="sk" style="height:14px;width:58%;border-radius:5px;margin-top:9px"></div>'+
+'<div class="sk" style="height:160px;width:100%;border-radius:18px;margin-top:24px"></div></div></section>'+
+'<section class="psec"><div class="sk" style="height:24px;width:190px;border-radius:6px"></div>'+
+'<div class="sk" style="height:120px;width:100%;border-radius:14px;margin-top:20px"></div></section>'+
+'<section class="psec"><div class="sk" style="height:24px;width:190px;border-radius:6px"></div>'+
+'<div class="sk" style="height:220px;width:100%;border-radius:14px;margin-top:20px"></div></section>';
+document.getElementById("main").innerHTML=PDPSKEL;
+setTimeout(render,620);
+
+/* ===== shared site chrome ===== */
+/* ===== THEME ===== */
+var root=document.documentElement,themeBtn=document.getElementById("themeBtn");
+function setTheme(t){
+  root.setAttribute("data-theme",t);
+  themeBtn.innerHTML=t==="dark"?'<i class="ti ti-moon"></i>':'<i class="ti ti-sun"></i>';
+  var mt=document.getElementById("mobTheme");
+  if(mt)mt.innerHTML=t==="dark"?'Light mode <i class="ti ti-sun"></i>':'Dark mode <i class="ti ti-moon"></i>';
+  try{localStorage.setItem("gsc-theme",t);}catch(e){}
+}
+var _initTheme="dark";try{_initTheme=localStorage.getItem("gsc-theme")||"dark";}catch(e){}
+setTheme(_initTheme);
+themeBtn.addEventListener("click",function(){
+  setTheme(root.getAttribute("data-theme")==="dark"?"light":"dark");
+});
+var mobThemeBtn=document.getElementById("mobTheme");
+if(mobThemeBtn)mobThemeBtn.addEventListener("click",function(){
+  setTheme(root.getAttribute("data-theme")==="dark"?"light":"dark");
+});
+
+/* ===== HEADER SCROLL ===== */
+var hdr=document.getElementById("hdr");
+window.addEventListener("scroll",function(){
+  hdr.classList.toggle("scrolled",window.scrollY>20);
+});
+
+/* ===== MOBILE MENU ===== */
+var mobnav=document.getElementById("mobnav");
+document.getElementById("burger").addEventListener("click",function(){mobnav.classList.add("open");});
+document.getElementById("mobclose").addEventListener("click",function(){mobnav.classList.remove("open");});
+mobnav.querySelectorAll("a").forEach(function(a){
+  a.addEventListener("click",function(){mobnav.classList.remove("open");});
+});
+mobnav.querySelectorAll(".mob-grp-btn").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var g=btn.parentElement,wasOpen=g.classList.contains("open");
+    mobnav.querySelectorAll(".mob-group").forEach(function(x){x.classList.remove("open");});
+    if(!wasOpen)g.classList.add("open");
+  });
+});
+
+</script>
+
+<script>
+(function(){
+  var gate=document.getElementById('agegate');
+  if(!gate)return;
+  var ok=false;
+  try{ok=localStorage.getItem('gsc-age-21plus')==='yes';}catch(e){}
+  if(ok){if(gate.parentNode)gate.parentNode.removeChild(gate);return;}
+  document.body.classList.add('gate-lock');
+  var canopy=document.getElementById('gateCanopy');
+  var vw=window.innerWidth||1200;
+  var N=Math.max(4,Math.round(vw/210)),plants=[];
+  function addPlant(xPct,o){
+    var el=document.createElement('span');
+    el.className='cplant';
+    var w=o.w*(0.9+Math.random()*0.2);
+    if(vw<600)w*=0.5;
+    el.style.width=w.toFixed(0)+'px';
+    el.style.left=xPct.toFixed(2)+'%';
+    el.style.bottom=(o.lift||0).toFixed(0)+'px';
+    el.style.zIndex=o.z;
+    if(Math.random()<0.5)el.style.setProperty('--flip','-1');
+    el.style.setProperty('--tilt',(Math.random()*8-4).toFixed(1)+'deg');
+    var im=document.createElement('img');
+    im.src='plant-neon.png';im.alt='';im.decoding='async';
+    var hue=(Math.random()*108-54)|0;
+    var f='brightness('+o.bri.toFixed(2)+') saturate('+o.sat.toFixed(2)+') hue-rotate('+hue+'deg)';
+    if(o.blur)f+=' blur('+o.blur.toFixed(1)+'px)';
+    if(o.shadow)f+=' drop-shadow(0 6px 14px rgba(0,0,0,.6))';
+    im.style.filter=f;
+    im.style.opacity=o.op.toFixed(2);
+    im.style.animationDuration=(6+Math.random()*4).toFixed(2)+'s';
+    im.style.animationDelay=(-Math.random()*6).toFixed(2)+'s';
+    el.appendChild(im);canopy.appendChild(el);plants.push(el);
+  }
+  for(var i=0;i<=N;i++)addPlant(i/N*100+(Math.random()*4-2),{
+    w:212+Math.random()*72,z:10,bri:0.6+Math.random()*0.18,sat:0.82+Math.random()*0.18,
+    blur:1.2+Math.random()*1.6,op:0.92+Math.random()*0.08,lift:10+Math.random()*30,shadow:false});
+  for(i=0;i<N;i++)addPlant((i+0.5)/N*100+(Math.random()*4-2),{
+    w:250+Math.random()*86,z:40,bri:1+Math.random()*0.2,sat:1.12+Math.random()*0.2,
+    blur:0,op:1,lift:0,shadow:true});
+  requestAnimationFrame(function(){
+    plants.forEach(function(el){setTimeout(function(){el.classList.add('grown');},120+Math.random()*1500);});
+  });
+  function enter(){
+    try{localStorage.setItem('gsc-age-21plus','yes');}catch(e){}
+    gate.classList.add('gone');
+    document.body.classList.remove('gate-lock');
+    setTimeout(function(){if(gate.parentNode)gate.parentNode.removeChild(gate);},950);
+  }
+  function leave(){
+    gate.classList.add('wilt');
+    document.getElementById('gateCta').style.display='none';
+    document.getElementById('gateTitle').textContent='Come back soon';
+    document.getElementById('gateMsg').textContent="You must be 21 or older to enter Goddess Seed Co. Take care \u2014 see you when you're of age.";
+    setTimeout(function(){
+      try{location.replace('https://www.google.com');}catch(e){location.href='https://www.google.com';}
+    },3600);
+  }
+  document.getElementById('gateYes').addEventListener('click',enter);
+  document.getElementById('gateNo').addEventListener('click',leave);
+})();
 </script>
 </body>
 </html>

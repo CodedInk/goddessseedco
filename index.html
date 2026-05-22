@@ -4,17 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script>try{var _gt=localStorage.getItem('gsc-theme');if(_gt)document.documentElement.setAttribute('data-theme',_gt);}catch(e){}</script>
-<title>Goddess Seed Co. — Elite Cannabis Genetics</title>
+<script>try{if(localStorage.getItem('gsc-age-21plus')==='yes')document.documentElement.setAttribute('data-age','ok');}catch(e){}</script>
+<title>Goddess Seed Co. — Organic Cannabis Genetics</title>
 <meta name="description" content="Curated photoperiod, feminized and autoflower cannabis seeds from the breeders that built the culture. Finding a keeper is guaranteed. Sold as souvenirs and collectibles. 21+ only." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://codedink.github.io/goddessseedco/" />
-<meta property="og:title" content="Goddess Seed Co. — Elite Cannabis Genetics" />
+<meta property="og:title" content="Goddess Seed Co. — Organic Cannabis Genetics" />
 <meta property="og:description" content="Curated photoperiod, feminized and autoflower seeds from the breeders that built the culture. Finding a keeper is guaranteed." />
 <meta property="og:image" content="https://codedink.github.io/goddessseedco/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Goddess Seed Co. — Elite Cannabis Genetics" />
+<meta name="twitter:title" content="Goddess Seed Co. — Organic Cannabis Genetics" />
 <meta name="twitter:description" content="Curated photoperiod, feminized and autoflower seeds. Finding a keeper is guaranteed." />
 <meta name="twitter:image" content="https://codedink.github.io/goddessseedco/og-image.png" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css" />
@@ -403,6 +404,23 @@ section.band{padding-block:clamp(26px,3.4vw,50px)}
   transition:border-color .2s,color .2s,background .2s;
 }
 .btn-line:hover{border-color:var(--accent);color:var(--accent)}
+.pager{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}
+.pg-btn{
+  min-width:40px;height:40px;padding:0 9px;border-radius:10px;
+  border:1px solid var(--hair2);background:var(--bg2);color:var(--ink);
+  font:inherit;font-size:14px;font-weight:600;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;transition:.15s;
+}
+.pg-btn:hover:not([disabled]){border-color:var(--gold);color:var(--gold)}
+.pg-btn.on{background:var(--gold);color:#1a1406;border-color:var(--gold)}
+.pg-btn[disabled]{opacity:.35;cursor:default}
+.sk{position:relative;overflow:hidden;background:#202329;display:block}
+.sk::after{content:"";position:absolute;inset:0;transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),transparent);
+  animation:sksweep 1.25s infinite}
+html[data-theme="light"] .sk{background:#d2d5da}
+html[data-theme="light"] .sk::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent)}
+@keyframes sksweep{to{transform:translateX(100%)}}
 
 /* ===== BREEDERS ===== */
 .breeders{background:var(--bg2);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
@@ -563,9 +581,95 @@ a.mobnav-row:hover i{transform:translateX(3px)}
   .stats{grid-template-columns:1fr}
   .canopy{height:96px}
 }
+
+/* ===== 21+ AGE GATE ===== */
+#agegate{
+  position:fixed;inset:0;z-index:9000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:40px 24px 30vh;overflow:hidden;background:#0a0b0d;
+  background-image:
+    radial-gradient(ellipse 80% 92% at 50% 46%,rgba(123,78,200,.42),transparent 80%),
+    radial-gradient(ellipse 54% 60% at 50% 58%,rgba(232,183,62,.14),transparent 78%);
+  opacity:1;transition:opacity .9s ease;
+}
+html[data-age="ok"] #agegate{display:none}
+#agegate.gone{opacity:0;pointer-events:none}
+body.gate-lock{overflow:hidden}
+.gate-emblem{
+  width:min(42vw,272px);height:auto;position:relative;z-index:3;
+  filter:drop-shadow(0 26px 60px rgba(123,78,200,.55));
+  animation:gateFloat 7s ease-in-out infinite;
+  transition:opacity .8s ease,filter .8s ease,transform .9s ease;
+}
+@keyframes gateFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.gate-card{position:relative;z-index:3;max-width:560px;margin-top:24px}
+.gate-eyebrow{
+  font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  color:var(--gold);display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.gate-eyebrow::before,.gate-eyebrow::after{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+.gate-card h2{
+  font-family:var(--disp);font-weight:700;line-height:1.12;letter-spacing:-.022em;
+  font-size:clamp(1.9rem,3.8vw,3rem);color:#fff;margin:16px 0 0;
+}
+.gate-card h2 em{font-style:normal;color:var(--gold)}
+.gate-card p{color:var(--d-dim);font-size:1rem;margin:14px auto 0;line-height:1.62;max-width:460px}
+.gate-cta{display:flex;gap:13px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.gate-btn{
+  display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;
+  font-family:inherit;padding:15px 28px;border-radius:11px;cursor:pointer;
+  transition:transform .14s ease,background .18s ease,border-color .18s,color .18s;
+}
+.gate-btn:hover{transform:translateY(-2px)}
+.gate-yes{background:var(--gold);color:#1a1406}
+.gate-yes:hover{background:var(--gold-soft)}
+.gate-no{background:none;border:1px solid var(--d-hair2);color:var(--d-dim)}
+.gate-no:hover{border-color:var(--gold);color:var(--gold)}
+.gate-fine{margin-top:22px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--d-faint)}
+.gate-fine b{color:var(--gold);font-weight:600}
+.gate-canopy{position:absolute;left:0;right:0;bottom:0;height:40vh;pointer-events:none;overflow:visible;z-index:1}
+.gate-canopy .cplant{
+  position:absolute;bottom:0;line-height:0;
+  transform:translateX(-50%) scaleX(var(--flip,1)) scaleY(0);
+  transform-origin:50% 100%;
+  transition:transform 1.1s cubic-bezier(.33,1.22,.5,1);will-change:transform;
+}
+.gate-canopy .cplant.grown{transform:translateX(-50%) scaleX(var(--flip,1)) scaleY(1)}
+.gate-canopy .cplant img{
+  display:block;width:100%;height:auto;transform-origin:50% 100%;
+  animation:gateSway 7s ease-in-out infinite;
+}
+@keyframes gateSway{
+  0%,100%{transform:rotate(calc(var(--tilt,0deg) - 1.6deg))}
+  50%{transform:rotate(calc(var(--tilt,0deg) + 1.6deg))}
+}
+#agegate.gone .cplant{transform:translateX(-50%) scaleX(var(--flip,1)) scaleY(1.12);transition:transform .9s ease}
+#agegate.gone .gate-emblem{transform:scale(1.07)}
+#agegate.wilt .cplant{transform:translateX(-50%) scaleX(var(--flip,1)) scaleY(0);transition:transform 1.1s ease}
+#agegate.wilt .gate-emblem{opacity:.22;filter:grayscale(.65) brightness(.55);transform:scale(.95)}
+@media(max-width:600px){.gate-canopy{height:30vh}.gate-emblem{width:56vw}#agegate{padding-bottom:24vh}}
+@media(prefers-reduced-motion:reduce){
+  .gate-emblem,.gate-canopy .cplant img{animation:none}
+  .gate-canopy .cplant,#agegate.gone .cplant,#agegate.wilt .cplant{transition:none}
+}
 </style>
 </head>
 <body>
+
+<div id="agegate" role="dialog" aria-modal="true" aria-label="Age verification">
+  <div class="gate-canopy" id="gateCanopy" aria-hidden="true"></div>
+  <img class="gate-emblem" src="graphic-transparent.png" alt="Goddess Seed Co." />
+  <div class="gate-card">
+    <div class="gate-eyebrow">Goddess Seed Co.</div>
+    <h2 id="gateTitle">Step into the <em>garden</em></h2>
+    <p id="gateMsg">You must be 21 or older to enter. By entering, you confirm you are of legal age in your jurisdiction.</p>
+    <div class="gate-cta" id="gateCta">
+      <button class="gate-btn gate-yes" id="gateYes" type="button">I'm 21 or older &mdash; Enter <i class="ti ti-arrow-right"></i></button>
+      <button class="gate-btn gate-no" id="gateNo" type="button">I'm under 21</button>
+    </div>
+    <div class="gate-fine">Sold as souvenirs &amp; collectibles &middot; <b>21+</b> only</div>
+  </div>
+</div>
 
 <div class="announce">Free discreet U.S. shipping over <b>$150</b> &nbsp;·&nbsp; Germination <b>guaranteed</b> &nbsp;·&nbsp; You must be <b>21+</b> to enter</div>
 
@@ -650,7 +754,7 @@ a.mobnav-row:hover i{transform:translateX(3px)}
 <section class="hero">
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <div class="eyebrow">Elite cannabis genetics</div>
+      <div class="eyebrow">Organic cannabis genetics</div>
       <h1 class="disp">Finding a keeper is&nbsp;<em class="kw-word">guaranteed</em></h1>
       <p class="hero-sub">Curated photoperiod, feminized and autoflower seeds — bred and collected from the houses that built the culture. Every pack, hunted for a keeper.</p>
       <div class="hero-actions">
@@ -691,7 +795,7 @@ a.mobnav-row:hover i{transform:translateX(3px)}
     <i class="ti ti-circle-filled tk-sep"></i>
     <span class="tk strain">Incredible Power</span>
     <i class="ti ti-circle-filled tk-sep"></i>
-    <span class="tk">Elite breeder drops weekly</span>
+    <span class="tk">Organic breeder drops weekly</span>
     <i class="ti ti-circle-filled tk-sep"></i>
     <span class="tk strain">Lip Smacker &times; Biscotti</span>
     <i class="ti ti-circle-filled tk-sep"></i>
@@ -712,7 +816,7 @@ a.mobnav-row:hover i{transform:translateX(3px)}
 <section class="band wrap" id="vault">
   <div class="eyebrow">The collection</div>
   <h2 class="disp" style="font-size:clamp(2.1rem,4vw,3.4rem);margin-top:16px">The Vault</h2>
-  <p class="cat-intro">Every genetic we carry — house crosses and elite guest breeders. Filter by seed type or breeder to find your hunt.</p>
+  <p class="cat-intro">Every genetic we carry — house crosses and organic guest breeders. Filter by seed type or breeder to find your hunt.</p>
 
   <div class="filters">
     <div class="fgroup" id="typeFilters">
@@ -739,9 +843,7 @@ a.mobnav-row:hover i{transform:translateX(3px)}
   </div>
   <div class="cat-meta" id="catMeta">Showing all genetics</div>
   <div class="grid" id="grid"></div>
-  <div class="morewrap">
-    <button class="btn-line" id="loadMore">Load full catalog <i class="ti ti-plus"></i></button>
-  </div>
+  <div class="morewrap"><div class="pager" id="pager"></div></div>
 </section>
 
 <section class="band breeders" id="breeders">
@@ -790,7 +892,7 @@ a.mobnav-row:hover i{transform:translateX(3px)}
       <div class="eyebrow">Our story</div>
       <h2 class="disp">Born from the hunt</h2>
       <p>Goddess Seed Co. exists for the grower who pops a pack looking for that one phenotype worth keeping forever. We curate genetics the way a collector curates art — every cross earns its place.</p>
-      <p>From our own biscotti and cherry crosses to elite guest drops from Sin City, Exotic Genetix and Night Owl, every pack is sold as a souvenir and collectible — and backed by our germination guarantee.</p>
+      <p>From our own biscotti and cherry crosses to organic guest drops from Sin City, Exotic Genetix and Night Owl, every pack is sold as a souvenir and collectible — and backed by our germination guarantee.</p>
       <div class="stats">
         <div class="stat"><div class="n">60+</div><div class="l">Genetics in the vault</div></div>
         <div class="stat"><div class="n">4</div><div class="l">Breeder houses</div></div>
@@ -820,7 +922,7 @@ a.mobnav-row:hover i{transform:translateX(3px)}
     <div class="foot-top">
       <div class="foot-brand">
         <img src="logo-purple-transparent.png" alt="Goddess Seed Co." />
-        <p>Elite cannabis genetics for the keeper hunt. Curated house crosses and guest breeder drops, sold as souvenirs and collectibles.</p>
+        <p>Organic cannabis genetics for the keeper hunt. Curated house crosses and guest breeder drops, sold as souvenirs and collectibles.</p>
         <div class="foot-soc">
           <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
           <a href="#" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
@@ -878,42 +980,91 @@ a.mobnav-row:hover i{transform:translateX(3px)}
 var CDN="https://cdn.shopify.com/s/files/1/0697/2417/6536/files/";
 function img(f){return CDN+f+"&width=680";}
 function slugify(s){return s.toLowerCase().replace(/['']/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+function skelCards(n){var h='';for(var i=0;i<n;i++)h+='<article class="card"><div class="sk" style="aspect-ratio:1/1"></div><div style="padding:15px 16px 17px"><div class="sk" style="height:9px;width:38%;border-radius:5px"></div><div class="sk" style="height:14px;width:72%;border-radius:5px;margin-top:10px"></div><div class="sk" style="height:36px;width:100%;border-radius:10px;margin-top:16px"></div></div></article>';return h;}
+function skelFeats(n){var h='';for(var i=0;i<n;i++)h+='<article class="feat"><div class="sk" style="aspect-ratio:4/5"></div><div style="padding:16px"><div class="sk" style="height:9px;width:45%;border-radius:5px"></div><div class="sk" style="height:14px;width:70%;border-radius:5px;margin-top:9px"></div><div class="sk" style="height:14px;width:32%;border-radius:5px;margin-top:14px"></div></div></article>';return h;}
 var PRODUCTS=[
- {n:"Woah-Cotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"10 regular seeds",i:"WoahCottiArtV2_9f14a229-8bb7-4651-89c4-b7a747c14fd8.jpg?v=1774708258",i2:"IMG_2440.jpg?v=1774708636",feat:1},
- {n:"Lip Smacker x Biscotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"10 regular seeds",i:"10for40WEBART.jpg?v=1774709666",i2:"10for40.jpg?v=1774709666",feat:1},
+ {n:"Woah-Cotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"Regular seeds",i:"WoahCottiArtV2_9f14a229-8bb7-4651-89c4-b7a747c14fd8.jpg?v=1774708258",i2:"IMG_2440.jpg?v=1774708636",feat:1},
+ {n:"Lip Smacker X Biscotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"10 regular M/F photoperiod seeds",i:"10for40WEBART.jpg?v=1774709666",i2:"10for40.jpg?v=1774709666",feat:1},
  {n:"Orange ZANG",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 feminized seeds",i:"IMG_1315.jpg?v=1756652488",i2:"OrangeZANG-01.jpg?v=1756652347",feat:1},
- {n:"Cocoa Chem",b:"Night Owl Seeds",t:"auto",p:50,u:"3 autoflower seeds",i:"cocoa.jpg?v=1764175008",feat:1},
- {n:"Cherry Kerosene",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"cherry_9707f4e3-80a1-48ee-9c5d-33254ef656bf.jpg?v=1764174762",feat:1},
+ {n:"Grape Guala",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"GrapeGuala.png?v=1764114165"},
+ {n:"Bisconkey",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 Regular photoperiod seeds",i:"BisconkeyPic3-02-01-01.jpg?v=1743859955",i2:"BisconkeyPic1-02-01.jpg?v=1743859955"},
+ {n:"Cherry Plum",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular photoperiod seeds",i:"CherryPlum-01.jpg?v=1743857746",i2:"CherryPlumZoom-01.jpg?v=1743857754"},
+ {n:"Strawneapple",b:"Exotic Genetix",t:"fem",p:60,u:"6 feminized seeds",i:"straw.jpg?v=1766337565",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
+ {n:"Slaphappy",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"slap.jpg?v=1766337625",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
+ {n:"Poppin' Fresh",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"fresh.jpg?v=1766337701",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
+ {n:"Money Ball",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"mon.jpg?v=1766337750",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
+ {n:"Ring of Sour",b:"Exotic Genetix",t:"fem",p:80,u:"Feminized seeds",i:"sour.jpg?v=1766337813",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
+ {n:"Event Horizon",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"ev.jpg?v=1766337959",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
+ {n:"Cherry Kerosene",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"cherry_9707f4e3-80a1-48ee-9c5d-33254ef656bf.jpg?v=1764174762",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",feat:1},
+ {n:"Deep Pockets",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"deep.jpg?v=1766338020",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Power Nap",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"po.jpg?v=1766338107",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"EverCrisp",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"ever.jpg?v=1766338169",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"SinMint Sundae",b:"Sin City Seeds",t:"fem",p:100,u:"7 Feminized Seeds",i:"sin.jpg?v=1766338720",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Zummy Bears",b:"Sin City Seeds",t:"reg",p:100,u:"15 seeds per pack Regular photoperiod seeds",i:"zum.jpg?v=1766338917",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
  {n:"Incredible Power",b:"Sin City Seeds",t:"reg",p:100,u:"7 regular seeds",i:"Incredible-Power.jpg?v=1766464123",i2:"5fe9ea90b74d1130932059.jpg?v=1766464123",feat:1},
- {n:"Bisconkey",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"BisconkeyPic3-02-01-01.jpg?v=1743859955",i2:"BisconkeyPic1-02-01.jpg?v=1743859955"},
- {n:"Cherry Plum",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"CherryPlum-01.jpg?v=1743857746",i2:"CherryPlumZoom-01.jpg?v=1743857754"},
- {n:"Grape Guala",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized · souvenir",i:"GrapeGuala.png?v=1764114165"},
- {n:"Strawneapple",b:"Exotic Genetix",t:"fem",p:60,u:"6 feminized seeds",i:"straw.jpg?v=1766337565"},
- {n:"Slaphappy",b:"Exotic Genetix",t:"fem",p:60,u:"6 feminized seeds",i:"slap.jpg?v=1766337625"},
- {n:"Poppin' Fresh",b:"Exotic Genetix",t:"fem",p:60,u:"6 feminized seeds",i:"fresh.jpg?v=1766337701"},
- {n:"Money Ball",b:"Exotic Genetix",t:"fem",p:60,u:"6 feminized seeds",i:"mon.jpg?v=1766337750"},
- {n:"Ring of Sour",b:"Exotic Genetix",t:"fem",p:80,u:"Feminized seeds",i:"sour.jpg?v=1766337813"},
- {n:"Event Horizon",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"ev.jpg?v=1766337959"},
- {n:"Deep Pockets",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"deep.jpg?v=1766338020"},
- {n:"Power Nap",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"po.jpg?v=1766338107"},
- {n:"EverCrisp",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"ever.jpg?v=1766338169"},
- {n:"SinMint Sundae",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"sin.jpg?v=1766338720"},
- {n:"Zummy Bears",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"zum.jpg?v=1766338917"},
- {n:"9th Island",b:"Sin City Seeds",t:"reg",p:100,u:"12 regular seeds",i:"9th.jpg?v=1764114603"},
- {n:"Original Sin",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"osin.jpg?v=1766464244",i2:"os.jpg?v=1766464244"},
- {n:"Neon Gas",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"neo.jpg?v=1766464394"},
- {n:"Gaslight",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"Screenshot_20240412_165011_Instagram.jpg?v=1766464309"}
+ {n:"Petrol Cookies",b:"Goddess Seed Co.",t:"reg",p:100,u:"15 regular seeds",i:"Screenshot_20211101-183738_Instagram.jpg?v=1766464023",i2:"15236-4360-petrol-cookies.jpg?v=1766464023"},
+ {n:"Original Sin",b:"Sin City Seeds",t:"reg",p:100,u:"Regular seeds",i:"osin.jpg?v=1766464244",i2:"os.jpg?v=1766464244"},
+ {n:"Gaslight",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"Screenshot_20240412_165011_Instagram.jpg?v=1766464309",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Neon Gas",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"neo.jpg?v=1766464394",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Forum Cut BX",b:"Goddess Seed Co.",t:"reg",p:100,u:"15 regular seeds",i:"Forum_Cut_GSC_BX_5d15f07781413.jpg?v=1766464504",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Sin MintZ",b:"Goddess Seed Co.",t:"fem",p:100,u:"7 feminized seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Sinister Berries",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"9th Island",b:"Sin City Seeds",t:"reg",p:100,u:"12 regular seeds",i:"9th.jpg?v=1764114603",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Red Mango",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Hardcore Berries",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Papaya Colada",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Truffle Monkey",b:"Goddess Seed Co.",t:"reg",p:100,u:"10 Regular Seeds",i:"ExoticLogoTransparencyTile-1024x1024_31b85a6f-4758-4a75-92ea-3001e6c45811.png?v=1740499795"},
+ {n:"Juicy Runtz",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular photoperiod seeds",i:"SinMint-Cookies-2-1-400x600.jpg?v=1766465837",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Cocoa Chem",b:"Night Owl Seeds",t:"auto",p:50,u:"Autoflower seeds",i:"cocoa.jpg?v=1764175008",i2:"Night-Owl-Logo-2023.png?v=1764175008",feat:1},
+ {n:"Cookies and Creamix",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"Cookies_N_Creami_64075cdcb7470.jpg?v=1766462127",i2:"cookies-n-creamix-02.jpg?v=1766462127"},
+ {n:"Roswell Cookies",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"Night-Owl-Logo-2023_ef81620b-c8f1-448f-86e5-43c2ec3f12b2.png?v=1740497137"},
+ {n:"Cookie Smasher",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"smash.jpg?v=1764175126",i2:"Night-Owl-Logo-2023_2c0423ad-ee3d-4816-b09e-ed0e46b42720.png?v=1764175126"},
+ {n:"Chipped Toof",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"chip_922bde41-d4fa-4977-ad34-c2ded35fac5d.jpg?v=1766464677",i2:"Night-Owl-Logo-2023_479b54ce-cd9d-4674-aa08-be8b4c912482.png?v=1766464677"},
+ {n:"Chem Candy",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"chemc.jpg?v=1764174589",i2:"Night-Owl-Logo-2023_38fa699b-296b-4c61-9b4a-73f39c23ccd6.png?v=1764174589"},
+ {n:"Zamunda Cookies",b:"Goddess Seed Co.",t:"reg",p:50,u:"Regular seeds",i:"Night-Owl-Logo-2023_5b0ac656-1943-4417-8047-7b33938dc005.png?v=1740497210"},
+ {n:"Pre-98 Episode 1 F4",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"Night-Owl-Logo-2023_03a64343-bcb5-4ba5-8488-326bde078650.png?v=1740497222"},
+ {n:"Owl Pellets",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seed",i:"Night-Owl-Logo-2023_180057e5-9b5a-464b-9a0a-43f208d91707.png?v=1740497234"},
+ {n:"Vacation Bubba",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 Auto flower seeds",i:"Night-Owl-Logo-2023_2da2527d-4a5b-4c2b-978e-799fde4bf2d0.png?v=1740497247"},
+ {n:"Invader Zam",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 Feminized Seeds",i:"Night-Owl-Logo-2023_ed711a8e-74f3-4e29-9a5f-72522c5b832d.png?v=1740497257"},
+ {n:"Mahadevi",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized photoperiod seeds",i:"IMG_8715.jpg?v=1764114230",i2:"Mahadevi-01.jpg?v=1764114230"},
+ {n:"Grapechata",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"gra.jpg?v=1766463461",i2:"ExoticLogoTransparencyTile-1024x1024.png?v=1766463461"},
+ {n:"Twisted Terpz",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024_5b85f792-ac6c-4146-8da2-ad33d0f9d3e5.png?v=1740497591",i2:"tw.jpg?v=1766463513"},
+ {n:"Kacklesnatch",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"kack.jpg?v=1766463637",i2:"ExoticLogoTransparencyTile-1024x1024_a78d0dbb-3454-4be4-8e93-83683a43e230.png?v=1766463637"},
+ {n:"Dumb Gas",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"DUMB-GAS.jpg?v=1766463126",i2:"ExoticLogoTransparencyTile-1024x1024_202451a9-368f-420b-8fbd-a1e6b6d4caa6.png?v=1766463126"},
+ {n:"CAPSIZE",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"IMG_8659.jpg?v=1764114116",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
+ {n:"Vice Gripp",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized photoperiod seeds",i:"ViceGrippART2-01.jpg?v=1764114302",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
+ {n:"Chem Fruit",b:"Goddess Seed Co.",t:"reg",p:80,u:"Regular seeds",i:"chemf.jpg?v=1764175374",i2:"chem.jpg?v=1764175374"},
+ {n:"G Candy",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 regular autoflower seeds",i:"KingsKushAuto-458x600.jpg?v=1766463364",i2:"IMG-2003_8bf8df29-dd84-4467-a3c2-b9428ee334bb.jpg?v=1766463364"},
+ {n:"Sugar Smax",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Feminized Autoflower seeds",i:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",i2:"Sugar_Smax-01.jpg?v=1741049394"},
+ {n:"G-Chem-O F2",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Regular M/F Autoflower Seeds",i:"g.jpg?v=1766463282",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
+ {n:"ChemCandy F2",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Regular autoflower seeds",i:"Chemical-Candy-Auto.jpg?v=1764174459",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
+ {n:"Durban Cookies",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"durb.jpg?v=1764115170",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
+ {n:"Strawberry Stomper",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized auto flowering seeds",i:"IMG_1487.jpg?v=1766463830",i2:"Strawberry_Stomper.jpg?v=1766463830"},
+ {n:"Modified Mints",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 Regular seeds",i:"Sin_City_Logo.jpg?v=1741049478"},
+ {n:"Durban Bubble",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"durb_d950eb3c-4cb3-4d9a-99f6-31a5d30e54bb.jpg?v=1766462415",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
+ {n:"Big Ripper",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized seeds",i:"ripper.jpg?v=1764114779",i2:"bigrip.jpg?v=1764114779"},
+ {n:"Lemon Drip",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized Seeds",i:"ExoticLogoTransparencyTile-1024x1024_15da2f12-e7c4-4914-844b-63aa892767ed.png?v=1740499766"},
+ {n:"Truffle Monkey",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Regular Seeds",i:"ExoticLogoTransparencyTile-1024x1024_31b85a6f-4758-4a75-92ea-3001e6c45811.png?v=1740499795"},
+ {n:"Monkey Berries",b:"Goddess Seed Co.",t:"reg",p:100,u:"10 Regular Seeds",i:"ExoticLogoTransparencyTile-1024x1024_5aca5529-73fd-4987-be82-6d3b62c950c8.png?v=1740499806"},
+ {n:"Mango Isle F2",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Autoflower Seeds",i:"My-project-3-300x300.webp?v=1740499866"},
+ {n:"Wizards Apprentice F5",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Autoflower Seeds",i:"Night-Owl-Logo-2023_231ca122-837c-4ca6-be71-6f4699ea3fc8.png?v=1740499882"},
+ {n:"Strawberry Gushers",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"stra.jpg?v=1766465034",i2:"blue-dream-cannabis-4.jpg?v=1766465034"},
+ {n:"Glazed Gelato",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",i2:"IMG-2003_7809446e-d51c-41fb-b64e-3b29bc77fb47.jpg?v=1741049553"},
+ {n:"Glazed Do-Si-Dos",b:"Goddess Seed Co.",t:"auto",p:60,u:"Autoflower seeds",i:"dos_382978e4-5ab0-446c-aff7-923a93a05a53.jpg?v=1766464929",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"}
 ];
 var TYPELABEL={reg:"Regular",fem:"Feminized",auto:"Autoflower"};
 var QTYS=[1,2,3,5,10];
 
 /* ===== RENDER FEATURED RAIL ===== */
 var rail=document.getElementById("rail");
+rail.innerHTML=skelFeats(5);
+setTimeout(function(){
+rail.innerHTML="";
 PRODUCTS.filter(function(p){return p.feat;}).forEach(function(p){
   var el=document.createElement("article");
   el.className="feat";
   el.innerHTML=
-   '<div class="feat-img"><span class="feat-tag">'+TYPELABEL[p.t]+'</span>'+
+   '<div class="feat-img">'+
    '<img src="'+img(p.i)+'" alt="'+p.n+'" loading="lazy"></div>'+
    '<div class="feat-body"><div class="kick">'+p.b+'</div>'+
    '<h3>'+p.n+'</h3><div class="feat-row">'+
@@ -932,6 +1083,7 @@ PRODUCTS.filter(function(p){return p.feat;}).forEach(function(p){
     if(fh){fh.style.cursor="pointer";fh.addEventListener("click",go);}})();
   rail.appendChild(el);
 });
+},620);
 
 /* ===== PLANT CANOPY (staggered field: crisp front row + faded back row in the gaps) ===== */
 var canopy=document.getElementById("canopy");
@@ -1019,7 +1171,6 @@ function cardHTML(p){
       '<span>'+q+(q>1?' packs':' pack')+'</span><span>$'+(p.p*q).toLocaleString()+'</span></button>';
   });
   return '<div class="card-img">'+
-    '<span class="badge b-'+p.t+'">'+TYPELABEL[p.t]+'</span>'+
     '<button class="wish" type="button" aria-label="Save"><i class="ti ti-heart"></i></button>'+
     '<img class="main" src="'+img(p.i)+'" alt="'+p.n+'" loading="lazy">'+alt+
     '</div>'+
@@ -1037,6 +1188,7 @@ function cardHTML(p){
       '<button class="card-add" type="button"><i class="ti ti-shopping-bag"></i> Add to bag</button>'+
     '</div></div>';
 }
+var PERPAGE=10,catPage=0;
 function render(){
   var list=PRODUCTS.filter(function(p){
     return (state.type==="all"||p.t===state.type)&&(state.brd==="all"||p.b===state.brd);
@@ -1044,8 +1196,11 @@ function render(){
   if(state.sort==="lo")list.sort(function(a,b){return a.p-b.p;});
   if(state.sort==="hi")list.sort(function(a,b){return b.p-a.p;});
   if(state.sort==="az")list.sort(function(a,b){return a.n.localeCompare(b.n);});
+  var pages=Math.max(1,Math.ceil(list.length/PERPAGE));
+  if(catPage>=pages)catPage=0;
+  var pageList=list.slice(catPage*PERPAGE,(catPage+1)*PERPAGE);
   grid.innerHTML="";
-  list.forEach(function(p,idx){
+  pageList.forEach(function(p,idx){
     var el=document.createElement("article");
     el.className="card";
     el.innerHTML=cardHTML(p);
@@ -1097,7 +1252,26 @@ function render(){
   var bits=[];
   if(state.type!=="all")bits.push(TYPELABEL[state.type]);
   if(state.brd!=="all")bits.push(state.brd);
-  catMeta.textContent="Showing "+list.length+" "+(bits.length?bits.join(" · ")+" genetics":"genetics")+" — "+PRODUCTS.length+" in this preview";
+  catMeta.textContent=list.length?("Showing "+(catPage*PERPAGE+1)+"–"+(catPage*PERPAGE+pageList.length)+" of "+list.length+(bits.length?" "+bits.join(" · "):"")+" genetics"):"No genetics match those filters";
+  renderPager(pages);
+}
+function renderPager(pages){
+  var pg=document.getElementById("pager");
+  if(!pg)return;
+  if(pages<=1){pg.innerHTML="";return;}
+  var h='<button class="pg-btn" data-pg="prev"'+(catPage===0?" disabled":"")+'><i class="ti ti-chevron-left"></i></button>';
+  for(var i=0;i<pages;i++)h+='<button class="pg-btn'+(i===catPage?" on":"")+'" data-pg="'+i+'">'+(i+1)+'</button>';
+  h+='<button class="pg-btn" data-pg="next"'+(catPage>=pages-1?" disabled":"")+'><i class="ti ti-chevron-right"></i></button>';
+  pg.innerHTML=h;
+  pg.querySelectorAll(".pg-btn").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(b.hasAttribute("disabled"))return;
+      var v=b.getAttribute("data-pg");
+      if(v==="prev")catPage--;else if(v==="next")catPage++;else catPage=parseInt(v,10);
+      render();
+      var vt=document.getElementById("vault");if(vt)vt.scrollIntoView({behavior:"smooth"});
+    });
+  });
 }
 function bindFilters(id,key){
   document.querySelectorAll("#"+id+" .chip").forEach(function(c){
@@ -1105,18 +1279,15 @@ function bindFilters(id,key){
       document.querySelectorAll("#"+id+" .chip").forEach(function(x){x.classList.remove("on");});
       c.classList.add("on");
       state[key]=c.getAttribute(key==="type"?"data-type":"data-brd");
-      render();
+      catPage=0;render();
     });
   });
 }
 bindFilters("typeFilters","type");
 bindFilters("brdFilters","brd");
-document.getElementById("sortSel").addEventListener("change",function(){state.sort=this.value;render();});
-document.getElementById("loadMore").addEventListener("click",function(){
-  this.innerHTML='Full catalog coming with all 60+ genetics';
-  this.disabled=true;this.style.opacity=".6";this.style.cursor="default";
-});
-render();
+document.getElementById("sortSel").addEventListener("change",function(){state.sort=this.value;catPage=0;render();});
+grid.innerHTML=skelCards(10);
+setTimeout(render,620);
 
 /* ===== CART + TOAST ===== */
 var cartN=0,cartCount=document.getElementById("cartCount"),toast=document.getElementById("toast"),tt;
@@ -1174,6 +1345,69 @@ document.getElementById("newsForm").addEventListener("submit",function(e){
   toast.classList.add("show");
   tt=setTimeout(function(){toast.classList.remove("show");toast.querySelector("span").textContent="Added to bag";},2400);
 });
+</script>
+
+<script>
+(function(){
+  var gate=document.getElementById('agegate');
+  if(!gate)return;
+  var ok=false;
+  try{ok=localStorage.getItem('gsc-age-21plus')==='yes';}catch(e){}
+  if(ok){if(gate.parentNode)gate.parentNode.removeChild(gate);return;}
+  document.body.classList.add('gate-lock');
+  var canopy=document.getElementById('gateCanopy');
+  var vw=window.innerWidth||1200;
+  var N=Math.max(4,Math.round(vw/210)),plants=[];
+  function addPlant(xPct,o){
+    var el=document.createElement('span');
+    el.className='cplant';
+    var w=o.w*(0.9+Math.random()*0.2);
+    if(vw<600)w*=0.5;
+    el.style.width=w.toFixed(0)+'px';
+    el.style.left=xPct.toFixed(2)+'%';
+    el.style.bottom=(o.lift||0).toFixed(0)+'px';
+    el.style.zIndex=o.z;
+    if(Math.random()<0.5)el.style.setProperty('--flip','-1');
+    el.style.setProperty('--tilt',(Math.random()*8-4).toFixed(1)+'deg');
+    var im=document.createElement('img');
+    im.src='plant-neon.png';im.alt='';im.decoding='async';
+    var hue=(Math.random()*108-54)|0;
+    var f='brightness('+o.bri.toFixed(2)+') saturate('+o.sat.toFixed(2)+') hue-rotate('+hue+'deg)';
+    if(o.blur)f+=' blur('+o.blur.toFixed(1)+'px)';
+    if(o.shadow)f+=' drop-shadow(0 6px 14px rgba(0,0,0,.6))';
+    im.style.filter=f;
+    im.style.opacity=o.op.toFixed(2);
+    im.style.animationDuration=(6+Math.random()*4).toFixed(2)+'s';
+    im.style.animationDelay=(-Math.random()*6).toFixed(2)+'s';
+    el.appendChild(im);canopy.appendChild(el);plants.push(el);
+  }
+  for(var i=0;i<=N;i++)addPlant(i/N*100+(Math.random()*4-2),{
+    w:212+Math.random()*72,z:10,bri:0.6+Math.random()*0.18,sat:0.82+Math.random()*0.18,
+    blur:1.2+Math.random()*1.6,op:0.92+Math.random()*0.08,lift:10+Math.random()*30,shadow:false});
+  for(i=0;i<N;i++)addPlant((i+0.5)/N*100+(Math.random()*4-2),{
+    w:250+Math.random()*86,z:40,bri:1+Math.random()*0.2,sat:1.12+Math.random()*0.2,
+    blur:0,op:1,lift:0,shadow:true});
+  requestAnimationFrame(function(){
+    plants.forEach(function(el){setTimeout(function(){el.classList.add('grown');},120+Math.random()*1500);});
+  });
+  function enter(){
+    try{localStorage.setItem('gsc-age-21plus','yes');}catch(e){}
+    gate.classList.add('gone');
+    document.body.classList.remove('gate-lock');
+    setTimeout(function(){if(gate.parentNode)gate.parentNode.removeChild(gate);},950);
+  }
+  function leave(){
+    gate.classList.add('wilt');
+    document.getElementById('gateCta').style.display='none';
+    document.getElementById('gateTitle').textContent='Come back soon';
+    document.getElementById('gateMsg').textContent="You must be 21 or older to enter Goddess Seed Co. Take care \u2014 see you when you're of age.";
+    setTimeout(function(){
+      try{location.replace('https://www.google.com');}catch(e){location.href='https://www.google.com';}
+    },3600);
+  }
+  document.getElementById('gateYes').addEventListener('click',enter);
+  document.getElementById('gateNo').addEventListener('click',leave);
+})();
 </script>
 </body>
 </html>
