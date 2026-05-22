@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>try{var _gt=localStorage.getItem('gsc-theme');if(_gt)document.documentElement.setAttribute('data-theme',_gt);}catch(e){}</script>
 <title>Goddess Seed Co. — Elite Cannabis Genetics</title>
 <meta name="description" content="Curated photoperiod, feminized and autoflower cannabis seeds from the breeders that built the culture. Finding a keeper is guaranteed. Sold as souvenirs and collectibles. 21+ only." />
 <meta property="og:type" content="website" />
@@ -92,11 +93,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .hdr{
   position:sticky;top:0;z-index:90;background:transparent;
   backdrop-filter:none;-webkit-backdrop-filter:none;
-  border-bottom:1px solid transparent;
-  transition:border-color .3s ease,background .3s ease,backdrop-filter .3s ease;
+  transition:box-shadow .3s ease,background .3s ease,backdrop-filter .3s ease;
 }
 .hdr.scrolled{
-  border-bottom-color:var(--d-hair);background:rgba(10,11,13,.96);
+  box-shadow:0 1px 0 var(--d-hair);background:rgba(10,11,13,.96);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
 }
 .hdr-in{display:flex;align-items:center;justify-content:space-between;height:108px;gap:24px}
@@ -480,11 +480,8 @@ section.band{padding-block:clamp(26px,3.4vw,50px)}
 .disclaimer b{color:var(--d-dim);font-weight:600}
 .foot-bot{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0 40px;flex-wrap:wrap}
 .foot-bot .cp{font-size:12px;color:var(--d-faint)}
-.pay{display:flex;gap:7px;flex-wrap:wrap}
-.pay span{
-  font-size:9.5px;font-weight:700;letter-spacing:.03em;
-  background:#fff;border-radius:5px;padding:5px 9px;
-}
+.pay{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.pay svg{height:29px;width:auto;display:block;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.35)}
 
 /* ===== TOAST ===== */
 .toast{
@@ -497,18 +494,39 @@ section.band{padding-block:clamp(26px,3.4vw,50px)}
 
 /* ===== MOBILE MENU ===== */
 .mobnav{
-  position:fixed;inset:0;background:#08080b;z-index:120;
-  display:flex;flex-direction:column;padding:28px clamp(20px,5vw,68px);
-  transform:translateY(-100%);transition:transform .4s cubic-bezier(.5,0,.2,1);
+  position:fixed;inset:0;background:#0b0c11;z-index:120;
+  display:flex;flex-direction:column;padding:18px clamp(20px,5vw,40px) 26px;
+  overflow-y:auto;
+  transform:translateY(-100%);transition:transform .35s cubic-bezier(.5,0,.2,1);
 }
 .mobnav.open{transform:translateY(0)}
-.mobnav-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:50px}
-.mobnav-top img{height:36px}
-.mobnav a{
-  font-family:var(--disp);font-size:2.4rem;color:var(--d-ink);padding:12px 0;
-  border-bottom:1px solid var(--d-hair);
+.mobnav-top{display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:16px;border-bottom:1px solid var(--d-hair)}
+.mobnav-top img{height:46px;width:auto}
+.mobnav-links{display:flex;flex-direction:column}
+.mobnav-row{
+  display:flex;align-items:center;justify-content:space-between;width:100%;
+  font:inherit;font-size:14.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--d-ink);padding:16px 2px;border:0;border-bottom:1px solid var(--d-hair);
+  background:none;cursor:pointer;text-align:left;transition:color .15s;
 }
-.mobnav a:hover{color:var(--gold)}
+.mobnav-row i{color:var(--d-faint);font-size:15px;transition:transform .2s,color .15s}
+.mobnav-row:hover,.mobnav-row:active{color:var(--gold)}
+.mobnav-row:hover i{color:var(--gold)}
+a.mobnav-row:hover i{transform:translateX(3px)}
+.mob-group.open>.mob-grp-btn{color:var(--gold)}
+.mob-group.open>.mob-grp-btn i{transform:rotate(180deg);color:var(--gold)}
+.mob-grp-panel{overflow:hidden;max-height:0;transition:max-height .32s ease}
+.mob-group.open .mob-grp-panel{max-height:360px}
+.mob-grp-panel a{
+  display:block;font-size:13px;font-weight:500;letter-spacing:.01em;text-transform:none;
+  color:var(--d-dim);padding:11px 2px 11px 14px;border-bottom:1px solid var(--d-hair);
+  transition:color .15s;
+}
+.mob-grp-panel a:hover{color:var(--gold)}
+.mobnav-foot{margin-top:auto;padding-top:22px;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--d-faint)}
+.mobnav-foot b{color:var(--gold);font-weight:600}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:1080px){
@@ -581,11 +599,52 @@ section.band{padding-block:clamp(26px,3.4vw,50px)}
     <img src="logo-purple-transparent.png" alt="Goddess Seed Co." />
     <button class="iconbtn" id="mobclose" aria-label="Close menu"><i class="ti ti-x"></i></button>
   </div>
-  <a href="#vault">Shop</a>
-  <a href="#drops">New drops</a>
-  <a href="#breeders">Breeders</a>
-  <a href="#story">Our story</a>
-  <a href="#foot">FAQ</a>
+  <nav class="mobnav-links">
+    <a class="mobnav-row" href="#vault">Shop the vault <i class="ti ti-chevron-right"></i></a>
+    <a class="mobnav-row" href="#drops">New drops <i class="ti ti-chevron-right"></i></a>
+    <a class="mobnav-row" href="#breeders">Breeders <i class="ti ti-chevron-right"></i></a>
+    <a class="mobnav-row" href="#story">Our story <i class="ti ti-chevron-right"></i></a>
+    <div class="mob-group">
+      <button class="mobnav-row mob-grp-btn" type="button">Customer Service <i class="ti ti-chevron-down"></i></button>
+      <div class="mob-grp-panel">
+        <a href="#">Track my order</a>
+        <a href="#">Shipping &amp; delivery</a>
+        <a href="#">Germination guarantee</a>
+        <a href="#">Check authenticity</a>
+        <a href="#foot">FAQ</a>
+        <a href="#">Contact us</a>
+      </div>
+    </div>
+    <div class="mob-group">
+      <button class="mobnav-row mob-grp-btn" type="button">Community &amp; Info <i class="ti ti-chevron-down"></i></button>
+      <div class="mob-grp-panel">
+        <a href="#story">About Goddess</a>
+        <a href="#breeders">Breeder partners</a>
+        <a href="#">The Journal</a>
+        <a href="#">Events &amp; drops</a>
+        <a href="#">Affiliate program</a>
+      </div>
+    </div>
+    <div class="mob-group">
+      <button class="mobnav-row mob-grp-btn" type="button">Other Products <i class="ti ti-chevron-down"></i></button>
+      <div class="mob-grp-panel">
+        <a href="#">Apparel &amp; merch</a>
+        <a href="#">Gift cards</a>
+      </div>
+    </div>
+    <div class="mob-group">
+      <button class="mobnav-row mob-grp-btn" type="button">My Goddess <i class="ti ti-chevron-down"></i></button>
+      <div class="mob-grp-panel">
+        <a href="#">Sign in</a>
+        <a href="#">Create account</a>
+        <a href="#">Shopping bag</a>
+        <a href="#">Wishlist</a>
+      </div>
+    </div>
+    <a class="mobnav-row" href="#">Wholesale <i class="ti ti-chevron-right"></i></a>
+    <button class="mobnav-row" id="mobTheme" type="button">Light mode <i class="ti ti-sun"></i></button>
+  </nav>
+  <div class="mobnav-foot">Finding a keeper is <b>guaranteed</b> &nbsp;·&nbsp; 21+ only</div>
 </div>
 
 <section class="hero">
@@ -799,8 +858,14 @@ section.band{padding-block:clamp(26px,3.4vw,50px)}
     <div class="foot-bot">
       <span class="cp">© 2026 Goddess Seed Co. All rights reserved.</span>
       <div class="pay">
-        <span style="color:#1a1f71">VISA</span><span style="color:#eb001b">MASTERCARD</span><span style="color:#006fcf">AMEX</span><span style="color:#e2620e">DISCOVER</span>
-        <span style="color:#003087">PAYPAL</span><span style="color:#000">APPLE PAY</span><span style="color:#4285f4">GOOGLE PAY</span><span style="color:#5a31f4">SHOP PAY</span>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Visa"><rect width="48" height="30" rx="4" fill="#fff"/><text x="24" y="20.5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-style="italic" font-size="13" fill="#1434CB">VISA</text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Mastercard"><rect width="48" height="30" rx="4" fill="#fff"/><circle cx="20.5" cy="15" r="8" fill="#EB001B"/><circle cx="27.5" cy="15" r="8" fill="#F79E1B"/><path d="M24 9a8 8 0 0 0 0 12 8 8 0 0 0 0-12z" fill="#FF5F00"/></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="American Express"><rect width="48" height="30" rx="4" fill="#1F72CD"/><text x="24" y="19.6" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="9.4" fill="#fff" letter-spacing="0.4">AMEX</text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Discover"><rect width="48" height="30" rx="4" fill="#fff"/><circle cx="37.5" cy="13.5" r="6.4" fill="#F47216"/><text x="21" y="18.5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="6.3" fill="#1a1a1a" letter-spacing="0.2">DISCOVER</text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="PayPal"><rect width="48" height="30" rx="4" fill="#fff"/><text x="24" y="20" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-style="italic" font-size="11"><tspan fill="#003087">Pay</tspan><tspan fill="#009CDE">Pal</tspan></text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Apple Pay"><rect width="48" height="30" rx="4" fill="#fff"/><path transform="translate(9,8) scale(0.52)" fill="#000" d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.59 9.05 5.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 5.25C11.88 3.02 13.69 1.18 15.77 1c.29 2.58-2.34 4.5-3.74 4.25z"/><text x="22" y="20" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="11" fill="#000">Pay</text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Google Pay"><rect width="48" height="30" rx="4" fill="#fff"/><text x="24" y="20" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11"><tspan fill="#4285F4">G</tspan><tspan fill="#5F6368">&#160;Pay</tspan></text></svg>
+        <svg viewBox="0 0 48 30" role="img" aria-label="Shop Pay"><rect width="48" height="30" rx="4" fill="#5A31F4"/><text x="24" y="19.8" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="9.6" fill="#fff">shop<tspan font-weight="400">&#160;Pay</tspan></text></svg>
       </div>
     </div>
   </div>
@@ -812,6 +877,7 @@ section.band{padding-block:clamp(26px,3.4vw,50px)}
 /* ===== PRODUCT DATA (prototype subset of the catalog) ===== */
 var CDN="https://cdn.shopify.com/s/files/1/0697/2417/6536/files/";
 function img(f){return CDN+f+"&width=680";}
+function slugify(s){return s.toLowerCase().replace(/['']/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
 var PRODUCTS=[
  {n:"Woah-Cotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"10 regular seeds",i:"WoahCottiArtV2_9f14a229-8bb7-4651-89c4-b7a747c14fd8.jpg?v=1774708258",i2:"IMG_2440.jpg?v=1774708636",feat:1},
  {n:"Lip Smacker x Biscotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"10 regular seeds",i:"10for40WEBART.jpg?v=1774709666",i2:"10for40.jpg?v=1774709666",feat:1},
@@ -860,6 +926,10 @@ PRODUCTS.filter(function(p){return p.feat;}).forEach(function(p){
     else if(fm){fm.addEventListener("load",fd);fm.addEventListener("error",fd);}
   })();
   el.querySelector(".buy").addEventListener("click",function(){addToBag();});
+  (function(){var s=slugify(p.n),go=function(){location.href="product.html?strain="+s;};
+    var fi=el.querySelector(".feat-img"),fh=el.querySelector("h3");
+    if(fi){fi.style.cursor="pointer";fi.addEventListener("click",go);}
+    if(fh){fh.style.cursor="pointer";fh.addEventListener("click",go);}})();
   rail.appendChild(el);
 });
 
@@ -868,7 +938,7 @@ var canopy=document.getElementById("canopy");
 if(canopy){
   var vw=window.innerWidth||1400;
   var cplants=[],cnarrow=vw<760;
-  var NF=Math.max(4,Math.round(vw/198));
+  var NF=Math.max(3,Math.round(vw/250));
   /* keep plants short under the brand graphic so it always floats clear */
   var clip=null,heroArt=document.querySelector(".hero-art");
   if(heroArt&&vw>860){
@@ -910,7 +980,7 @@ if(canopy){
   /* back row — shaded, sits in the gaps between the front plants */
   for(var i=0;i<=NF;i++){
     addPlant(i/NF*100+(Math.random()*4-2),{
-      w:196+Math.random()*70,z:10+(Math.random()*14|0),
+      w:178+Math.random()*64,z:10+(Math.random()*14|0),
       bri:0.62+Math.random()*0.18,sat:0.8+Math.random()*0.18,
       blur:1+Math.random()*1.6,op:0.9+Math.random()*0.1,
       lift:12+Math.random()*32,shadow:false
@@ -919,7 +989,7 @@ if(canopy){
   /* front row — crisp, bright, evenly spaced */
   for(i=0;i<NF;i++){
     addPlant((i+0.5)/NF*100+(Math.random()*4-2),{
-      w:236+Math.random()*78,z:40+(Math.random()*22|0),
+      w:212+Math.random()*72,z:40+(Math.random()*22|0),
       bri:0.97+Math.random()*0.2,sat:1.1+Math.random()*0.22,
       blur:0,op:1,shadow:true
     });
@@ -1017,7 +1087,11 @@ function render(){
       });
     });
     el.querySelector(".card-add").addEventListener("click",function(){addToBag(qty);});
-    el.querySelector(".wish").addEventListener("click",function(){this.classList.toggle("on");});
+    el.querySelector(".wish").addEventListener("click",function(e){e.stopPropagation();this.classList.toggle("on");});
+    (function(){var s=slugify(p.n),go=function(){location.href="product.html?strain="+s;};
+      var ci=el.querySelector(".card-img"),ch=el.querySelector("h3");
+      if(ci){ci.style.cursor="pointer";ci.addEventListener("click",go);}
+      if(ch){ch.style.cursor="pointer";ch.addEventListener("click",go);}})();
     grid.appendChild(el);
   });
   var bits=[];
@@ -1058,10 +1132,17 @@ var root=document.documentElement,themeBtn=document.getElementById("themeBtn");
 function setTheme(t){
   root.setAttribute("data-theme",t);
   themeBtn.innerHTML=t==="dark"?'<i class="ti ti-moon"></i>':'<i class="ti ti-sun"></i>';
+  var mt=document.getElementById("mobTheme");
+  if(mt)mt.innerHTML=t==="dark"?'Light mode <i class="ti ti-sun"></i>':'Dark mode <i class="ti ti-moon"></i>';
   try{localStorage.setItem("gsc-theme",t);}catch(e){}
 }
-setTheme("dark");
+var _initTheme="dark";try{_initTheme=localStorage.getItem("gsc-theme")||"dark";}catch(e){}
+setTheme(_initTheme);
 themeBtn.addEventListener("click",function(){
+  setTheme(root.getAttribute("data-theme")==="dark"?"light":"dark");
+});
+var mobThemeBtn=document.getElementById("mobTheme");
+if(mobThemeBtn)mobThemeBtn.addEventListener("click",function(){
   setTheme(root.getAttribute("data-theme")==="dark"?"light":"dark");
 });
 
@@ -1077,6 +1158,13 @@ document.getElementById("burger").addEventListener("click",function(){mobnav.cla
 document.getElementById("mobclose").addEventListener("click",function(){mobnav.classList.remove("open");});
 mobnav.querySelectorAll("a").forEach(function(a){
   a.addEventListener("click",function(){mobnav.classList.remove("open");});
+});
+mobnav.querySelectorAll(".mob-grp-btn").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var g=btn.parentElement,wasOpen=g.classList.contains("open");
+    mobnav.querySelectorAll(".mob-group").forEach(function(x){x.classList.remove("open");});
+    if(!wasOpen)g.classList.add("open");
+  });
 });
 
 /* ===== NEWSLETTER ===== */

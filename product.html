@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>try{var _gt=localStorage.getItem('gsc-theme');if(_gt)document.documentElement.setAttribute('data-theme',_gt);}catch(e){}</script>
+<title>Strain — Goddess Seed Co.</title>
+<meta name="description" content="Elite cannabis genetics — strain specs, genetic lineage and grow notes. Sold as souvenirs and collectibles. 21+ only." />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.11.0/dist/tabler-icons.min.css" />
+<style>
+@font-face{font-family:'Coinbase Sans';src:url('fonts/CoinbaseSans-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Coinbase Sans';src:url('fonts/CoinbaseSans-Medium.woff2') format('woff2');font-weight:500 600;font-style:normal;font-display:swap}
+@font-face{font-family:'Coinbase Sans';src:url('fonts/CoinbaseSans-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Coinbase Display';src:url('fonts/CoinbaseDisplay-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+:root{
+  --gold:#e8b73e;--gold-soft:#f3cf73;
+  --d-bg:#0a0b0d;--d-bg2:#121316;--d-bg3:#17191e;--d-bg4:#202329;
+  --d-ink:#f4f5f7;--d-dim:#a7abb4;--d-faint:#6d717b;
+  --d-hair:#212329;--d-hair2:#2c2f37;
+  --sans:'Coinbase Sans',-apple-system,Segoe UI,Roboto,sans-serif;
+  --disp:'Coinbase Display','Coinbase Sans',sans-serif;
+  --container:1240px;
+}
+html[data-theme="light"]{
+  --d-bg:#f4f5f7;--d-bg2:#ffffff;--d-bg3:#f4f5f7;--d-bg4:#e7e8ec;
+  --d-ink:#0f1115;--d-dim:#565b66;--d-faint:#8b909b;
+  --d-hair:#e5e7eb;--d-hair2:#d4d7dd;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--d-bg);color:var(--d-ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.disp{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:90;background:var(--d-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--d-hair)}
+.hdr-r{display:flex;align-items:center;gap:16px}
+.thmbtn{background:none;border:0;color:var(--d-dim);cursor:pointer;font-size:18px;line-height:0;padding:4px}
+.thmbtn:hover{color:var(--gold)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:88px;gap:24px}
+.brand img{height:64px;width:auto}
+.hdr-nav{display:flex;gap:30px;font-size:14px;font-weight:500}
+.hdr-nav a{color:var(--d-dim);transition:color .2s}
+.hdr-nav a:hover{color:var(--gold)}
+.hdr-back{font-size:13px;color:var(--d-dim);display:flex;align-items:center;gap:7px}
+.hdr-back:hover{color:var(--gold)}
+
+/* breadcrumb */
+.crumb{font-size:12.5px;color:var(--d-faint);padding:22px 0 6px;display:flex;gap:8px;flex-wrap:wrap}
+.crumb a:hover{color:var(--gold)}
+.crumb .sep{opacity:.5}
+
+/* hero */
+.phero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,64px);padding:18px 0 8px;align-items:start}
+.gallery{position:sticky;top:112px}
+.gal-main{background:var(--d-bg2);border:1px solid var(--d-hair);border-radius:20px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.gal-main img{width:100%;height:100%;object-fit:cover}
+.gal-thumbs{display:flex;gap:10px;margin-top:12px}
+.gal-thumbs button{width:74px;height:74px;border-radius:12px;overflow:hidden;border:1px solid var(--d-hair2);background:var(--d-bg2);cursor:pointer;padding:0}
+.gal-thumbs button.on{border-color:var(--gold)}
+.gal-thumbs img{width:100%;height:100%;object-fit:cover}
+
+.pinfo .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px}
+.pinfo .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+.pinfo h1{font-size:clamp(2.1rem,4vw,3rem);margin:12px 0 6px}
+.pinfo .ptag{color:var(--d-dim);font-size:1.02rem}
+.prate{display:flex;align-items:center;gap:10px;margin:14px 0 0;font-size:13px;color:var(--d-dim)}
+.stars{color:var(--gold);letter-spacing:2px}
+.pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--d-bg3);border:1px solid var(--d-hair2);color:var(--d-dim)}
+.hilites{list-style:none;margin:20px 0 0;display:flex;flex-direction:column;gap:9px}
+.hilites li{display:flex;gap:10px;font-size:14px;color:var(--d-dim)}
+.hilites i{color:var(--gold);font-size:16px;flex:none}
+.hilites b{color:var(--d-ink);font-weight:600}
+
+.buybox{margin-top:22px;background:var(--d-bg2);border:1px solid var(--d-hair);border-radius:18px;padding:20px}
+.buybox .price{font-family:var(--disp);font-size:2rem}
+.buybox .price small{font-size:.9rem;color:var(--d-faint);font-family:var(--sans);font-weight:400}
+.packsel{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.packsel button{font:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:10px;background:var(--d-bg3);border:1px solid var(--d-hair2);color:var(--d-dim);cursor:pointer}
+.packsel button.on{border-color:var(--gold);color:var(--gold);background:rgba(232,183,62,.08)}
+.qtyrow{display:flex;align-items:center;gap:12px;margin:14px 0}
+.stepper{display:flex;align-items:center;border:1px solid var(--d-hair2);border-radius:10px;overflow:hidden}
+.stepper button{width:40px;height:42px;background:var(--d-bg3);border:0;color:var(--d-ink);font-size:18px;cursor:pointer}
+.stepper span{width:46px;text-align:center;font-weight:600}
+.btn-buy{flex:1;border:0;background:var(--gold);color:#1a1406;font:inherit;font-weight:700;font-size:15px;padding:13px;border-radius:11px;cursor:pointer;transition:background .18s}
+.btn-buy:hover{background:var(--gold-soft)}
+.buynote{font-size:12px;color:var(--d-faint);margin-top:12px;display:flex;gap:8px;align-items:flex-start}
+.buynote i{color:var(--gold)}
+
+/* section shell */
+.psec{padding:clamp(34px,4vw,56px) 0;border-top:1px solid var(--d-hair)}
+.psec h2{font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:6px}
+.psec .lead{color:var(--d-dim);font-size:14px;margin-bottom:24px}
+
+/* tech radar */
+.radar{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.dial{background:var(--d-bg2);border:1px solid var(--d-hair);border-radius:14px;padding:16px 18px}
+.dial .dl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--d-faint)}
+.dial .dv{font-size:14px;font-weight:600;margin:5px 0 9px}
+.track{height:7px;border-radius:4px;background:var(--d-bg4);overflow:hidden}
+.track i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#7b4ec8,var(--gold))}
+
+/* specs table */
+.specs{width:100%;border-collapse:collapse;font-size:14px}
+.specs tr{border-bottom:1px solid var(--d-hair)}
+.specs td{padding:12px 4px}
+.specs td:first-child{color:var(--d-faint);width:42%}
+.specs td:last-child{color:var(--d-ink);font-weight:500}
+
+/* genetic tree */
+.tree{font-size:13px;overflow-x:auto;padding:6px 2px}
+.tree ul{list-style:none;padding-left:26px;position:relative}
+.tree>ul{padding-left:0}
+.tree li{position:relative;padding:5px 0}
+.tree ul ul li::before{content:"";position:absolute;left:-15px;top:0;bottom:50%;width:1px;background:var(--d-hair2)}
+.tree ul ul li::after{content:"";position:absolute;left:-15px;top:50%;width:12px;height:1px;background:var(--d-hair2)}
+.tree ul ul li:last-child::before{bottom:50%}
+.tree .node{display:inline-flex;align-items:center;gap:8px;background:var(--d-bg2);border:1px solid var(--d-hair2);border-radius:8px;padding:6px 11px}
+.tree .node.root{background:rgba(232,183,62,.1);border-color:var(--gold);color:var(--gold);font-weight:700}
+.tree .node .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none;opacity:.7}
+.tree-src{font-size:11.5px;color:var(--d-faint);margin-top:14px}
+
+/* description */
+.pdesc h3{font-family:var(--disp);font-size:1.1rem;margin:22px 0 6px}
+.pdesc p{color:var(--d-dim);font-size:14.5px;margin-bottom:10px}
+.taglist{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px}
+.taglist span{font-size:12.5px;background:var(--d-bg3);border:1px solid var(--d-hair2);border-radius:999px;padding:6px 12px;color:var(--d-dim)}
+
+/* guarantee */
+.guar{display:flex;gap:18px;align-items:flex-start;background:linear-gradient(120deg,rgba(123,78,200,.14),rgba(232,183,62,.08));border:1px solid var(--d-hair2);border-radius:16px;padding:24px}
+.guar i{font-size:32px;color:var(--gold);flex:none}
+.guar h3{font-family:var(--disp);font-size:1.15rem;margin-bottom:6px}
+.guar p{color:var(--d-dim);font-size:14px}
+
+/* compare + cross-sell cards */
+.crow{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+.pcard{background:var(--d-bg2);border:1px solid var(--d-hair);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s}
+.pcard:hover{border-color:var(--gold);transform:translateY(-3px)}
+.pcard .pc-img{aspect-ratio:1/1;background:var(--d-bg3);overflow:hidden}
+.pcard .pc-img img{width:100%;height:100%;object-fit:cover}
+.pcard .pc-b{padding:12px 13px 14px}
+.pcard .pc-k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.pcard .pc-n{font-weight:600;font-size:14px;margin:3px 0 7px}
+.pcard .pc-p{font-family:var(--disp);font-size:1rem}
+.cmptbl{width:100%;border-collapse:collapse;font-size:13px;min-width:540px}
+.cmptbl th,.cmptbl td{padding:11px 10px;text-align:left;border-bottom:1px solid var(--d-hair)}
+.cmptbl th{color:var(--d-faint);font-weight:600;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+.cmptbl .cw{overflow-x:auto}
+
+/* reviews */
+.revsum{display:flex;gap:34px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
+.revbig{font-family:var(--disp);font-size:3rem;line-height:1}
+.revbars{flex:1;min-width:240px;display:flex;flex-direction:column;gap:5px}
+.revbar{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--d-faint)}
+.revbar .bt{flex:1;height:7px;background:var(--d-bg4);border-radius:4px;overflow:hidden}
+.revbar .bt i{display:block;height:100%;background:var(--gold)}
+.review{border-top:1px solid var(--d-hair);padding:18px 0}
+.review .rh{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+.review .av{width:34px;height:34px;border-radius:50%;background:var(--d-bg4);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gold);font-size:14px}
+.review .rn{font-weight:600;font-size:14px}
+.review .rd{font-size:11.5px;color:var(--d-faint)}
+.review .rt{font-weight:600;font-size:14px;margin:2px 0}
+.review p{color:var(--d-dim);font-size:14px}
+
+/* footer */
+.pfoot{border-top:1px solid var(--d-hair);padding:34px 0;margin-top:30px;text-align:center;color:var(--d-faint);font-size:12.5px}
+.pfoot .dis{max-width:680px;margin:0 auto 10px;line-height:1.7}
+
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--d-bg4);border:1px solid var(--d-hair2);color:var(--d-ink);padding:13px 22px;border-radius:12px;display:flex;gap:9px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:120}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast i{color:var(--gold)}
+
+@media(max-width:880px){
+  .phero{grid-template-columns:1fr}
+  .gallery{position:static}
+  .hdr-nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="index.html"><img src="logo-purple-transparent.png" alt="Goddess Seed Co." /></a>
+    <nav class="hdr-nav">
+      <a href="index.html#vault">Shop</a>
+      <a href="index.html#drops">New drops</a>
+      <a href="index.html#breeders">Breeders</a>
+      <a href="index.html#story">Our story</a>
+    </nav>
+    <div class="hdr-r">
+      <button class="thmbtn" id="themeBtn" aria-label="Toggle light and dark theme"><i class="ti ti-moon"></i></button>
+      <a class="hdr-back" href="index.html#vault"><i class="ti ti-arrow-left"></i> Back to the vault</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main"><!-- rendered by JS --></main>
+
+<footer class="pfoot">
+  <div class="wrap">
+    <p class="dis">All seeds are sold strictly as souvenirs and collectibles for genetic preservation. They are not sold for germination. 21+ only. Strain data and genetic lineage are compiled from breeder sources and SeedFinder.eu.</p>
+    <span>© 2026 Goddess Seed Co. All rights reserved.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><i class="ti ti-check"></i><span>Added to bag</span></div>
+
+<script>
+(function(){var r=document.documentElement,tb=document.getElementById("themeBtn");
+  function ico(){if(tb)tb.innerHTML=r.getAttribute("data-theme")==="light"?'<i class="ti ti-sun"></i>':'<i class="ti ti-moon"></i>';}
+  ico();
+  if(tb)tb.addEventListener("click",function(){var n=r.getAttribute("data-theme")==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("gsc-theme",n);}catch(e){}ico();});
+})();
+var CDN="https://cdn.shopify.com/s/files/1/0697/2417/6536/files/";
+function img(f){return f?CDN+f+"&width=900":"";}
+
+/* ===== STRAIN DATA — lineage from SeedFinder.eu, specs from breeder sources ===== */
+/* tree node = [name, [children...]]  ;  "—" = not publicly documented */
+var STRAINS={
+"woah-cotti":{n:"Woah-Cotti",b:"Goddess Seed Co.",t:"reg",price:30,pack:"10 regular seeds",
+ img:"WoahCottiArtV2_9f14a229-8bb7-4651-89c4-b7a747c14fd8.jpg?v=1774708258",img2:"IMG_2440.jpg?v=1774708636",
+ tag:"Dessert-and-gas cookie genetics, hunted for keepers.",cross:"The Woah × Biscotti",
+ isa:"Indica-dominant",isaPct:65,thc:"—",cbd:"<1%",flower:"~8–9 weeks",yield:"—",height:"—",aroma:65,
+ effects:["Relaxed","Euphoric","Calming","Happy"],flavor:["Sweet cookie","Gas","Creamy","Fruity"],
+ hi:["<b>Elite cookie cross.</b> Exotic Genetix's The Woah paired with the legendary Biscotti.","<b>Deep GSC roots.</b> Girl Scout Cookies and OG Kush run through every branch.","<b>Hunter's pack.</b> A small regular-seed drop bred to find keepers.","<b>Dessert-and-gas terps.</b> Sweet cookie dough wrapped in fuel."],
+ desc:"Woah-Cotti is a Goddess Seed Co. house cross pairing Exotic Genetix's The Woah with the elite Biscotti. It stacks dessert-and-gas cookie genetics from both sides, with deep Girl Scout Cookies and OG Kush roots running through its family tree. Released as a small regular-seed drop for growers hunting a keeper phenotype.",
+ tree:["Woah-Cotti",[["The Woah",[["Cream D' Mint",[["Cookies and Cream",[]],["Mint Chocolate Chip",[]]]],["Rainbow Chip",[["Sunset Sherbet",[]],["Mint Chocolate Chip",[]]]]]],["Biscotti",[["South Florida OG",[["OG Kush",[]]]],["Gelato #25",[["Sunset Sherbet",[]],["Thin Mint Cookies",[]]]]]]]]},
+
+"lip-smacker-x-biscotti":{n:"Lip Smacker x Biscotti",b:"Goddess Seed Co.",t:"reg",price:30,pack:"10 regular seeds",
+ img:"10for40WEBART.jpg?v=1774709666",img2:"10for40.jpg?v=1774709666",
+ tag:"Berry-and-cookie dessert genetics from two elite parents.",cross:"Lip Smacker × Biscotti",
+ isa:"Indica-leaning hybrid",isaPct:62,thc:"—",cbd:"<1%",flower:"~8–9 weeks",yield:"—",height:"—",aroma:60,
+ effects:["Relaxed","Euphoric","Happy","Mellow"],flavor:["Sweet","Creamy vanilla","Strawberry","Cookie dough"],
+ hi:["<b>Two dessert parents.</b> Exotic Genetix's Lip Smacker crossed onto Biscotti.","<b>Sherbert + Cookies.</b> Heavy Girl Scout Cookies and Sherbert genetics throughout.","<b>Creamy berry terps.</b> Sweet vanilla and strawberry over cookie dough.","<b>Keeper hunt.</b> Regular seeds bred to pop and select."],
+ desc:"A hunter's pack from Goddess Seed Co. crossing Exotic Genetix's Lip Smacker with Biscotti. Both parents are berry-and-cookie dessert strains heavy in Girl Scout Cookies and Sherbert genetics, so the offspring expresses sweet, creamy, fruity terpenes. Marketed as a strain to hunt for keepers.",
+ tree:["Lip Smacker x Biscotti",[["Lip Smacker",[["Sunset Sherbert",[["Girl Scout Cookies",[]],["Pink Panties",[]]]],["Strawberries & Cream",[["Strawberry",[]],["Cookies & Cream",[]]]]]],["Biscotti",[["Gelato #25",[]],["South Florida OG",[["OG Kush",[]]]]]]]]},
+
+"orange-zang":{n:"Orange ZANG",b:"Goddess Seed Co.",t:"fem",price:100,pack:"10 feminized seeds",
+ img:"IMG_1315.jpg?v=1756652488",img2:"OrangeZANG-01.jpg?v=1756652347",
+ tag:"Bright tangerine citrus on an uplifting, sativa-leaning frame.",cross:"Tangie × Cap Size",
+ isa:"Sativa-leaning hybrid",isaPct:35,thc:"—",cbd:"<1%",flower:"~9–10 weeks",yield:"—",height:"—",aroma:70,
+ effects:["Uplifting","Cerebral","Creative","Euphoric"],flavor:["Tangerine","Sweet citrus","Orange","Zesty"],
+ hi:["<b>Famous Tangie mother.</b> One of the most recognizable citrus strains in the game.","<b>House Cap Size father.</b> A proprietary Goddess Seed Co. line (Vice Gripp × Dirty Bird).","<b>Feminized.</b> 10 feminized seeds per pack.","<b>Citrus-forward.</b> Sweet tangerine terps with an uplifting lift."],
+ desc:"Orange ZANG is a feminized citrus hybrid from Goddess Seed Co. crossing the famous Tangie with their in-house Cap Size (Vice Gripp × Dirty Bird). Tangie brings a bright, sweet tangerine terpene profile and a sativa-leaning, uplifting character. The Cap Size side is a proprietary Goddess line with no publicly documented deeper genetics.",
+ tree:["Orange ZANG",[["Tangie",[["California Orange",[]],["Skunk",[["Skunk #1",[]]]]]],["Cap Size",[["Vice Gripp",[]],["Dirty Bird",[]]]]]]},
+
+"bisconkey":{n:"Bisconkey",b:"Goddess Seed Co.",t:"reg",price:100,pack:"12 regular seeds",
+ img:"BisconkeyPic3-02-01-01.jpg?v=1743859955",img2:"BisconkeyPic1-02-01.jpg?v=1743859955",
+ tag:"Pungent Grease Monkey gas layered with Biscotti dessert.",cross:"Truffle Monkey × Biscotti",
+ isa:"Indica-leaning hybrid",isaPct:62,thc:"—",cbd:"<1%",flower:"~8–9 weeks",yield:"Large",height:"Multi-topped, bushy",aroma:72,
+ effects:["Relaxed","Heavy","Euphoric","Calming"],flavor:["Gas","Savory truffle","Sweet cookie","Chocolate diesel"],
+ hi:["<b>Truffle Monkey mother.</b> Exotic Genetix's savory, gassy hybrid.","<b>Biscotti father.</b> Layered Cookies and OG dessert genetics.","<b>Large yields.</b> Breeder notes a multi-topped, bushy structure.","<b>12 regular seeds.</b> Bred for the keeper hunt."],
+ desc:"Bisconkey is a regular-seed cross from Goddess Seed Co. pairing Exotic Genetix's Truffle Monkey mother with a Biscotti father. The breeder highlights large yields and a multi-topped, bushy structure. The genetics combine pungent Gorilla Glue and Grease Monkey gas with layered Cookies and Biscotti dessert genetics.",
+ tree:["Bisconkey",[["Truffle Monkey",[["Tropic Truffle",[["Tropicana Cookies",[]],["Mint Chocolate Chip",[]]]],["Grease Monkey",[["Gorilla Glue #4",[]],["Cookies and Cream",[]]]]]],["Biscotti",[["South Florida OG",[]],["Gelato #25",[]]]]]]},
+
+"cherry-plum":{n:"Cherry Plum",b:"Goddess Seed Co.",t:"reg",price:100,pack:"12 regular seeds",
+ img:"CherryPlum-01.jpg?v=1743857746",img2:"CherryPlumZoom-01.jpg?v=1743857754",
+ tag:"Fruity cherry-citrus Tropicana genetics with a gassy Biscotti finish.",cross:"Trop Cherry × Biscotti",
+ isa:"Balanced hybrid",isaPct:50,thc:"—",cbd:"<1%",flower:"~8–9 weeks",yield:"Heavy",height:"Multi-topped, large colas",aroma:68,
+ effects:["Euphoric","Relaxed","Uplifting","Happy"],flavor:["Cherry","Citrus","Sweet cookie","Gas"],
+ hi:["<b>Tropicana Cherry mother.</b> Relentless Genetics' fruity cherry standout.","<b>Biscotti father.</b> Gassy, dessert-sweet cookie line.","<b>Heavy yield.</b> Breeder notes large, chunky colas.","<b>12 regular seeds.</b> Multi-topped plant structure."],
+ desc:"Cherry Plum is a regular-seed Goddess Seed Co. cross of the Relentless Genetics standout Tropicana Cherry with a Biscotti father. The breeder describes large chunky colas, heavy yields and a multi-topped plant. Genetically it blends fruity cherry-and-citrus Tropicana terpenes with the gassy, dessert-sweet Biscotti line.",
+ tree:["Cherry Plum",[["Trop Cherry",[["Tropicana Cookies",[["Girl Scout Cookies",[]],["Tangie",[]]]],["Cherry Cookies F3",[["Girl Scout Cookies",[]],["Fire OG",[]]]]]],["Biscotti",[["South Florida OG",[]],["Gelato #25",[]]]]]]},
+
+"grape-guala":{n:"Grape Guala",b:"Goddess Seed Co.",t:"fem",price:100,pack:"Feminized · souvenir",
+ img:"GrapeGuala.png?v=1764114165",img2:"",
+ tag:"Heavy, frosty, grape-forward buds — bred for deep rest.",cross:"Grape Jubilee × Goddess OG",
+ isa:"Indica-dominant",isaPct:72,thc:"—",cbd:"<1%",flower:"~8–9 weeks",yield:"Heavy, dense buds",height:"Large bush, tight internodes",aroma:74,
+ effects:["Relaxing","Sedating","Calming","Sleepy"],flavor:["Grape","Berry","Earthy","Kush"],
+ hi:["<b>Grape Jubilee mother.</b> Exotic Genetix's indica-dominant grape line.","<b>Goddess OG reversal.</b> A proprietary in-house OG selection.","<b>Frosty and dense.</b> Heavy resin across the whole plant.","<b>Bred for sleep.</b> Breeder positions it for rest and relief."],
+ desc:"Grape Guala is a feminized strain from Goddess Seed Co., made by reversing a Goddess OG male onto a Grape Jubilee mother. The breeder describes heavy, frosty, dense buds with pronounced grape expressions on a large, bushy plant. The Grape Jubilee side carries documented Bubba Berry and Cereal Milk genetics; the Goddess OG side is a proprietary in-house selection.",
+ tree:["Grape Guala",[["Grape Jubilee",[["Bubba Berry",[["Bubba Kush",[]],["Black Berry",[]]]],["Cereal Milk",[["Cookies",[]],["Cherry Pie",[]],["Snowman",[]]]]]],["Goddess OG",[]]]]},
+
+"cocoa-chem":{n:"Cocoa Chem",b:"Night Owl Seeds",t:"auto",price:50,pack:"3 autoflower seeds",
+ img:"cocoa.jpg?v=1764175008",img2:"",
+ tag:"Dark bittersweet cocoa colliding with classic Chem dankness.",cross:"Chem 91 × Chemdogging",
+ isa:"Autoflower hybrid",isaPct:55,thc:"—",cbd:"<1%",flower:"~70 days seed-to-harvest",yield:"—",height:"Exceptional vigor",aroma:78,
+ effects:["Heavy","Potent","Relaxing","Long-lasting"],flavor:["Dark cocoa","Chocolate","Coffee","Chem diesel"],
+ hi:["<b>F3 autoflower selection.</b> Stabilized from Night Owl's Chem auto line.","<b>Rare cocoa flavor.</b> Dark, bittersweet chocolate and coffee.","<b>Classic Chem dank.</b> Pungent fuel and chem on the back end.","<b>Autoflower.</b> ~70-day seed-to-harvest cycle."],
+ desc:"Cocoa Chem is a regular autoflower from Night Owl Seeds, selected as an F3 from the breeder's long-running Chem 91 × Chemdogging auto line. Its standout trait is a rare dark, bittersweet cocoa-and-coffee flavor colliding with classic Chem dankness, delivering a notably heavy smoke from a vigorous, fast plant.",
+ tree:["Cocoa Chem",[["Chem 91",[["Chem Dawg",[]]]],["Chemdogging",[["ChemD",[]],["Ruderalis cross",[]]]]]]},
+
+"cherry-kerosene":{n:"Cherry Kerosene",b:"Sin City Seeds",t:"reg",price:100,pack:"15 regular seeds",
+ img:"cherry_9707f4e3-80a1-48ee-9c5d-33254ef656bf.jpg?v=1764174762",img2:"",
+ tag:"Candy-sweet cherry meets diesel-and-OG fuel.",cross:"Froot Loopz × Blue Petrol",
+ isa:"Indica 55 / Sativa 45",isaPct:55,thc:"—",cbd:"—",flower:"~8 weeks (56 days)",yield:"400–600 g/m² indoor",height:"—",aroma:66,
+ effects:["Energizing","Creative","Relaxed","Motivating"],flavor:["Cherry","Diesel","Fuel","Earthy"],
+ hi:["<b>Froot Loopz mother.</b> TH Seeds' candy-forward fruit hybrid.","<b>Blue Petrol father.</b> Sin City's diesel-and-OG gas line.","<b>Fast finish.</b> Roughly 8 weeks of flower.","<b>Solid yields.</b> 400–600 g/m² indoor."],
+ desc:"Cherry Kerosene is a balanced, indica-leaning hybrid from Sin City Seeds, crossing TH Seeds' fruity, candy-forward Froot Loopz with their own diesel-and-OG Blue Petrol. The lineage blends cherry-berry sweetness with pungent fuel and kush notes, finishing fast at around eight weeks.",
+ tree:["Cherry Kerosene",[["Froot Loopz",[["The Original Z",[]],["Birthday Cake",[]],["Strawbanana Cream",[]]]],["Blue Petrol",[["Petrol OG",[]],["Blue Power",[["Power",[]],["White Moonshine",[]]]]]]]]},
+
+"incredible-power":{n:"Incredible Power",b:"Sin City Seeds",t:"reg",price:100,pack:"7 regular seeds",
+ img:"Incredible-Power.jpg?v=1766464123",img2:"5fe9ea90b74d1130932059.jpg?v=1766464123",
+ tag:"A near 1:1 CBD-to-THC medicinal hybrid.",cross:"(OM RITA × Blue Power) × AC/DC",
+ isa:"Indica-dominant",isaPct:70,thc:"10–15%",cbd:"10–15%",flower:"50–60 days",yield:"—",height:"—",aroma:48,
+ effects:["Relieving","Calming","Clear-headed","Soothing"],flavor:["Earthy","Herbal","Sweet","Subtle"],
+ hi:["<b>Balanced cannabinoids.</b> Roughly 1:1 CBD to THC, both ~10–15%.","<b>AC/DC genetics.</b> Built on the celebrated high-CBD clone.","<b>Fast flower.</b> Finishes in 50–60 days.","<b>Medicinal focus.</b> Bred toward inflammation and pain relief."],
+ desc:"Incredible Power is Sin City Seeds' indica-dominant CBD hybrid, bred to deliver a near 1:1 CBD-to-THC ratio with both cannabinoids around 10–15%. It crosses an OM RITA × Blue Power line with the well-known high-CBD clone AC/DC, and is positioned as a faster-flowering, more potent-feeling CBD option.",
+ tree:["Incredible Power",[["OM RITA × Blue Power",[["OM RITA",[]],["Blue Power",[["Power",[]],["White Moonshine",[]]]]]],["AC/DC",[["Cannatonic",[]]]]]]},
+
+"deep-pockets":{n:"Deep Pockets",b:"Sin City Seeds",t:"fem",price:100,pack:"7 feminized seeds",
+ img:"deep.jpg?v=1766338020",img2:"",
+ tag:"Capulator's MAC crossed onto Sin City's Blue Power.",cross:"MAC × Blue Power",
+ isa:"Balanced hybrid",isaPct:50,thc:"—",cbd:"—",flower:"~8–9 weeks (56–65 days)",yield:"—",height:"—",aroma:64,
+ effects:["Balanced","Relaxed","Euphoric","Creative"],flavor:["Cookie","Citrus","Creamy gas","Floral"],
+ hi:["<b>MAC mother.</b> Capulator's celebrated Miracle Alien Cookies.","<b>Blue Power father.</b> Sin City's signature OG-diesel line.","<b>Heavy resin.</b> MAC genetics bring serious frost.","<b>Feminized.</b> 7 feminized seeds per pack."],
+ desc:"Deep Pockets crosses Capulator's celebrated MAC (Miracle Alien Cookies) with Sin City Seeds' signature Blue Power. The MAC parent brings cookie, citrus and creamy gas notes with heavy resin production, while Blue Power adds OG-diesel structure. Sold only as feminized seed, finishing in roughly eight to nine weeks.",
+ tree:["Deep Pockets",[["MAC",[["Alien Cookies",[]],["Colombian × Starfighter",[]]]],["Blue Power",[["Power",[["Sour Dubble",[]],["SoCal Master Kush",[]]]],["White Moonshine",[["The White",[]],["Blue Moonshine",[]]]]]]]]},
+
+"power-nap":{n:"Power Nap",b:"Sin City Seeds",t:"fem",price:100,pack:"7 feminized seeds",
+ img:"po.jpg?v=1766338107",img2:"",
+ tag:"Two Sin City favorites — lemon, berry and kush with a hit of haze.",cross:"Blue Power × WhiteNightmare",
+ isa:"Indica 55 / Sativa 45",isaPct:55,thc:"—",cbd:"—",flower:"~8–9.5 weeks (56–66 days)",yield:"300–500 g/m² indoor",height:"Vigorous, notable stretch",aroma:62,
+ effects:["Relaxed","Kushy","Mellow","Soothing"],flavor:["Lemon","Berry","Kush","Haze"],
+ hi:["<b>In-house cross.</b> Two of Sin City's own early-release favorites.","<b>Lemon-and-berry terps.</b> Kush-forward with a touch of haze.","<b>Slightly indica-dominant.</b> A 55/45 lean.","<b>Feminized.</b> 7 feminized seeds per pack."],
+ desc:"Power Nap is an in-house Sin City Seeds cross of two of their own early-release favorites — Blue Power and WhiteNightmare. It is slightly indica-dominant and finishes in about eight to nine-and-a-half weeks with a moderate 300–500 g/m² indoor yield. The breeder describes a lemon-and-berry, kush-forward aroma with a touch of haze.",
+ tree:["Power Nap",[["Blue Power",[["Power",[]],["White Moonshine",[]]]],["WhiteNightmare",[["Blue Dream",[["Blueberry",[]],["Super Silver Haze",[]]]],["White Moonshine",[]]]]]]},
+
+"evercrisp":{n:"EverCrisp",b:"Sin City Seeds",t:"fem",price:100,pack:"7 feminized seeds",
+ img:"ever.jpg?v=1766338169",img2:"",
+ tag:"Apple Fritter's sweet-sour dough meets minty SinMint Cookies.",cross:"Apple Fritter × SinMint Cookies",
+ isa:"Indica-leaning hybrid",isaPct:62,thc:"—",cbd:"—",flower:"—",yield:"—",height:"—",aroma:68,
+ effects:["Relaxed","Euphoric","Happy","Calming"],flavor:["Sweet","Doughy","Earthy","Gas"],
+ hi:["<b>Apple Fritter mother.</b> The legendary sweet-and-sour cookie-dough strain.","<b>SinMint Cookies father.</b> Sin City's minty, gassy GSC line.","<b>Dessert profile.</b> Cookie dough up front, gas on the finish.","<b>Feminized.</b> 7 feminized seeds per pack."],
+ desc:"EverCrisp crosses the popular Apple Fritter with Sin City Seeds' own SinMint Cookies. The pairing combines Apple Fritter's sweet-and-sour, cookie-dough character with SinMint Cookies' minty, earthy, gassy profile. Sold exclusively as feminized seed.",
+ tree:["EverCrisp",[["Apple Fritter",[["Sour Apple",[]],["Animal Cookies",[]]]],["SinMint Cookies",[["Forum Cookies",[]],["Blue Power",[["Power",[]],["White Moonshine",[]]]]]]]]},
+
+"sinmint-sundae":{n:"SinMint Sundae",b:"Sin City Seeds",t:"fem",price:100,pack:"7 feminized seeds",
+ img:"sin.jpg?v=1766338720",img2:"",
+ tag:"A dense double-helping of cookies and dessert genetics.",cross:"Ice Cream Cake × SinMint Cookies",
+ isa:"Indica-leaning hybrid",isaPct:60,thc:"—",cbd:"—",flower:"—",yield:"—",height:"—",aroma:66,
+ effects:["Relaxed","Sedating","Euphoric","Calming"],flavor:["Vanilla","Cookie","Mint","Creamy"],
+ hi:["<b>Ice Cream Cake mother.</b> Seed Junky's Gelato 33 × Wedding Cake dessert line.","<b>SinMint Cookies father.</b> Sin City's minty GSC × Blue Power.","<b>Cookie-dense lineage.</b> SinMint Cookies appears twice in the family tree.","<b>Feminized.</b> 7 feminized seeds per pack."],
+ desc:"SinMint Sundae crosses Seed Junky Genetics' dessert-line Ice Cream Cake with Sin City Seeds' own SinMint Cookies. The lineage is dense with cookies and GSC genetics on both sides — SinMint Cookies appears twice in the tree, directly and again inside Wedding Cake. Sold only as feminized seed.",
+ tree:["SinMint Sundae",[["Ice Cream Cake",[["Gelato #33",[]],["Wedding Cake",[["Triangle Kush",[]],["Animal Mints",[]]]]]],["SinMint Cookies",[["Forum Cookies",[]],["Blue Power",[]]]]]]},
+
+"zummy-bears":{n:"Zummy Bears",b:"Sin City Seeds",t:"reg",price:100,pack:"15 regular seeds",
+ img:"zum.jpg?v=1766338917",img2:"",
+ tag:"Candy-sweet watermelon and berry on an uplifting frame.",cross:"Watermelon Zum Zum × Blue Power",
+ isa:"Indica 60 / Sativa 40",isaPct:60,thc:"~18–22%",cbd:"<1%",flower:"~8 weeks (56 days)",yield:"~400–600 g/m² indoor",height:"—",aroma:64,
+ effects:["Uplifting","Creative","Energizing","Mood-lifting"],flavor:["Watermelon","Blueberry","Sweet","Floral"],
+ hi:["<b>Watermelon Zum Zum mother.</b> Candy-sweet, fruity melon genetics.","<b>Blue Power father.</b> Sin City's flagship OG-diesel line.","<b>Uplifting lean.</b> Creative rather than sedative.","<b>15 regular seeds.</b> A generous keeper-hunt pack."],
+ desc:"Zummy Bears is a mostly-indica hybrid pairing the candy-sweet, fruity Watermelon Zum Zum with Sin City's flagship Blue Power. It leans uplifting and creative rather than sedative, with a melon-and-berry terpene profile, and finishes in around eight weeks.",
+ tree:["Zummy Bears",[["Watermelon Zum Zum",[["The Original Z",[]],["Adonai",[]]]],["Blue Power",[["Power",[["Sour Dubble",[]],["SoCal Master Kush",[]]]],["White Moonshine",[["The White",[]],["Blue Moonshine",[]]]]]]]]},
+
+"9th-island":{n:"9th Island",b:"Sin City Seeds",t:"reg",price:100,pack:"12 regular seeds",
+ img:"9th.jpg?v=1764114603",img2:"",
+ tag:"A fruit-forward tropical hybrid with guava and berry notes.",cross:"Guava'z 74 × Raskal Berries",
+ isa:"Balanced hybrid",isaPct:50,thc:"—",cbd:"<1%",flower:"~8–9 weeks",yield:"—",height:"—",aroma:62,
+ effects:["Relaxed","Euphoric","Happy","Uplifting"],flavor:["Guava","Tropical fruit","Berry","Sweet"],
+ hi:["<b>Guava'z 74 mother.</b> Bloom Seed Co's fruity, tropical line.","<b>Raskal Berries father.</b> Sin City's White Strawberry × Blue Power.","<b>Tropical terps.</b> Guava and berry up front.","<b>12 regular seeds.</b> Bred for the keeper hunt."],
+ desc:"9th Island crosses Bloom Seed Co's fruity Guava'z 74 with Sin City's own Raskal Berries (White Strawberry × Blue Power). It is a fruit-forward tropical hybrid with guava and berry character, available as regular seeds.",
+ tree:["9th Island",[["Guava'z 74",[["Guava",[["Stardawg",[]],["Afghan",[]]]]]],["Raskal Berries",[["White Strawberry",[["The White",[]],["Strawberry Cough",[]]]],["Blue Power",[]]]]]]},
+
+"original-sin":{n:"Original Sin",b:"Sin City Seeds",t:"reg",price:100,pack:"15 regular seeds",
+ img:"osin.jpg?v=1766464244",img2:"os.jpg?v=1766464244",
+ tag:"Sweet tropical fruit set against a diesel-fuel backbone.",cross:"Forbidden Fruit × Blue Petrol",
+ isa:"Indica-leaning hybrid",isaPct:62,thc:"—",cbd:"<1%",flower:"~9 weeks (65 days)",yield:"—",height:"—",aroma:68,
+ effects:["Relaxed","Euphoric","Calming","Happy"],flavor:["Tropical fruit","Cherry","Citrus","Diesel"],
+ hi:["<b>Forbidden Fruit mother.</b> The dessert-fruity Cherry Pie × Tangie cut.","<b>Blue Petrol father.</b> Sin City's gassy diesel line.","<b>Fruit-meets-fuel.</b> Sweet tropical notes over a diesel base.","<b>15 regular seeds.</b> A generous hunter's pack."],
+ desc:"Original Sin crosses the dessert-fruity Forbidden Fruit with Sin City's gassy Blue Petrol, blending sweet tropical fruit against a fuel-and-diesel backbone. It flowers in roughly 65 days and is offered as regular seeds.",
+ tree:["Original Sin",[["Forbidden Fruit",[["Cherry Pie",[["Durban Poison",[]],["Granddaddy Purple",[]]]],["Tangie",[]]]],["Blue Petrol",[["Petrol OG",[]],["Blue Power",[]]]]]]},
+
+"neon-gas":{n:"Neon Gas",b:"Sin City Seeds",t:"reg",price:100,pack:"15 regular seeds",
+ img:"neo.jpg?v=1766464394",img2:"",
+ tag:"Two Sin City staples bred into a pure gas profile.",cross:"Blue Power × Blue Petrol",
+ isa:"Indica 70 / Sativa 30",isaPct:70,thc:"—",cbd:"<1%",flower:"~8 weeks (56 days)",yield:"~400–600 g/m² indoor",height:"—",aroma:74,
+ effects:["Relaxed","Heavy","Calming","Euphoric"],flavor:["Gas","Fuel","Diesel","Blueberry"],
+ hi:["<b>Two Sin City staples.</b> Blue Power crossed onto Blue Petrol.","<b>Gas-forward.</b> Fuel and diesel with blueberry undertones.","<b>Indica-dominant.</b> A 70/30 lean.","<b>15 regular seeds.</b> Fast ~8-week finish."],
+ desc:"Neon Gas is a 70/30 indica-dominant strain pairing two Sin City staples — Blue Power and Blue Petrol — for a gassy, fuel-forward profile with blueberry undertones. It flowers in about 56 days at 400–600 g/m² and is sold as regular seeds.",
+ tree:["Neon Gas",[["Blue Power",[["Power",[["Sour Dubble",[]],["SoCal Master Kush",[]]]],["White Moonshine",[]]]],["Blue Petrol",[["Petrol OG",[["Sour Diesel × Petrolia",[]],["Tahoe OG Kush",[]]]],["Blue Power",[]]]]]]},
+
+"gaslight":{n:"Gaslight",b:"Sin City Seeds",t:"reg",price:100,pack:"15 regular seeds",
+ img:"Screenshot_20240412_165011_Instagram.jpg?v=1766464309",img2:"",
+ tag:"Bakery-sweet Wedding Cake married to a diesel-pine fuel base.",cross:"Wedding Cake × Blue Petrol",
+ isa:"Indica 70 / Sativa 30",isaPct:70,thc:"~20–25%",cbd:"<1%",flower:"~9 weeks (65 days)",yield:"~500–700 g/m² indoor",height:"—",aroma:72,
+ effects:["Relaxed","Potent","Calming","Heavy"],flavor:["Diesel","Pine","Citrus","Vanilla cake"],
+ hi:["<b>Wedding Cake mother.</b> Seed Junky's celebrated bakery-sweet strain.","<b>Blue Petrol father.</b> Sin City's diesel-fuel line.","<b>Strong yields.</b> 500–700 g/m² indoor.","<b>Indica-dominant.</b> A 70/30 lean, ~65-day flower."],
+ desc:"Gaslight crosses Seed Junky's celebrated Wedding Cake with Sin City's gassy Blue Petrol, marrying bakery-sweet vanilla-cake notes to a diesel-and-pine fuel backbone. It is a 70/30 indica-dominant strain flowering around 65 days with a strong 500–700 g/m² indoor yield.",
+ tree:["Gaslight",[["Wedding Cake",[["Triangle Kush",[]],["Animal Mints",[["Animal Cookies",[]],["SinMint Cookies",[]]]]]],["Blue Petrol",[["Petrol OG",[]],["Blue Power",[]]]]]]},
+
+"strawneapple":{n:"Strawneapple",b:"Exotic Genetix",t:"fem",price:60,pack:"6 feminized seeds",
+ img:"straw.jpg?v=1766337565",img2:"",
+ tag:"A tropical pineapple burst grounded by earthy spice.",cross:"Purple Pineapple × Gary Poppins",
+ isa:"Balanced hybrid",isaPct:52,thc:"—",cbd:"<1%",flower:"~9 weeks (63 days)",yield:"—",height:"—",aroma:70,
+ effects:["Euphoric","Uplifting","Happy","Creative"],flavor:["Pineapple","Tropical","Tangy sweet","Earthy"],
+ hi:["<b>Purple Pineapple mother.</b> A tropical, sweet fruit hybrid.","<b>Gary Poppins father.</b> Exotic Genetix's earthy, spiced line.","<b>Flavor-built.</b> Pineapple-led terps softened by earth.","<b>Feminized.</b> 6 feminized seeds per pack."],
+ desc:"Strawneapple is a fruit-forward Exotic Genetix hybrid combining the tropical sweetness of Purple Pineapple with the earthy spice depth of Gary Poppins. It is built for flavor — a pineapple-led terpene profile softened by grounding earthiness.",
+ tree:["Strawneapple",[["Purple Pineapple",[["Tropical Runtz",[]],["Bakers Dozen",[]]]],["Gary Poppins",[["Gary Payton",[["Y Griega",[]],["Snowman",[]]]],["Red Runtz",[["Red Pop",[]],["Runtz",[]]]]]]]]},
+
+"slaphappy":{n:"Slaphappy",b:"Exotic Genetix",t:"fem",price:60,pack:"6 feminized seeds",
+ img:"slap.jpg?v=1766337625",img2:"",
+ tag:"Earthy sweet berries with spice and a hint of vanilla.",cross:"Tina × Gary Poppins",
+ isa:"Indica-leaning hybrid",isaPct:58,thc:"—",cbd:"<1%",flower:"~8 weeks (58 days)",yield:"—",height:"—",aroma:66,
+ effects:["Relaxed","Euphoric","Happy","Calming"],flavor:["Sweet berry","Earthy","Spicy herb","Vanilla"],
+ hi:["<b>Tina mother.</b> Exotic Genetix's own earthy, berry-rich line.","<b>Gary Poppins father.</b> Spiced, earthy depth.","<b>Layered terps.</b> Forest earthiness meets a confectioner's shop.","<b>Feminized.</b> 6 feminized seeds per pack."],
+ desc:"Slaphappy crosses Exotic Genetix's own Tina with Gary Poppins, yielding a dessert-and-earth hybrid. The terpene profile leads with earthy sweet-berry notes and finishes with spice and vanilla — a layered, flavor-driven release in the Gary Poppins line.",
+ tree:["Slaphappy",[["Tina",[["Constantine",[]],["Triple OG",[]]]],["Gary Poppins",[["Gary Payton",[["Y Griega",[]],["Snowman",[]]]],["Red Runtz",[["Red Pop",[]],["Runtz",[]]]]]]]]},
+
+"poppin-fresh":{n:"Poppin' Fresh",b:"Exotic Genetix",t:"fem",price:60,pack:"6 feminized seeds",
+ img:"fresh.jpg?v=1766337701",img2:"",
+ tag:"Minty, gassy and grape — frosty bag appeal, very high potency.",cross:"Pavé × Gary Poppins",
+ isa:"Indica-dominant",isaPct:68,thc:"—",cbd:"<1%",flower:"~8–9 weeks",yield:"—",height:"—",aroma:74,
+ effects:["Relaxed","Euphoric","Soothing","Heavy"],flavor:["Mint","Gas","Grape","Doughy cream"],
+ hi:["<b>Pavé mother.</b> Compound Genetics' acclaimed minty-gas line.","<b>Gary Poppins father.</b> Spiced, earthy depth.","<b>Frosty appeal.</b> Heavy resin and bag presence.","<b>Feminized.</b> 6 feminized seeds per pack."],
+ desc:"Poppin' Fresh is a newer Exotic Genetix release crossing Compound Genetics' acclaimed Pavé with Gary Poppins. It is an indica-dominant hybrid prized for very high potency, a minty-gassy-grape flavor and frosty bag appeal.",
+ tree:["Poppin' Fresh",[["Pavé",[["Paris OG",[]],["The Menthol",[]]]],["Gary Poppins",[["Gary Payton",[]],["Red Runtz",[]]]]]]},
+
+"money-ball":{n:"Money Ball",b:"Exotic Genetix",t:"fem",price:60,pack:"6 feminized seeds",
+ img:"mon.jpg?v=1766337750",img2:"",
+ tag:"A concentrated double-dose of the Gary Payton family.",cross:"Gary Payton × Gary Poppins",
+ isa:"Balanced hybrid",isaPct:52,thc:"—",cbd:"<1%",flower:"~8 weeks (56 days)",yield:"—",height:"—",aroma:66,
+ effects:["Potent","Uplifting","Euphoric","Focused"],flavor:["Citrus","Earthy","Spice","Pine"],
+ hi:["<b>Gary Payton mother.</b> One of the most sought-after modern hybrids.","<b>Gary Poppins father.</b> Itself half Gary Payton.","<b>Gary-on-Gary.</b> Concentrates the Gary Payton genetics.","<b>Feminized.</b> 6 feminized seeds per pack."],
+ desc:"Money Ball pairs Gary Payton with Gary Poppins — a Gary-on-Gary cross within the same family line, since Gary Poppins is itself half Gary Payton. The result is a citrus-and-earth hybrid with spice and pine accents that intensely concentrates the Gary Payton genetics.",
+ tree:["Money Ball",[["Gary Payton",[["Y Griega",[["Amnesia",[]],["Kali Mist",[]]]],["Snowman",[["Girl Scout Cookies",[]]]]]],["Gary Poppins",[["Gary Payton",[]],["Red Runtz",[]]]]]]},
+
+"ring-of-sour":{n:"Ring of Sour",b:"Exotic Genetix",t:"fem",price:80,pack:"Feminized seeds",
+ img:"sour.jpg?v=1766337813",img2:"",
+ tag:"Sharp sour citrus balanced by warm, spicy earth.",cross:"Sour Power OG × Gary Poppins",
+ isa:"Indica-leaning hybrid",isaPct:58,thc:"—",cbd:"<1%",flower:"~9 weeks (63 days)",yield:"—",height:"—",aroma:72,
+ effects:["Energizing","Uplifting","Relaxing","Vibrant"],flavor:["Sour citrus","Lemon","Sour candy","Spicy earth"],
+ hi:["<b>Sour Power OG mother.</b> Karma Genetics' sharp, sour-diesel line.","<b>Gary Poppins father.</b> Warm spice and earthiness.","<b>Built on contrast.</b> Sour citrus against spiced earth.","<b>Feminized seeds.</b> One of the tangier Gary Poppins releases."],
+ desc:"Ring of Sour crosses Karma Genetics' Sour Power OG with Gary Poppins, building a strain around contrast — sharp sour citrus up front balanced by warm, spicy earthiness. It is one of the tangier, more invigorating releases in the Gary Poppins line.",
+ tree:["Ring of Sour",[["Sour Power OG",[["Sour Power",[["StarBud",[]],["ECSD v3",[]]]],["Biker Kush",[["Hell's Angel OG",[]],["Lucifer OG",[]]]]]],["Gary Poppins",[["Gary Payton",[]],["Red Runtz",[]]]]]]},
+
+"event-horizon":{n:"Event Horizon",b:"Exotic Genetix",t:"fem",price:60,pack:"Feminized seeds",
+ img:"ev.jpg?v=1766337959",img2:"",
+ tag:"RS-11's sweet-tangy fruit with a surprise of spiced coffee.",cross:"RS-11 × Gary Poppins",
+ isa:"Indica-leaning hybrid",isaPct:58,thc:"—",cbd:"<1%",flower:"~8 weeks (58 days)",yield:"—",height:"—",aroma:68,
+ effects:["Relaxed","Euphoric","Calming","Happy"],flavor:["Sweet tangy fruit","Earthy","Spiced coffee","Creamy"],
+ hi:["<b>RS-11 mother.</b> The sought-after Rainbow Sherbet #11 clone.","<b>Gary Poppins father.</b> Spiced, earthy depth.","<b>Flavor-chaser release.</b> Sweet-tangy fruit meets spiced coffee.","<b>Feminized seeds.</b> Part of the Gary Poppins line."],
+ desc:"Event Horizon crosses the highly sought-after clone-only RS-11 (Rainbow Sherbet #11) with Gary Poppins. It is a flavor-chaser release combining RS-11's sweet-tangy fruitiness with a spiced-coffee earthiness from the Gary Poppins side.",
+ tree:["Event Horizon",[["RS-11",[["Pink Guava",[["OG Eddy Lepp",[]],["The Original Z",[]]]],["OZ Kush",[]]]],["Gary Poppins",[["Gary Payton",[]],["Red Runtz",[]]]]]]}
+};
+
+var TYPELABEL={reg:"Regular",fem:"Feminized",auto:"Autoflower"};
+var PACKS=[1,3,5,10];
+
+/* seeded sample reviews */
+var RNAMES=["GrowDadJer","keeperhunter","NugLife_42","CanopyKing","trichome.tom","SoilSister","Budd_Holly","green.thumbprint","TerpChaser","NorthernLights88","PhenoPheen","CouchlockClyde"];
+var RTITLES=["Found my keeper","Frosty and fast","Exactly as described","Solid pack, great pop","Beautiful structure","Loud terps on this one","Will run again","Stretched a touch but worth it"];
+var RBODY=[
+"Popped the whole pack and got a great rate. One pheno really stood out — dense, frosty and reeked through the bag. Easy to grow, no issues. Already planning the next run.",
+"Vigorous from the jump. Took feed well and didn't complain through stretch. The terps came through strong by week 6. Happy with this one.",
+"Bag appeal is unreal. Trim was easy, bud-to-leaf ratio was great. Genetics felt stable across the pack — no surprises, just good plants.",
+"Did exactly what the page said. Finished on time, stacked nicely, and the smell matches the description. Great keeper hunt in this pack.",
+"Quietly one of the best I've grown lately. Sturdy branches held the colas with no support. Cure brought out even more flavor."];
+
+function slugify(s){return s.toLowerCase().replace(/['']/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+function genReviews(slug){
+  var seed=0;for(var i=0;i<slug.length;i++)seed+=slug.charCodeAt(i);
+  var rng=function(){seed=(seed*9301+49297)%233280;return seed/233280;};
+  var n=4+Math.floor(rng()*2),out=[];
+  for(var k=0;k<n;k++){
+    out.push({name:RNAMES[Math.floor(rng()*RNAMES.length)],
+      title:RTITLES[Math.floor(rng()*RTITLES.length)],
+      body:RBODY[Math.floor(rng()*RBODY.length)],
+      stars:rng()<0.8?5:4,
+      date:["2 weeks ago","1 month ago","3 months ago","Last week","2 months ago"][Math.floor(rng()*5)]});
+  }
+  return out;
+}
+
+function treeHTML(node,root){
+  var name=node[0],kids=node[1]||[];
+  var h='<li><span class="node'+(root?' root':'')+'">'+(root?'':'<span class="dot"></span>')+esc(name)+'</span>';
+  if(kids.length){h+='<ul>';for(var i=0;i<kids.length;i++)h+=treeHTML(kids[i],false);h+='</ul>';}
+  return h+'</li>';
+}
+function esc(s){return(s+"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function dial(label,val,disp){
+  return '<div class="dial"><div class="dl">'+label+'</div><div class="dv">'+disp+'</div>'+
+    '<div class="track"><i style="width:'+Math.max(6,Math.min(100,val))+'%"></i></div></div>';
+}
+function card(slug,s){
+  return '<a class="pcard" href="product.html?strain='+slug+'"><div class="pc-img"><img src="'+img(s.img)+'" alt="'+esc(s.n)+'" loading="lazy"></div>'+
+    '<div class="pc-b"><div class="pc-k">'+esc(s.b)+'</div><div class="pc-n">'+esc(s.n)+'</div><div class="pc-p">$'+s.price+'</div></div></a>';
+}
+
+function render(){
+  var slug=(location.search.match(/strain=([^&]+)/)||[])[1]||"woah-cotti";
+  slug=decodeURIComponent(slug);
+  var s=STRAINS[slug];
+  if(!s){document.getElementById("main").innerHTML='<div class="psec"><h2>Strain not found</h2><p class="lead">Head back to <a href="index.html#vault" style="color:var(--gold)">the vault</a>.</p></div>';return;}
+  document.title=s.n+" — Goddess Seed Co.";
+
+  var gal=[s.img,s.img2].filter(Boolean);
+  var rating=(4.6+((slug.length%4)*0.1)).toFixed(1);
+  var reviews=genReviews(slug);
+  var revCount=58+(slug.charCodeAt(0)%40);
+
+  /* compare + cross-sell pools */
+  var sameBrand=[],others=[];
+  for(var k in STRAINS){if(k===slug)continue;(STRAINS[k].b===s.b?sameBrand:others).push(k);}
+  var compare=sameBrand.slice(0,3),fbt=(sameBrand.concat(others)).slice(0,5);
+
+  var h='';
+  /* breadcrumb */
+  h+='<nav class="crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="index.html#vault">The Vault</a><span class="sep">/</span><a href="index.html#breeders">'+esc(s.b)+'</a><span class="sep">/</span><span>'+esc(s.n)+'</span></nav>';
+
+  /* hero */
+  h+='<section class="phero"><div class="gallery"><div class="gal-main"><img id="galMain" src="'+img(gal[0])+'" alt="'+esc(s.n)+'"></div>';
+  if(gal.length>1){h+='<div class="gal-thumbs">';for(var g=0;g<gal.length;g++)h+='<button class="thumb'+(g?'':' on')+'" data-src="'+img(gal[g])+'"><img src="'+img(gal[g])+'" alt=""></button>';h+='</div>';}
+  h+='</div>';
+
+  h+='<div class="pinfo"><div class="eyebrow">'+esc(s.b)+'</div><h1 class="disp">'+esc(s.n)+'</h1>'+
+     '<p class="ptag">'+esc(s.tag)+'</p>'+
+     '<div class="prate"><span class="stars">★★★★★</span> '+rating+' · '+revCount+' reviews <span class="pill">'+TYPELABEL[s.t]+'</span></div>'+
+     '<ul class="hilites">';
+  for(var hl=0;hl<s.hi.length;hl++)h+='<li><i class="ti ti-leaf"></i><span>'+s.hi[hl]+'</span></li>';
+  h+='</ul>';
+
+  /* buybox */
+  h+='<div class="buybox"><div class="price">$'+s.price+' <small>· '+esc(s.pack)+'</small></div>'+
+     '<div class="packsel" id="packsel">';
+  for(var p=0;p<PACKS.length;p++)h+='<button'+(p===0?' class="on"':'')+' data-q="'+PACKS[p]+'">'+PACKS[p]+' pack'+(PACKS[p]>1?'s':'')+'</button>';
+  h+='</div><div class="qtyrow"><div class="stepper"><button id="qMinus">−</button><span id="qVal">1</span><button id="qPlus">+</button></div>'+
+     '<button class="btn-buy" id="addBtn">Add to bag</button></div>'+
+     '<div class="buynote"><i class="ti ti-shield-check"></i><span>Sold as a souvenir &amp; collectible · 21+ only · Discreet worldwide shipping · Backed by our germination guarantee.</span></div></div>';
+  h+='</div></section>';
+
+  /* tech radar */
+  h+='<section class="psec"><h2 class="disp">Tech radar</h2><p class="lead">A quick visual read on '+esc(s.n)+'.</p><div class="radar">'+
+     dial("Genetics",s.isaPct,s.isa)+
+     dial("Aroma intensity",s.aroma,s.aroma>70?"Very strong":s.aroma>55?"Strong":"Moderate")+
+     dial("Flowering",s.flower.indexOf("—")>-1?40:62,s.flower)+
+     dial("Seed type",s.t==="auto"?80:s.t==="fem"?60:40,TYPELABEL[s.t])+
+     '</div></section>';
+
+  /* tech specs */
+  h+='<section class="psec"><h2 class="disp">Tech specs</h2><table class="specs">'+
+     row("Breeder",s.b)+row("Seed type",TYPELABEL[s.t])+row("Genetics / cross",s.cross)+
+     row("Indica / sativa",s.isa)+row("THC",s.thc)+row("CBD",s.cbd)+
+     row("Flowering time",s.flower)+row("Yield",s.yield)+row("Plant height",s.height)+
+     row("Taste",s.flavor.join(", "))+row("Pack size",s.pack)+
+     '</table></section>';
+
+  /* genetic tree */
+  h+='<section class="psec"><h2 class="disp">Genetic tree</h2><p class="lead">The documented lineage of '+esc(s.n)+'.</p>'+
+     '<div class="tree"><ul>'+treeHTML(s.tree,true)+'</ul></div>'+
+     '<p class="tree-src">Genetic tree — '+esc(s.n)+'. Lineage sourced from SeedFinder.eu and breeder records.</p></section>';
+
+  /* description */
+  h+='<section class="psec pdesc"><h2 class="disp">Description</h2><p>'+esc(s.desc)+'</p>'+
+     '<h3>Effect</h3><div class="taglist">';
+  for(var e=0;e<s.effects.length;e++)h+='<span>'+esc(s.effects[e])+'</span>';
+  h+='</div><h3>Aroma &amp; flavor</h3><div class="taglist">';
+  for(var fl=0;fl<s.flavor.length;fl++)h+='<span>'+esc(s.flavor[fl])+'</span>';
+  h+='</div></section>';
+
+  /* germination guarantee (replaces FastBuds Certificate of Analysis) */
+  h+='<section class="psec"><div class="guar"><i class="ti ti-rosette-discount-check"></i>'+
+     '<div><h3 class="disp">Germination guarantee</h3>'+
+     '<p>Every Goddess Seed Co. pack is sold as a souvenir and collectible, sealed for authenticity and backed by our germination guarantee. Genetics are stored cold and stock-rotated so each pack ships fresh. Finding a keeper is guaranteed.</p></div></div></section>';
+
+  /* compare */
+  if(compare.length){
+    h+='<section class="psec"><h2 class="disp">Compare with similar strains</h2><p class="lead">Other genetics from '+esc(s.b)+'.</p>'+
+       '<div class="cw"><table class="cmptbl"><tr><th>Strain</th><th>Type</th><th>Cross</th><th>Indica/Sativa</th><th>Flowering</th><th>Price</th></tr>'+
+       cmpRow(slug,s,true);
+    for(var c=0;c<compare.length;c++)h+=cmpRow(compare[c],STRAINS[compare[c]],false);
+    h+='</table></div></section>';
+  }
+
+  /* reviews */
+  h+='<section class="psec"><h2 class="disp">Customer reviews</h2>'+
+     '<div class="revsum"><div><div class="revbig">'+rating+'</div><div class="stars">★★★★★</div><div class="rd" style="font-size:12px;color:var(--d-faint)">'+revCount+' ratings</div></div>'+
+     '<div class="revbars">'+
+       revBar(5,82)+revBar(4,12)+revBar(3,4)+revBar(2,1)+revBar(1,1)+
+     '</div></div>';
+  for(var r=0;r<reviews.length;r++){
+    var rv=reviews[r];
+    h+='<div class="review"><div class="rh"><div class="av">'+rv.name.charAt(0).toUpperCase()+'</div>'+
+       '<div><div class="rn">'+esc(rv.name)+'</div><div class="rd">'+rv.date+'</div></div></div>'+
+       '<div class="stars" style="font-size:12px">'+("★★★★★".slice(0,rv.stars))+'</div>'+
+       '<div class="rt">'+esc(rv.title)+'</div><p>'+esc(rv.body)+'</p></div>';
+  }
+  h+='</section>';
+
+  /* frequently bought together */
+  h+='<section class="psec"><h2 class="disp">You may also like</h2><p class="lead">More from the vault.</p><div class="crow">';
+  for(var f=0;f<fbt.length;f++)h+=card(fbt[f],STRAINS[fbt[f]]);
+  h+='</div></section>';
+
+  document.getElementById("main").innerHTML=h;
+  wire();
+}
+function row(k,v){return '<tr><td>'+k+'</td><td>'+esc(v||"—")+'</td></tr>';}
+function revBar(star,pct){return '<div class="revbar"><span>'+star+'★</span><div class="bt"><i style="width:'+pct+'%"></i></div><span>'+pct+'%</span></div>';}
+function cmpRow(slug,s,self){
+  return '<tr>'+(self?'<td style="color:var(--gold);font-weight:700">'+esc(s.n)+'</td>':'<td><a href="product.html?strain='+slug+'" style="color:var(--d-ink)">'+esc(s.n)+'</a></td>')+
+    '<td>'+TYPELABEL[s.t]+'</td><td>'+esc(s.cross)+'</td><td>'+esc(s.isa)+'</td><td>'+esc(s.flower)+'</td><td>$'+s.price+'</td></tr>';
+}
+function wire(){
+  var qv=document.getElementById("qVal"),q=1;
+  document.getElementById("qMinus").onclick=function(){q=Math.max(1,q-1);qv.textContent=q;};
+  document.getElementById("qPlus").onclick=function(){q++;qv.textContent=q;};
+  var ps=document.getElementById("packsel");
+  ps.querySelectorAll("button").forEach(function(b){b.onclick=function(){ps.querySelectorAll("button").forEach(function(x){x.classList.remove("on");});b.classList.add("on");};});
+  document.getElementById("addBtn").onclick=function(){var t=document.getElementById("toast");t.classList.add("on");setTimeout(function(){t.classList.remove("on");},2200);};
+  document.querySelectorAll(".gal-thumbs .thumb").forEach(function(b){b.onclick=function(){
+    document.getElementById("galMain").src=b.dataset.src;
+    document.querySelectorAll(".gal-thumbs .thumb").forEach(function(x){x.classList.remove("on");});b.classList.add("on");};});
+}
+render();
+</script>
+</body>
+</html>
