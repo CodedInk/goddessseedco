@@ -336,9 +336,9 @@ section.band{padding-block:clamp(26px,3.4vw,50px)}
 }
 .card-img img.main{opacity:0}
 .card-img img.main.loaded{opacity:1}
-.card-img img.alt{position:absolute;inset:0;opacity:0}
-.card:hover .card-img img.main{transform:scale(1.08)}
-.card:hover .card-img img.alt{opacity:1;transform:scale(1.08)}
+.card-img img.alt{position:absolute;inset:0;opacity:0;object-fit:contain;transform:scale(.78)}
+.card:hover .card-img img.main{transform:scale(1.08);opacity:0}
+.card:hover .card-img img.alt{opacity:1;transform:scale(.84)}
 .badge{
   position:absolute;top:10px;left:10px;font-size:10px;font-weight:600;
   letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:6px;
@@ -978,79 +978,79 @@ body.gate-lock{overflow:hidden}
 <script>
 /* ===== PRODUCT DATA (prototype subset of the catalog) ===== */
 var CDN="https://cdn.shopify.com/s/files/1/0697/2417/6536/files/";
-function img(f){return CDN+f+"&width=680";}
+function img(f){if(!f)return"";if(f.indexOf("?v=")>=0)return CDN+f+"&width=680";return f;}
 function slugify(s){return s.toLowerCase().replace(/['']/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
 function skelCards(n){var h='';for(var i=0;i<n;i++)h+='<article class="card"><div class="sk" style="aspect-ratio:1/1"></div><div style="padding:15px 16px 17px"><div class="sk" style="height:9px;width:38%;border-radius:5px"></div><div class="sk" style="height:14px;width:72%;border-radius:5px;margin-top:10px"></div><div class="sk" style="height:36px;width:100%;border-radius:10px;margin-top:16px"></div></div></article>';return h;}
 function skelFeats(n){var h='';for(var i=0;i<n;i++)h+='<article class="feat"><div class="sk" style="aspect-ratio:4/5"></div><div style="padding:16px"><div class="sk" style="height:9px;width:45%;border-radius:5px"></div><div class="sk" style="height:14px;width:70%;border-radius:5px;margin-top:9px"></div><div class="sk" style="height:14px;width:32%;border-radius:5px;margin-top:14px"></div></div></article>';return h;}
 var PRODUCTS=[
- {n:"Woah-Cotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"Regular seeds",i:"WoahCottiArtV2_9f14a229-8bb7-4651-89c4-b7a747c14fd8.jpg?v=1774708258",i2:"IMG_2440.jpg?v=1774708636",feat:1},
- {n:"Lip Smacker X Biscotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"10 regular M/F photoperiod seeds",i:"10for40WEBART.jpg?v=1774709666",i2:"10for40.jpg?v=1774709666",feat:1},
- {n:"Orange ZANG",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 feminized seeds",i:"IMG_1315.jpg?v=1756652488",i2:"OrangeZANG-01.jpg?v=1756652347",feat:1},
- {n:"Grape Guala",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"GrapeGuala.png?v=1764114165"},
- {n:"Bisconkey",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 Regular photoperiod seeds",i:"BisconkeyPic3-02-01-01.jpg?v=1743859955",i2:"BisconkeyPic1-02-01.jpg?v=1743859955"},
- {n:"Cherry Plum",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular photoperiod seeds",i:"CherryPlum-01.jpg?v=1743857746",i2:"CherryPlumZoom-01.jpg?v=1743857754"},
- {n:"Strawneapple",b:"Exotic Genetix",t:"fem",p:60,u:"6 feminized seeds",i:"straw.jpg?v=1766337565",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
- {n:"Slaphappy",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"slap.jpg?v=1766337625",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
- {n:"Poppin' Fresh",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"fresh.jpg?v=1766337701",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
- {n:"Money Ball",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"mon.jpg?v=1766337750",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
- {n:"Ring of Sour",b:"Exotic Genetix",t:"fem",p:80,u:"Feminized seeds",i:"sour.jpg?v=1766337813",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
- {n:"Event Horizon",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"ev.jpg?v=1766337959",i2:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959"},
- {n:"Cherry Kerosene",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"cherry_9707f4e3-80a1-48ee-9c5d-33254ef656bf.jpg?v=1764174762",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",feat:1},
- {n:"Deep Pockets",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"deep.jpg?v=1766338020",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
- {n:"Power Nap",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"po.jpg?v=1766338107",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
- {n:"EverCrisp",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"ever.jpg?v=1766338169",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
- {n:"SinMint Sundae",b:"Sin City Seeds",t:"fem",p:100,u:"7 Feminized Seeds",i:"sin.jpg?v=1766338720",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
- {n:"Zummy Bears",b:"Sin City Seeds",t:"reg",p:100,u:"15 seeds per pack Regular photoperiod seeds",i:"zum.jpg?v=1766338917",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
- {n:"Incredible Power",b:"Sin City Seeds",t:"reg",p:100,u:"7 regular seeds",i:"Incredible-Power.jpg?v=1766464123",i2:"5fe9ea90b74d1130932059.jpg?v=1766464123",feat:1},
- {n:"Petrol Cookies",b:"Goddess Seed Co.",t:"reg",p:100,u:"15 regular seeds",i:"Screenshot_20211101-183738_Instagram.jpg?v=1766464023",i2:"15236-4360-petrol-cookies.jpg?v=1766464023"},
- {n:"Original Sin",b:"Sin City Seeds",t:"reg",p:100,u:"Regular seeds",i:"osin.jpg?v=1766464244",i2:"os.jpg?v=1766464244"},
- {n:"Gaslight",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"Screenshot_20240412_165011_Instagram.jpg?v=1766464309",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
- {n:"Neon Gas",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"neo.jpg?v=1766464394",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
- {n:"Forum Cut BX",b:"Goddess Seed Co.",t:"reg",p:100,u:"15 regular seeds",i:"Forum_Cut_GSC_BX_5d15f07781413.jpg?v=1766464504",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"Woah-Cotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"Regular seeds",i:"products/woah-cotti.png",i2:"graphic-transparent.png",feat:1,gsc:1},
+ {n:"Lip Smacker X Biscotti",b:"Goddess Seed Co.",t:"reg",p:30,u:"10 regular M/F photoperiod seeds",i:"products/lip-smacker-x-biscotti.png",i2:"graphic-transparent.png",feat:1,gsc:1},
+ {n:"Orange ZANG",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 feminized seeds",i:"products/orange-zang.png",i2:"graphic-transparent.png",feat:1,gsc:1},
+ {n:"Grape Guala",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"products/grape-guala.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Bisconkey",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 Regular photoperiod seeds",i:"products/bisconkey.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Cherry Plum",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular photoperiod seeds",i:"products/cherry-plum.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Strawneapple",b:"Exotic Genetix",t:"fem",p:60,u:"6 feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959",i2:"straw.jpg?v=1766337565"},
+ {n:"Slaphappy",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959",i2:"slap.jpg?v=1766337625"},
+ {n:"Poppin' Fresh",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959",i2:"fresh.jpg?v=1766337701"},
+ {n:"Money Ball",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959",i2:"mon.jpg?v=1766337750"},
+ {n:"Ring of Sour",b:"Exotic Genetix",t:"fem",p:80,u:"Feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959",i2:"sour.jpg?v=1766337813"},
+ {n:"Event Horizon",b:"Exotic Genetix",t:"fem",p:60,u:"Feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024_27a5a6ef-50b8-4d62-beaa-fbbe34cd6251.png?v=1766337959",i2:"ev.jpg?v=1766337959"},
+ {n:"Cherry Kerosene",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"cherry_9707f4e3-80a1-48ee-9c5d-33254ef656bf.jpg?v=1764174762",feat:1},
+ {n:"Deep Pockets",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"deep.jpg?v=1766338020"},
+ {n:"Power Nap",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"po.jpg?v=1766338107"},
+ {n:"EverCrisp",b:"Sin City Seeds",t:"fem",p:100,u:"7 feminized seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"ever.jpg?v=1766338169"},
+ {n:"SinMint Sundae",b:"Sin City Seeds",t:"fem",p:100,u:"7 Feminized Seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"sin.jpg?v=1766338720"},
+ {n:"Zummy Bears",b:"Sin City Seeds",t:"reg",p:100,u:"15 seeds per pack Regular photoperiod seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"zum.jpg?v=1766338917"},
+ {n:"Incredible Power",b:"Goddess Seed Co.",t:"reg",p:100,u:"7 regular seeds",i:"products/incredible-power.png",i2:"graphic-transparent.png",feat:1,gsc:1},
+ {n:"Petrol Cookies",b:"Goddess Seed Co.",t:"reg",p:100,u:"15 regular seeds",i:"products/petrol-cookies.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Original Sin",b:"Goddess Seed Co.",t:"reg",p:100,u:"Regular seeds",i:"products/original-sin.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Gaslight",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"Screenshot_20240412_165011_Instagram.jpg?v=1766464309"},
+ {n:"Neon Gas",b:"Sin City Seeds",t:"reg",p:100,u:"15 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"neo.jpg?v=1766464394"},
+ {n:"Forum Cut BX",b:"Goddess Seed Co.",t:"reg",p:100,u:"15 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"Forum_Cut_GSC_BX_5d15f07781413.jpg?v=1766464504"},
  {n:"Sin MintZ",b:"Goddess Seed Co.",t:"fem",p:100,u:"7 feminized seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
  {n:"Sinister Berries",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
- {n:"9th Island",b:"Sin City Seeds",t:"reg",p:100,u:"12 regular seeds",i:"9th.jpg?v=1764114603",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
+ {n:"9th Island",b:"Sin City Seeds",t:"reg",p:100,u:"12 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"9th.jpg?v=1764114603"},
  {n:"Red Mango",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
  {n:"Hardcore Berries",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
  {n:"Papaya Colada",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
  {n:"Truffle Monkey",b:"Goddess Seed Co.",t:"reg",p:100,u:"10 Regular Seeds",i:"ExoticLogoTransparencyTile-1024x1024_31b85a6f-4758-4a75-92ea-3001e6c45811.png?v=1740499795"},
- {n:"Juicy Runtz",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular photoperiod seeds",i:"SinMint-Cookies-2-1-400x600.jpg?v=1766465837",i2:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837"},
- {n:"Cocoa Chem",b:"Night Owl Seeds",t:"auto",p:50,u:"Autoflower seeds",i:"cocoa.jpg?v=1764175008",i2:"Night-Owl-Logo-2023.png?v=1764175008",feat:1},
- {n:"Cookies and Creamix",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"Cookies_N_Creami_64075cdcb7470.jpg?v=1766462127",i2:"cookies-n-creamix-02.jpg?v=1766462127"},
+ {n:"Juicy Runtz",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 regular photoperiod seeds",i:"Sin_City_Logo_fa736808-0ae4-414b-8f70-261836c5fe9c.jpg?v=1766465837",i2:"SinMint-Cookies-2-1-400x600.jpg?v=1766465837"},
+ {n:"Cocoa Chem",b:"Night Owl Seeds",t:"auto",p:50,u:"Autoflower seeds",i:"Night-Owl-Logo-2023.png?v=1764175008",i2:"cocoa.jpg?v=1764175008",feat:1},
+ {n:"Cookies and Creamix",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"products/cookies-and-creamix.png",i2:"graphic-transparent.png",gsc:1},
  {n:"Roswell Cookies",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"Night-Owl-Logo-2023_ef81620b-c8f1-448f-86e5-43c2ec3f12b2.png?v=1740497137"},
- {n:"Cookie Smasher",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"smash.jpg?v=1764175126",i2:"Night-Owl-Logo-2023_2c0423ad-ee3d-4816-b09e-ed0e46b42720.png?v=1764175126"},
- {n:"Chipped Toof",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"chip_922bde41-d4fa-4977-ad34-c2ded35fac5d.jpg?v=1766464677",i2:"Night-Owl-Logo-2023_479b54ce-cd9d-4674-aa08-be8b4c912482.png?v=1766464677"},
- {n:"Chem Candy",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"chemc.jpg?v=1764174589",i2:"Night-Owl-Logo-2023_38fa699b-296b-4c61-9b4a-73f39c23ccd6.png?v=1764174589"},
+ {n:"Cookie Smasher",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"Night-Owl-Logo-2023_2c0423ad-ee3d-4816-b09e-ed0e46b42720.png?v=1764175126",i2:"smash.jpg?v=1764175126"},
+ {n:"Chipped Toof",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"Night-Owl-Logo-2023_479b54ce-cd9d-4674-aa08-be8b4c912482.png?v=1766464677",i2:"chip_922bde41-d4fa-4977-ad34-c2ded35fac5d.jpg?v=1766464677"},
+ {n:"Chem Candy",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"Night-Owl-Logo-2023_38fa699b-296b-4c61-9b4a-73f39c23ccd6.png?v=1764174589",i2:"chemc.jpg?v=1764174589"},
  {n:"Zamunda Cookies",b:"Goddess Seed Co.",t:"reg",p:50,u:"Regular seeds",i:"Night-Owl-Logo-2023_5b0ac656-1943-4417-8047-7b33938dc005.png?v=1740497210"},
  {n:"Pre-98 Episode 1 F4",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seeds",i:"Night-Owl-Logo-2023_03a64343-bcb5-4ba5-8488-326bde078650.png?v=1740497222"},
  {n:"Owl Pellets",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 feminized autoflower seed",i:"Night-Owl-Logo-2023_180057e5-9b5a-464b-9a0a-43f208d91707.png?v=1740497234"},
  {n:"Vacation Bubba",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 Auto flower seeds",i:"Night-Owl-Logo-2023_2da2527d-4a5b-4c2b-978e-799fde4bf2d0.png?v=1740497247"},
  {n:"Invader Zam",b:"Goddess Seed Co.",t:"auto",p:50,u:"3 Feminized Seeds",i:"Night-Owl-Logo-2023_ed711a8e-74f3-4e29-9a5f-72522c5b832d.png?v=1740497257"},
- {n:"Mahadevi",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized photoperiod seeds",i:"IMG_8715.jpg?v=1764114230",i2:"Mahadevi-01.jpg?v=1764114230"},
- {n:"Grapechata",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"gra.jpg?v=1766463461",i2:"ExoticLogoTransparencyTile-1024x1024.png?v=1766463461"},
+ {n:"Mahadevi",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized photoperiod seeds",i:"products/mahadevi.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Grapechata",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024.png?v=1766463461",i2:"gra.jpg?v=1766463461"},
  {n:"Twisted Terpz",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024_5b85f792-ac6c-4146-8da2-ad33d0f9d3e5.png?v=1740497591",i2:"tw.jpg?v=1766463513"},
- {n:"Kacklesnatch",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"kack.jpg?v=1766463637",i2:"ExoticLogoTransparencyTile-1024x1024_a78d0dbb-3454-4be4-8e93-83683a43e230.png?v=1766463637"},
- {n:"Dumb Gas",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"DUMB-GAS.jpg?v=1766463126",i2:"ExoticLogoTransparencyTile-1024x1024_202451a9-368f-420b-8fbd-a1e6b6d4caa6.png?v=1766463126"},
- {n:"CAPSIZE",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"IMG_8659.jpg?v=1764114116",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
- {n:"Vice Gripp",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized photoperiod seeds",i:"ViceGrippART2-01.jpg?v=1764114302",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
- {n:"Chem Fruit",b:"Goddess Seed Co.",t:"reg",p:80,u:"Regular seeds",i:"chemf.jpg?v=1764175374",i2:"chem.jpg?v=1764175374"},
- {n:"G Candy",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 regular autoflower seeds",i:"KingsKushAuto-458x600.jpg?v=1766463364",i2:"IMG-2003_8bf8df29-dd84-4467-a3c2-b9428ee334bb.jpg?v=1766463364"},
- {n:"Sugar Smax",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Feminized Autoflower seeds",i:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",i2:"Sugar_Smax-01.jpg?v=1741049394"},
- {n:"G-Chem-O F2",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Regular M/F Autoflower Seeds",i:"g.jpg?v=1766463282",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
- {n:"ChemCandy F2",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Regular autoflower seeds",i:"Chemical-Candy-Auto.jpg?v=1764174459",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
- {n:"Durban Cookies",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"durb.jpg?v=1764115170",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
- {n:"Strawberry Stomper",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized auto flowering seeds",i:"IMG_1487.jpg?v=1766463830",i2:"Strawberry_Stomper.jpg?v=1766463830"},
+ {n:"Kacklesnatch",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"ExoticLogoTransparencyTile-1024x1024_a78d0dbb-3454-4be4-8e93-83683a43e230.png?v=1766463637",i2:"kack.jpg?v=1766463637"},
+ {n:"Dumb Gas",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"products/dumb-gas.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"CAPSIZE",b:"Goddess Seed Co.",t:"fem",p:100,u:"Feminized seeds",i:"products/capsize.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Vice Gripp",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized photoperiod seeds",i:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",i2:"ViceGrippART2-01.jpg?v=1764114302"},
+ {n:"Chem Fruit",b:"Goddess Seed Co.",t:"reg",p:80,u:"Regular seeds",i:"products/chem-fruit.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"G Candy",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 regular autoflower seeds",i:"products/g-candy.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Sugar Smax",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Feminized Autoflower seeds",i:"products/sugar-smax.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"G-Chem-O F2",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Regular M/F Autoflower Seeds",i:"products/g-chem-o-f2.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"ChemCandy F2",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Regular autoflower seeds",i:"products/chemcandy-f2.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Durban Cookies",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"products/durban-cookies.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Strawberry Stomper",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized auto flowering seeds",i:"products/strawberry-stomper.png",i2:"graphic-transparent.png",gsc:1},
  {n:"Modified Mints",b:"Goddess Seed Co.",t:"reg",p:100,u:"12 Regular seeds",i:"Sin_City_Logo.jpg?v=1741049478"},
- {n:"Durban Bubble",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"durb_d950eb3c-4cb3-4d9a-99f6-31a5d30e54bb.jpg?v=1766462415",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"},
- {n:"Big Ripper",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized seeds",i:"ripper.jpg?v=1764114779",i2:"bigrip.jpg?v=1764114779"},
+ {n:"Durban Bubble",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"products/durban-bubble.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Big Ripper",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized seeds",i:"products/big-ripper.png",i2:"graphic-transparent.png",gsc:1},
  {n:"Lemon Drip",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Feminized Seeds",i:"ExoticLogoTransparencyTile-1024x1024_15da2f12-e7c4-4914-844b-63aa892767ed.png?v=1740499766"},
  {n:"Truffle Monkey",b:"Goddess Seed Co.",t:"fem",p:100,u:"10 Regular Seeds",i:"ExoticLogoTransparencyTile-1024x1024_31b85a6f-4758-4a75-92ea-3001e6c45811.png?v=1740499795"},
  {n:"Monkey Berries",b:"Goddess Seed Co.",t:"reg",p:100,u:"10 Regular Seeds",i:"ExoticLogoTransparencyTile-1024x1024_5aca5529-73fd-4987-be82-6d3b62c950c8.png?v=1740499806"},
  {n:"Mango Isle F2",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Autoflower Seeds",i:"My-project-3-300x300.webp?v=1740499866"},
  {n:"Wizards Apprentice F5",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 Autoflower Seeds",i:"Night-Owl-Logo-2023_231ca122-837c-4ca6-be71-6f4699ea3fc8.png?v=1740499882"},
- {n:"Strawberry Gushers",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"stra.jpg?v=1766465034",i2:"blue-dream-cannabis-4.jpg?v=1766465034"},
- {n:"Glazed Gelato",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034",i2:"IMG-2003_7809446e-d51c-41fb-b64e-3b29bc77fb47.jpg?v=1741049553"},
- {n:"Glazed Do-Si-Dos",b:"Goddess Seed Co.",t:"auto",p:60,u:"Autoflower seeds",i:"dos_382978e4-5ab0-446c-aff7-923a93a05a53.jpg?v=1766464929",i2:"GoddessSeed_Co_Small_Web-01.jpg?v=1766465034"}
+ {n:"Strawberry Gushers",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"products/strawberry-gushers.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Glazed Gelato",b:"Goddess Seed Co.",t:"auto",p:60,u:"3 feminized autoflower seeds",i:"products/glazed-gelato.png",i2:"graphic-transparent.png",gsc:1},
+ {n:"Glazed Do-Si-Dos",b:"Goddess Seed Co.",t:"auto",p:60,u:"Autoflower seeds",i:"products/glazed-do-si-dos.png",i2:"graphic-transparent.png",gsc:1}
 ];
 var TYPELABEL={reg:"Regular",fem:"Feminized",auto:"Autoflower"};
 var QTYS=[1,2,3,5,10];
@@ -1196,9 +1196,22 @@ function render(){
   if(state.sort==="lo")list.sort(function(a,b){return a.p-b.p;});
   if(state.sort==="hi")list.sort(function(a,b){return b.p-a.p;});
   if(state.sort==="az")list.sort(function(a,b){return a.n.localeCompare(b.n);});
-  var pages=Math.max(1,Math.ceil(list.length/PERPAGE));
-  if(catPage>=pages)catPage=0;
-  var pageList=list.slice(catPage*PERPAGE,(catPage+1)*PERPAGE);
+  var gscFirst=state.type==="all"&&state.brd==="all"&&state.sort==="feat";
+  var pageStart,pages,pageList;
+  if(gscFirst){
+    var gsc=list.filter(function(p){return p.gsc;});
+    var other=list.filter(function(p){return !p.gsc;});
+    list=gsc.concat(other);
+    pages=1+Math.max(0,Math.ceil(other.length/PERPAGE));
+    if(catPage>=pages)catPage=0;
+    if(catPage===0){pageStart=0;pageList=list.slice(0,gsc.length);}
+    else{pageStart=gsc.length+(catPage-1)*PERPAGE;pageList=list.slice(pageStart,pageStart+PERPAGE);}
+  }else{
+    pages=Math.max(1,Math.ceil(list.length/PERPAGE));
+    if(catPage>=pages)catPage=0;
+    pageStart=catPage*PERPAGE;
+    pageList=list.slice(pageStart,pageStart+PERPAGE);
+  }
   grid.innerHTML="";
   pageList.forEach(function(p,idx){
     var el=document.createElement("article");
@@ -1252,7 +1265,7 @@ function render(){
   var bits=[];
   if(state.type!=="all")bits.push(TYPELABEL[state.type]);
   if(state.brd!=="all")bits.push(state.brd);
-  catMeta.textContent=list.length?("Showing "+(catPage*PERPAGE+1)+"–"+(catPage*PERPAGE+pageList.length)+" of "+list.length+(bits.length?" "+bits.join(" · "):"")+" genetics"):"No genetics match those filters";
+  catMeta.textContent=list.length?("Showing "+(pageStart+1)+"–"+(pageStart+pageList.length)+" of "+list.length+(bits.length?" "+bits.join(" · "):"")+" genetics"):"No genetics match those filters";
   renderPager(pages);
 }
 function renderPager(pages){
