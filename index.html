@@ -428,6 +428,7 @@ html[data-theme="light"] .sk::after{background:linear-gradient(90deg,transparent
 .brd{
   border:1px solid var(--hair);border-radius:var(--radius);padding:34px 30px;
   background:var(--bg3);transition:border-color .25s,transform .25s;
+  text-align:left;width:100%;cursor:pointer;font-family:inherit;color:inherit;
 }
 .brd:hover{border-color:var(--gold);transform:translateY(-4px)}
 .brd .num{font-family:var(--disp);font-size:1.1rem;color:var(--gold)}
@@ -652,6 +653,35 @@ body.gate-lock{overflow:hidden}
   .gate-emblem,.gate-canopy .cplant img{animation:none}
   .gate-canopy .cplant,#agegate.gone .cplant,#agegate.wilt .cplant{transition:none}
 }
+
+/* ===== SEARCH OVERLAY ===== */
+#searchOverlay{position:fixed;inset:0;z-index:200;background:rgba(10,11,13,.93);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);display:none;overflow-y:auto;padding:80px 20px 60px;animation:srchFade .25s ease}
+#searchOverlay.open{display:block}
+@keyframes srchFade{from{opacity:0}to{opacity:1}}
+.srch-panel{max-width:680px;margin:0 auto}
+.srch-head{display:flex;align-items:center;gap:14px;padding:18px 20px;border:1px solid var(--d-hair2);border-radius:14px;background:var(--d-bg2);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.srch-head .ti-search{color:var(--d-faint);font-size:20px}
+.srch-head input{flex:1;font-family:inherit;font-size:16px;background:none;border:none;color:var(--d-ink);outline:none;letter-spacing:-.005em;-webkit-appearance:none}
+.srch-head input::placeholder{color:var(--d-faint)}
+.srch-head input::-webkit-search-cancel-button{display:none}
+.srch-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--d-ink);font-size:18px;background:none;border:0;cursor:pointer;transition:background .2s}
+.srch-close:hover{background:var(--d-bg4)}
+.srch-meta{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--d-faint);margin:22px 0 12px;padding:0 4px;font-weight:600}
+.srch-results{display:flex;flex-direction:column;gap:8px}
+.srch-result{display:flex;align-items:center;gap:14px;padding:11px 14px;border:1px solid var(--d-hair);border-radius:11px;background:var(--d-bg3);cursor:pointer;transition:border-color .15s,transform .12s ease;color:var(--d-ink);text-decoration:none}
+.srch-result:hover{border-color:var(--gold);transform:translateY(-1px)}
+.srch-result-img{width:50px;height:50px;border-radius:8px;overflow:hidden;background:#0a0b0d;flex:0 0 50px}
+.srch-result-img img{width:100%;height:100%;object-fit:cover}
+.srch-result-text{flex:1;min-width:0}
+.srch-result-name{font-size:14.5px;font-weight:600;letter-spacing:-.012em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.srch-result-meta{font-size:12px;color:var(--d-dim);margin-top:3px}
+.srch-result-price{font-size:13.5px;color:var(--gold);font-weight:700;white-space:nowrap}
+.srch-empty{padding:40px 0;text-align:center;color:var(--d-faint);font-size:14px}
+body.srch-lock{overflow:hidden}
+@media(max-width:540px){
+  #searchOverlay{padding:24px 14px 40px}
+  .srch-result-img{width:44px;height:44px;flex-basis:44px}
+}
 </style>
 </head>
 <body>
@@ -683,12 +713,12 @@ body.gate-lock{overflow:hidden}
       <a href="#drops">New drops</a>
       <a href="#breeders">Breeders</a>
       <a href="#story">Our story</a>
-      <a href="#foot">FAQ</a>
+      <a href="policies.html#faq">FAQ</a>
     </nav>
     <div class="hdr-act">
       <button class="iconbtn desk" id="themeBtn" aria-label="Toggle light and dark theme"><i class="ti ti-moon"></i></button>
-      <button class="iconbtn desk" aria-label="Search"><i class="ti ti-search"></i></button>
-      <button class="iconbtn desk" aria-label="Account"><i class="ti ti-user"></i></button>
+      <button class="iconbtn desk" id="searchBtn" aria-label="Search"><i class="ti ti-search"></i></button>
+      <a class="iconbtn desk" href="https://goddessseedco.com/account" aria-label="Account" rel="noopener"><i class="ti ti-user"></i></a>
       <button class="iconbtn cart-wrap" aria-label="Cart">
         <i class="ti ti-shopping-bag"></i>
         <span class="cart-count" id="cartCount">0</span>
@@ -704,6 +734,7 @@ body.gate-lock{overflow:hidden}
     <button class="iconbtn" id="mobclose" aria-label="Close menu"><i class="ti ti-x"></i></button>
   </div>
   <nav class="mobnav-links">
+    <button class="mobnav-row" id="mobSearch" type="button">Search <i class="ti ti-search"></i></button>
     <a class="mobnav-row" href="#vault">Shop the vault <i class="ti ti-chevron-right"></i></a>
     <a class="mobnav-row" href="#drops">New drops <i class="ti ti-chevron-right"></i></a>
     <a class="mobnav-row" href="#breeders">Breeders <i class="ti ti-chevron-right"></i></a>
@@ -715,7 +746,7 @@ body.gate-lock{overflow:hidden}
         <a href="#">Shipping &amp; delivery</a>
         <a href="#">Germination guarantee</a>
         <a href="#">Check authenticity</a>
-        <a href="#foot">FAQ</a>
+        <a href="policies.html#faq">FAQ</a>
         <a href="#">Contact us</a>
       </div>
     </div>
@@ -739,8 +770,8 @@ body.gate-lock{overflow:hidden}
     <div class="mob-group">
       <button class="mobnav-row mob-grp-btn" type="button">My Goddess <i class="ti ti-chevron-down"></i></button>
       <div class="mob-grp-panel">
-        <a href="#">Sign in</a>
-        <a href="#">Create account</a>
+        <a href="https://goddessseedco.com/account/login" rel="noopener">Sign in</a>
+        <a href="https://goddessseedco.com/account/register" rel="noopener">Create account</a>
         <a href="#">Shopping bag</a>
         <a href="#">Wishlist</a>
       </div>
@@ -832,6 +863,7 @@ body.gate-lock{overflow:hidden}
       <button class="chip" data-brd="Sin City Seeds">Sin City</button>
       <button class="chip" data-brd="Exotic Genetix">Exotic Genetix</button>
       <button class="chip" data-brd="Night Owl Seeds">Night Owl</button>
+      <button class="chip" data-brd="808 Genetics">808 Genetics</button>
     </div>
     <div class="fspacer"></div>
     <select class="sortsel" id="sortSel">
@@ -855,30 +887,36 @@ body.gate-lock{overflow:hidden}
       </div>
     </div>
     <div class="brd-grid">
-      <div class="brd">
+      <button class="brd" type="button" data-breeder="Goddess Seed Co.">
         <div class="num">01</div>
         <h3 class="disp">Goddess Seed Co.</h3>
         <p>Our in-house line — biscotti, cherry and gas-forward crosses hunted for resin, structure and a keeper in every pack.</p>
         <div class="shop">Shop house genetics <i class="ti ti-arrow-right"></i></div>
-      </div>
-      <div class="brd">
+      </button>
+      <button class="brd" type="button" data-breeder="Sin City Seeds">
         <div class="num">02</div>
         <h3 class="disp">Sin City Seeds</h3>
         <p>Las Vegas legends. Blue Power, Petrol and SinMint Cookies lineage — loud, potent and built to perform.</p>
         <div class="shop">Shop Sin City <i class="ti ti-arrow-right"></i></div>
-      </div>
-      <div class="brd">
+      </button>
+      <button class="brd" type="button" data-breeder="Exotic Genetix">
         <div class="num">03</div>
         <h3 class="disp">Exotic Genetix</h3>
         <p>Award-winning crosses on the Gary Poppins reversal — candy terps, frost and bag appeal turned all the way up.</p>
         <div class="shop">Shop Exotic Genetix <i class="ti ti-arrow-right"></i></div>
-      </div>
-      <div class="brd">
+      </button>
+      <button class="brd" type="button" data-breeder="Night Owl Seeds">
         <div class="num">04</div>
         <h3 class="disp">Night Owl Seeds</h3>
         <p>Autoflower specialists. Chem-forward auto lines bred over generations for flavor, vigor and easy runs.</p>
         <div class="shop">Shop Night Owl <i class="ti ti-arrow-right"></i></div>
-      </div>
+      </button>
+      <button class="brd" type="button" data-breeder="808 Genetics">
+        <div class="num">05</div>
+        <h3 class="disp">808 Genetics</h3>
+        <p>808 Genetics &amp; Hashtronaut collabs. Hawaiian-inspired drops hunting tropical fruit, candy and gas terps in small-batch packs.</p>
+        <div class="shop">Shop 808 Genetics <i class="ti ti-arrow-right"></i></div>
+      </button>
     </div>
   </div>
 </section>
@@ -947,11 +985,11 @@ body.gate-lock{overflow:hidden}
       </div>
       <div class="foot-col">
         <h4>Support</h4>
-        <a href="#">Contact</a>
-        <a href="#">Shipping policy</a>
-        <a href="#">Refund policy</a>
-        <a href="#">Privacy policy</a>
-        <a href="#">Terms of service</a>
+        <a href="policies.html#contact">Contact</a>
+        <a href="policies.html#shipping">Shipping policy</a>
+        <a href="policies.html#returns">Refund policy</a>
+        <a href="policies.html#privacy">Privacy policy</a>
+        <a href="policies.html#terms">Terms of service</a>
       </div>
     </div>
     <div class="disclaimer">
@@ -973,6 +1011,18 @@ body.gate-lock{overflow:hidden}
   </div>
 </footer>
 
+
+<div id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search products">
+  <div class="srch-panel">
+    <div class="srch-head">
+      <i class="ti ti-search"></i>
+      <input type="search" id="searchInput" placeholder="Search strains, breeders, terps..." autocomplete="off" spellcheck="false" />
+      <button class="srch-close" id="searchClose" aria-label="Close search" type="button"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="srch-meta" id="searchMeta">Type to search the catalog</div>
+    <div class="srch-results" id="searchResults"></div>
+  </div>
+</div>
 <div class="toast" id="toast"><i class="ti ti-check"></i><span>Added to bag</span></div>
 
 <script>
@@ -1303,6 +1353,76 @@ function bindFilters(id,key){
 bindFilters("typeFilters","type");
 bindFilters("brdFilters","brd");
 document.getElementById("sortSel").addEventListener("change",function(){state.sort=this.value;catPage=0;render();});
+
+/* ===== BREEDER CARDS CLICK -> FILTER VAULT ===== */
+
+
+/* ===== SEARCH OVERLAY ===== */
+(function(){
+  var btn=document.getElementById("searchBtn"),mob=document.getElementById("mobSearch");
+  var ov=document.getElementById("searchOverlay"),inp=document.getElementById("searchInput");
+  var res=document.getElementById("searchResults"),meta=document.getElementById("searchMeta");
+  var cls=document.getElementById("searchClose");
+  if(!ov||!inp) return;
+  var TOTAL=PRODUCTS.length;
+  function placeholderMeta(){meta.textContent="Type to search "+TOTAL+" genetics";}
+  function open_(){
+    ov.classList.add("open");
+    document.body.classList.add("srch-lock");
+    placeholderMeta();
+    setTimeout(function(){inp.focus();},60);
+  }
+  function close_(){
+    ov.classList.remove("open");
+    document.body.classList.remove("srch-lock");
+    inp.value="";res.innerHTML="";placeholderMeta();
+  }
+  if(btn) btn.addEventListener("click",open_);
+  if(mob) mob.addEventListener("click",function(){
+    var mn=document.getElementById("mobnav"); if(mn) mn.classList.remove("open");
+    open_();
+  });
+  cls.addEventListener("click",close_);
+  ov.addEventListener("click",function(e){ if(e.target===ov) close_(); });
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&ov.classList.contains("open")) close_();
+  });
+  inp.addEventListener("input",function(){
+    var q=inp.value.trim().toLowerCase();
+    if(!q){res.innerHTML="";placeholderMeta();return;}
+    var matches=PRODUCTS.filter(function(p){
+      return p.n.toLowerCase().indexOf(q)>=0
+          || p.b.toLowerCase().indexOf(q)>=0
+          || (p.u||"").toLowerCase().indexOf(q)>=0;
+    }).slice(0,14);
+    meta.textContent=matches.length+" result"+(matches.length===1?"":"s")+(matches.length===14?"+":"");
+    if(!matches.length){
+      res.innerHTML='<div class="srch-empty">No genetics match &ldquo;'+q.replace(/[<>&"]/g,"")+'&rdquo;</div>';
+      return;
+    }
+    res.innerHTML=matches.map(function(p){
+      var s=slugify(p.n);
+      return '<a class="srch-result" href="product.html?strain='+s+'">'+
+        '<div class="srch-result-img"><img src="'+img(p.i)+'" alt="'+p.n.replace(/"/g,"")+'" loading="lazy"></div>'+
+        '<div class="srch-result-text">'+
+          '<div class="srch-result-name">'+p.n+'</div>'+
+          '<div class="srch-result-meta">'+p.b+' &middot; '+(TYPELABEL[p.t]||p.t)+'</div>'+
+        '</div>'+
+        '<div class="srch-result-price">$'+p.p+'</div>'+
+      '</a>';
+    }).join("");
+  });
+})();
+
+document.querySelectorAll(".brd[data-breeder]").forEach(function(b){
+  b.addEventListener("click",function(){
+    var breeder=b.getAttribute("data-breeder");
+    var chip=document.querySelector('#brdFilters .chip[data-brd="'+breeder+'"]');
+    if(chip)chip.click();
+    var vt=document.getElementById("vault");
+    if(vt)vt.scrollIntoView({behavior:"smooth"});
+  });
+});
 grid.innerHTML=skelCards(10);
 setTimeout(render,620);
 
